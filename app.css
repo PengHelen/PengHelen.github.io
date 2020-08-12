@@ -1,0 +1,31 @@
+#app {
+  margin: 0 auto;
+  max-width: 800px;
+  background: azure;
+  font-family: Georgia;
+  /* 'Courier New' Courier 代码样式
+     sans-serif  'Gill Sans' Verdana 正常圆体
+     'Segoe UI' 小圆体
+     'Trebuchet MS' 艺术圆体
+     Calibri 注释小字体
+     'Lucida Sans Unicode' 细长瘦体*/
+}
+
+#app .title {
+  font-family: 'Trebuchet MS';
+  font-size: 32px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+#app .greet {
+  font-family: 'Trebuchet MS';
+  font-size: 24px;
+  text-align: right;
+  padding-bottom: 12px;
+}
+
+#app .introduction {
+  font-size: 16px;
+  text-indent: 2em;
+}
