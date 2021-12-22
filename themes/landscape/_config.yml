@@ -30,7 +30,6 @@ show_count: false
 # Miscellaneous
 google_analytics:
 gauges_analytics:
-favicon:
 twitter:
 google_plus:
 fb_admins:
