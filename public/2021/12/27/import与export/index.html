@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>import与export | PengHelen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、import静态 import初始化加载依赖项的最优选择，在加载时就被编译导入的模块运行在严格模式下在浏览器中，import 语句只能在声明了 type&#x3D;”module” 的 script 的标签中使用 12345import xxx from &amp;#x27;ppp&amp;#x27;import * as xxx from &amp;#x27;ppp&amp;#x27;import &amp;#123;xxx,yyy&amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="import与export">
+<meta property="og:url" content="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/index.html">
+<meta property="og:site_name" content="PengHelen">
+<meta property="og:description" content="一、import静态 import初始化加载依赖项的最优选择，在加载时就被编译导入的模块运行在严格模式下在浏览器中，import 语句只能在声明了 type&#x3D;”module” 的 script 的标签中使用 12345import xxx from &amp;#x27;ppp&amp;#x27;import * as xxx from &amp;#x27;ppp&amp;#x27;import &amp;#123;xxx,yyy&amp;#12">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-27T02:42:07.000Z">
+<meta property="article:modified_time" content="2021-12-27T06:24:26.265Z">
+<meta property="article:author" content="Helen Peng">
+<meta property="article:tag" content="work">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="PengHelen" type="application/atom+xml">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PengHelen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/work">工作</a>
+        
+          <a class="main-nav-link" href="/lifetime">生活</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://penghelen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-import与export" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/27/import%E4%B8%8Eexport/" class="article-date">
+  <time datetime="2021-12-27T02:42:07.000Z" itemprop="datePublished">2021-12-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      import与export
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、import"><a href="#一、import" class="headerlink" title="一、import"></a>一、import</h2><h4 id="静态-import"><a href="#静态-import" class="headerlink" title="静态 import"></a>静态 import</h4><p>初始化加载依赖项的最优选择，在加载时就被编译<br>导入的模块运行在严格模式下<br>在浏览器中，import 语句只能在声明了 type=”module” 的 script 的标签中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import xxx from &#x27;ppp&#x27;</span><br><span class="line">import * as xxx from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx,yyy&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx as aaa,yyy as bbb&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#x27;ppp&#x27;;//整个模块仅为副作，运行模块中的全局代码, 但实际上不导入任何值</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态-import"><a href="#动态-import" class="headerlink" title="动态 import"></a>动态 import</h4><p>按需加载模块<br>不依赖 type=”module” 的 script 标签<br>关键字 import 可以像调用函数一样来动态的导入模块。以这种方式调用，将返回一个 promise，也支持 await 关键字</p>
+<h2 id="二、export"><a href="#二、export" class="headerlink" title="二、export"></a>二、export</h2><p>导出的模块处于严格模式</p>
+<h4 id="命名导出（每个模块包含任意数量）"><a href="#命名导出（每个模块包含任意数量）" class="headerlink" title="命名导出（每个模块包含任意数量）"></a>命名导出（每个模块包含任意数量）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export &#123;myFunction,myVariable&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="默认导出（每个模块包含一个）"><a href="#默认导出（每个模块包含一个）" class="headerlink" title="默认导出（每个模块包含一个）"></a>默认导出（每个模块包含一个）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export let name1,name2,...,nameN;//var const均适用</span><br><span class="line">export let name1=...,name2=...,...,nameN=...;//var const均适用</span><br><span class="line">export function functionName()&#123;...&#125;;</span><br><span class="line">export class className&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="ckxsw13sd0001ucu35uqj7r7x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js深拷贝与浅拷贝
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript定义变量</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/work/">work</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/work/" style="font-size: 10px;">work</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/27/import%E4%B8%8Eexport/">import与export</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/">JavaScript定义变量</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/23/first/">我的第一篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 - 2021 Helen Peng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/work" class="mobile-nav-link">工作</a>
+  
+    <a href="/lifetime" class="mobile-nav-link">生活</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
