@@ -65,6 +65,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
+  <time datetime="2021-12-30T08:05:39.000Z" itemprop="datePublished">2021-12-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>深拷贝：两个对象经过拷贝后，除了拷贝下来相同的属性之外，没有任何其他关联的两个对象<br>浅拷贝：两个对象经过拷贝后，虽然属性相同，也是不同对象，但内部的对象指向同一个内存空间</p>
+<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><h4 id="JSON-方法"><a href="#JSON-方法" class="headerlink" title="JSON 方法"></a>JSON 方法</h4><p><code>let newObj = JSON.parse(JSON.stringify(oldObj))</code><br>缺点：无法拷贝对象里的函数、原型链的属性</p>
+<h4 id="循环递归"><a href="#循环递归" class="headerlink" title="循环递归"></a>循环递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(source)&#123;</span><br><span class="line">  let target = Array.isArray(source)?[]:&#123;&#125;</span><br><span class="line">  for(let k in source)&#123;</span><br><span class="line">    if(typeof source[k] ==== &#x27;object&#x27;)&#123;</span><br><span class="line">      target[k]=deepCopy(source[k])</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      target[k] = source[k]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckxsw13si0005ucu3asxahvc7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-import与export" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/27/import%E4%B8%8Eexport/" class="article-date">
+  <time datetime="2021-12-27T02:42:07.000Z" itemprop="datePublished">2021-12-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/27/import%E4%B8%8Eexport/">import与export</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、import"><a href="#一、import" class="headerlink" title="一、import"></a>一、import</h2><h4 id="静态-import"><a href="#静态-import" class="headerlink" title="静态 import"></a>静态 import</h4><p>初始化加载依赖项的最优选择，在加载时就被编译<br>导入的模块运行在严格模式下<br>在浏览器中，import 语句只能在声明了 type=”module” 的 script 的标签中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import xxx from &#x27;ppp&#x27;</span><br><span class="line">import * as xxx from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx,yyy&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx as aaa,yyy as bbb&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#x27;ppp&#x27;;//整个模块仅为副作，运行模块中的全局代码, 但实际上不导入任何值</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态-import"><a href="#动态-import" class="headerlink" title="动态 import"></a>动态 import</h4><p>按需加载模块<br>不依赖 type=”module” 的 script 标签<br>关键字 import 可以像调用函数一样来动态的导入模块。以这种方式调用，将返回一个 promise，也支持 await 关键字</p>
+<h2 id="二、export"><a href="#二、export" class="headerlink" title="二、export"></a>二、export</h2><p>导出的模块处于严格模式</p>
+<h4 id="命名导出（每个模块包含任意数量）"><a href="#命名导出（每个模块包含任意数量）" class="headerlink" title="命名导出（每个模块包含任意数量）"></a>命名导出（每个模块包含任意数量）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export &#123;myFunction,myVariable&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="默认导出（每个模块包含一个）"><a href="#默认导出（每个模块包含一个）" class="headerlink" title="默认导出（每个模块包含一个）"></a>默认导出（每个模块包含一个）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export let name1,name2,...,nameN;//var const均适用</span><br><span class="line">export let name1=...,name2=...,...,nameN=...;//var const均适用</span><br><span class="line">export function functionName()&#123;...&#125;;</span><br><span class="line">export class className&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="ckxsw13sd0001ucu35uqj7r7x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaScript定义变量" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" class="article-date">
@@ -125,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="ckxo1uknw0000bgu31cxs666o" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="ckxsw13s20000ucu3hca46obw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="ckxo1ukoq0001bgu3c1ok5ow2" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="ckxsw13sg0003ucu37z7cejmd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,9 +278,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/work/" style="font-size: 10px;">work</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -210,6 +311,14 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/27/import%E4%B8%8Eexport/">import与export</a>
+          </li>
         
           <li>
             <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/">JavaScript定义变量</a>
