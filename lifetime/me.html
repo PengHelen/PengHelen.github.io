@@ -5,19 +5,19 @@
   
 
   
-  <title>js深拷贝与浅拷贝 | PengHelen</title>
+  <title>About me | PengHelen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、概念深拷贝：两个对象经过拷贝后，除了拷贝下来相同的属性之外，没有任何其他关联的两个对象浅拷贝：两个对象经过拷贝后，虽然属性相同，也是不同对象，但内部的对象指向同一个内存空间 二、实现方式JSON 方法let newObj &#x3D; JSON.parse(JSON.stringify(oldObj))缺点：无法拷贝对象里的函数、原型链的属性 循环递归1234567891011function deep">
-<meta property="og:type" content="article">
-<meta property="og:title" content="js深拷贝与浅拷贝">
-<meta property="og:url" content="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/index.html">
+  <meta name="description" content="A nice front-end coder">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About me">
+<meta property="og:url" content="https://penghelen.github.io/lifetime/me.html">
 <meta property="og:site_name" content="PengHelen">
-<meta property="og:description" content="一、概念深拷贝：两个对象经过拷贝后，除了拷贝下来相同的属性之外，没有任何其他关联的两个对象浅拷贝：两个对象经过拷贝后，虽然属性相同，也是不同对象，但内部的对象指向同一个内存空间 二、实现方式JSON 方法let newObj &#x3D; JSON.parse(JSON.stringify(oldObj))缺点：无法拷贝对象里的函数、原型链的属性 循环递归1234567891011function deep">
+<meta property="og:description" content="A nice front-end coder">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-30T08:05:39.000Z">
-<meta property="article:modified_time" content="2021-12-30T08:19:50.000Z">
+<meta property="article:published_time" content="2022-10-19T12:44:57.000Z">
+<meta property="article:modified_time" content="2022-10-19T12:44:57.834Z">
 <meta property="article:author" content="Helen Peng">
-<meta property="article:tag" content="work">
+<meta property="article:tag" content="Helen,front-end,blog">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="PengHelen" type="application/atom+xml">
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-js深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
-  <time datetime="2021-12-30T08:05:39.000Z" itemprop="datePublished">2021-12-30</time>
+    <a href="/lifetime/me.html" class="article-date">
+  <time datetime="2022-10-19T12:44:57.000Z" itemprop="datePublished">2022-10-19</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      js深拷贝与浅拷贝
+      About me
     </h1>
   
 
@@ -90,41 +90,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>深拷贝：两个对象经过拷贝后，除了拷贝下来相同的属性之外，没有任何其他关联的两个对象<br>浅拷贝：两个对象经过拷贝后，虽然属性相同，也是不同对象，但内部的对象指向同一个内存空间</p>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><h4 id="JSON-方法"><a href="#JSON-方法" class="headerlink" title="JSON 方法"></a>JSON 方法</h4><p><code>let newObj = JSON.parse(JSON.stringify(oldObj))</code><br>缺点：无法拷贝对象里的函数、原型链的属性</p>
-<h4 id="循环递归"><a href="#循环递归" class="headerlink" title="循环递归"></a>循环递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(source)&#123;</span><br><span class="line">  let target = Array.isArray(source)?[]:&#123;&#125;</span><br><span class="line">  for(let k in source)&#123;</span><br><span class="line">    if(typeof source[k] ==== &#x27;object&#x27;)&#123;</span><br><span class="line">      target[k]=deepCopy(source[k])</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      target[k] = source[k]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cl9fmoxeh0007ig3m48kudmkk" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/lifetime/me.html" data-id="cl9fmoxed0002ig3mcbssfd5i" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
-
     </footer>
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/12/27/import%E4%B8%8Eexport/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">import与export</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
