@@ -7,12 +7,15 @@
   
   <title>PengHelen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="A nice front-end coder">
+<meta property="og:type" content="website">
 <meta property="og:title" content="PengHelen">
 <meta property="og:url" content="https://penghelen.github.io/index.html">
 <meta property="og:site_name" content="PengHelen">
+<meta property="og:description" content="A nice front-end coder">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Helen Peng">
+<meta property="article:tag" content="Helen,front-end,blog">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="PengHelen" type="application/atom+xml">
@@ -23,7 +26,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container">
@@ -65,6 +68,379 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-colorList" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/10/18/colorList/" class="article-date">
+  <time datetime="2022-10-18T07:55:10.225Z" itemprop="datePublished">2022-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+
+<head>
+  <title>拾色器与颜色值互转 | PengHelen</title>
+  <meta property="og:title" content="拾色器与颜色值互转">
+  <style>
+    .box {
+      padding: 16px;
+    }
+
+    #area {
+      width: 100px;
+      height: 100px;
+    }
+
+    .input {
+      height: 32px;
+    }
+
+    .color-picker {
+      margin-top: 10px;
+      overflow: auto;
+      max-height: 300px;
+    }
+  </style>
+</head>
+
+<body onload="onColorChange()">
+  <input type="text" class="input" id="diskInput" value="#0099ff" />
+  <button type="button" class="button" onclick="onInputChange()">预览颜色</button>
+  <div class="container">
+    <input type="color" id="myColor" value="#0099ff" oninput="onColorChange()" />
+    <div id="area"></div>
+    <ul style="list-style: none;">
+      <!-- list-style放在<style></style>标签中不生效 -->
+      <li id="hex"></li>
+      <li id="rgb"></li>
+      <li id="hsl"></li>
+    </ul>
+  </div>
+  <div>
+    <input placeholder="请选择图片" type="file" id="imgColor" onchange="onImgChange()" />
+    <div class="color-picker">
+      <canvas id="selectedImg" width="30" height="30"></canvas>
+    </div>
+  </div>
+  <script>
+    const diskInput = document.getElementById('diskInput'),
+      disk = document.getElementById('myColor'),
+      hex = document.getElementById('hex'),
+      rgb = document.getElementById('rgb'),
+      hsl = document.getElementById('hsl'),
+      imgColor = document.getElementById('imgColor'),
+      canvas = document.getElementById('selectedImg'),
+      ctx = canvas.getContext('2d');
+    function onInputChange() {
+      let data = diskInput.value
+      disk.value = data
+      if (data.indexOf('rgb') > -1) {
+        disk.value = rgb2Hex(data)
+      }
+      if (data.indexOf('hsl') > -1) {
+        disk.value = hsl2Hex(data)
+      }
+      onColorChange()
+    }
+    function onColorChange() {
+      let area = document.getElementById('area')
+      if (area) {
+        area.style.backgroundColor = disk.value
+        hex.innerText = '16进制颜色值：' + disk.value
+        rgb.innerText = 'rgb颜色值：' + area.style.backgroundColor
+        hsl.innerText = 'hsl颜色值：' + toHSL(disk.value)
+      }
+    }
+    function toHSL(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+      r /= 255, g /= 255, b /= 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h, s, l = (max + min) / 2;
+      if (max == min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.floor(h * 360)
+
+      var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+      return colorInHSL
+    }
+    function onImgChange() {
+      let file = imgColor.files[0]
+      let img = new Image()
+      img.crossOrigin = 'anonymous';
+      img.onload = (() => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        canvas.addEventListener('click', handleClick)
+      })
+      img.src = URL.createObjectURL(file)
+    }
+    function handleClick(e) {
+      let x = e.offsetX;
+      let y = e.offsetY;
+      let pixel = ctx.getImageData(x, y, 1, 1);
+      let data = pixel.data;
+      const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255})`;
+      disk.value = rgb2Hex(rgba).slice(0, 7)//暂不加透明度
+      onColorChange()
+    }
+    function rgb2Hex(value) {
+      if (value.indexOf('rgb') > -1) {
+        let array = value.split(',');
+        if (array.length < 3) return "";
+        value = "#"
+        for (let i = 0, color; color = array[i++];) {
+          if (i < 4) {
+            color = parseInt(color.replace(/[^\d]/gi, ''), 10).toString(16)
+            value += color.length == 1 ? "0" + color : color;
+          } else {
+            color = color.replace(')', '')
+            let colorA = parseInt(color * 255);
+            let colorAHex = colorA.toString(16);
+            value += colorAHex
+          }
+        }
+        value = value.toUpperCase();
+      }
+      return value;
+    }
+    function hsl2Hex(hsl) {
+      // h s l 三个值为整数
+      let [h, s, l] = (hsl.slice(4).replace(')', '')).split(',').map(m => parseInt(m))
+      l /= 100;
+      const a = s * Math.min(l, 1 - l) / 100;
+      const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+      };
+      return `#${f(0)}${f(8)}${f(4)}`;
+    }
+// r2,g2,b2背景色
+// function RGBAtoRGB(r, g, b, a, r2,g2,b2){
+// var r3 = Math.round(((1 - a) * r2) + (a * r))
+// var g3 = Math.round(((1 - a) * g2) + (a * g))
+// var b3 = Math.round(((1 - a) * b2) + (a * b))
+// return "rgb("+r3+","+g3+","+b3+")";
+// } 
+// $("#result").html(RGBAtoRGB(225,110,0,0.5,255,255,255));
+  </script>
+</body>
+
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="cl9fmoxeg0005ig3m1yqg9icl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Base64与图片互转" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" class="article-date">
+  <time datetime="2022-10-13T08:17:59.597Z" itemprop="datePublished">2022-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Base64与图片互转 | PengHelen</title>
+  <meta property="og:title" content="Base64与图片互转">
+  <style>
+    .container {
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .button {
+      align-items: center;
+      padding: 4px;
+      font-size: 16px;
+      background-color: #0099ff;
+      color: #fff;
+      border-radius: 4px;
+      border-color: rgb(0, 153, 255);
+      cursor: pointer;
+    }
+
+    #image {
+      display: none;
+    }
+
+    .btns {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <input placeholder="请选择图片" type="file" id="file" accept=".jpeg,.jpg,.png,.webp" onchange="onChange()" />
+    <img alt="暂无图片或图片格式错误" id="image" width="200" height="200" />
+    <textarea placeholder="请输入Base64" rows="20" cols="50" id="textarea"></textarea>
+  </div>
+  <div class="btns">
+    <button type="button" class="button" onclick="imageToBase64()">图片转Base64</button>
+    <button type="button" class="button" onclick="base64ToImage()">Base64转图片</button>
+    <button type="button" class="button" onclick="saveImage()">保存图片</button>
+    <button type="button" class="button" onclick="clearAll()">清空所有</button>
+  </div>
+  <script>
+    const fileDOM = document.getElementById('file'),
+      textDOM = document.getElementById('textarea'),
+      image = document.getElementById('image');
+    let imageSrc = '', base64Text = '', file = '', imgType = '',
+      imageType = ['data:image/jpg;base64,', 'data:image/jpeg;base64,', 'data:image/png;base64,', 'data:image/webp;base64,']
+    // 'data:image/*;base64,'
+    function base64ToImage() {
+      base64Text = textDOM.value
+      imgType = base64Text.slice(base64Text.indexOf(':') + 1, base64Text.indexOf(';'))
+      if (!base64Text) {
+        alert('请输入Base64字符串！')
+        return;
+      }
+      let type = imageType.indexOf(base64Text.slice(0, base64Text.indexOf(',') + 1)) === -1
+      if (type) {
+        base64Text = 'data:image/jpeg;base64,' + base64Text
+      }
+      imageSrc = base64Text
+      showImage('textToImg')
+    }
+    function showImage(mode = 'imgToText') {
+      image.setAttribute('src', imageSrc);
+      image.style.display = 'block'
+      fileDOM.style.display = 'none'
+    }
+    function onChange() {
+      file = fileDOM.files[0]
+      imageSrc = URL.createObjectURL(file);
+      imgType = file.type
+      showImage('imgToText')
+    }
+    function imageToBase64() {
+      if (!file) {
+        alert('请选择图片！')
+        return;
+      }
+      let img = new Image()
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        canvas.width = img.width;
+        canvas.height = img.height;
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        let text = canvas.toDataURL(imgType)
+        textDOM.value = text
+      }
+      img.src = imageSrc
+    }
+    function clearAll() {
+      // 函数名为clear不执行？？？
+      base64Text = ''
+      imageSrc = ''
+      file = ''
+      fileDOM.style.display = 'block'
+      image.style.display = 'none'
+      fileDOM.value = ''// 清空input[type=file]的文件/值
+      textDOM.value = ''
+    }
+    function saveImage() {
+      fileName = file ? file.name : 'img.' + imgType.slice(imgType.indexOf('/') + 1)
+      if ("download" in document.createElement("a")) {
+        var elink = document.createElement("a");
+        elink.download = fileName;
+        elink.style.display = "none";
+        if (file) {
+          elink.href = imageSrc
+          document.body.appendChild(elink);
+          elink.click();
+        } else {
+          elink.href = URL.createObjectURL(base64ToBlob());
+          document.body.appendChild(elink);
+          elink.click();
+          URL.revokeObjectURL(elink.href);
+        }
+        document.body.removeChild(elink);
+      } else {
+        // IE10+下载
+        if (file) {
+          var oPop = window.open(imageSrc, "", "width=0,height=0,top=5000,left=5000");
+          for (; oPop.document.readyState != "complete";) {
+            if (oPop.document.readyState == "complete") break;
+          }
+          oPop.document.execCommand("SaveAs");
+          oPop.close();
+          return;
+        }
+        navigator.msSaveBlob(base64ToBlob(), fileName);
+      }
+    }
+    function base64ToBlob() {
+      let parts = base64Text.split(';base64,');
+      // atob() 对经过 base-64 编码的字符串进行解码
+      let raw = window.atob(parts[1])
+      let rawLength = raw.length
+      let unit8Array = new Uint8Array(rawLength);
+      for (let i = 0; i < rawLength; i++) {
+        unit8Array[i] = raw.charCodeAt(i);
+      }
+      return new Blob([unit8Array], { type: imgType })
+    }
+  </script>
+</body>
+
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="cl9fmoxee0003ig3mcvhxg2wj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
@@ -94,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckxsxv30500041su39m3lfmg2" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cl9fmoxeh0007ig3m48kudmkk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -140,7 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="ckxsxv30300021su35ef59bwg" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cl9fmoxeg0006ig3mh4g4dndz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -187,7 +563,7 @@
 <h4 id="不可配置性"><a href="#不可配置性" class="headerlink" title="不可配置性"></a>不可配置性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">b=2;</span><br><span class="line">delete this.a;//在严格模式下抛出typeError，其他情况下执行失败，但无提示</span><br><span class="line">delete this.b;</span><br><span class="line">console.log(a,b);//抛出refrenceerror（引用错误，b已被删除）</span><br></pre></td></tr></table></figure>
 
 <h4 id="声明多个变量"><a href="#声明多个变量" class="headerlink" title="声明多个变量"></a>声明多个变量</h4><p><strong>隐式声明全局变量</strong><br>在非严格模式下，直接赋值给未声明的变量中，则执行赋值后，该变量会被隐式地创建为全局变量（它将成为全局对象的属性）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a=b=&#x27;A&#x27;;</span><br><span class="line">//等效于</span><br><span class="line">var a,b;</span><br><span class="line">b=&#x27;A&#x27;;</span><br><span class="line">a=&#x27;A&#x27;;</span><br><span class="line">//涉及到赋值符号是右结合计算规则，也就是说依次从右边赋值到左边;</span><br><span class="line">var a=(b=&#x27;A&#x27;);</span><br><span class="line">console.log(a,b);//&#x27;A&#x27;,&#x27;A&#x27;</span><br><span class="line">//并且赋值号返回右侧变量的值</span><br><span class="line"></span><br><span class="line">var x=y,y=&#x27;A&#x27;;</span><br><span class="line">console.log(x+y);//undefinedA</span><br><span class="line">//当&quot;x = y&quot;执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是&#x27;undefined&#x27;</span><br><span class="line"></span><br><span class="line">var x=0;</span><br><span class="line">function f()&#123;</span><br><span class="line">  var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1</span><br><span class="line">&#125;</span><br><span class="line">f();//不执行函数f，获取x的值全局声明的x，y则是未定义</span><br><span class="line">console.log(x,y);//0,1 //此处获取的全局的x,y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a=b=&#x27;A&#x27;;</span><br><span class="line">//等效于</span><br><span class="line">b=&#x27;A&#x27;;</span><br><span class="line">var a=&#x27;A&#x27;;</span><br><span class="line">//连等操作是从右向左执行的，相当于b = &#x27;A&#x27;、let a = b，很明显b没有声明就直接赋值了，所以会隐式创建为一个全局变量</span><br><span class="line">var a=(b=&#x27;A&#x27;);</span><br><span class="line">console.log(a,b);//&#x27;A&#x27;,&#x27;A&#x27;</span><br><span class="line">//并且赋值号返回右侧变量的值</span><br><span class="line"></span><br><span class="line">var x=y,y=&#x27;A&#x27;;</span><br><span class="line">console.log(x+y);//undefinedA</span><br><span class="line">//当&quot;x = y&quot;执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是&#x27;undefined&#x27;</span><br><span class="line"></span><br><span class="line">var x=0;</span><br><span class="line">function f()&#123;</span><br><span class="line">  var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1</span><br><span class="line">&#125;</span><br><span class="line">f();//不执行函数f，获取x的值全局声明的x，y则是未定义</span><br><span class="line">console.log(x,y);//0,1 //此处获取的全局的x,y</span><br></pre></td></tr></table></figure>
 
 <h2 id="二、var-定义变量"><a href="#二、var-定义变量" class="headerlink" title="二、var 定义变量"></a>二、var 定义变量</h2><p>var 声明的变量作用域是它当前的<strong>执行上下文</strong>，作用域是函数内或全局<br>多次用 var 声明变量，变量不会丢失其值</p>
 <h2 id="三、let-定义变量"><a href="#三、let-定义变量" class="headerlink" title="三、let 定义变量"></a>三、let 定义变量</h2><p>let 声明的变量作用域被限制在块级中的变量、语句或者表达式<br>在同一个函数或块作用域中重复声明同一个变量会引起 SyntaxError（语法错误）<br><strong>注：</strong> 在 switch 语句中只有一个块，多次 let 声明同一个变量则报错；在 case 子句中的块会创建一个新的块作用域的词法环境，就不会产生上诉重复声明的错误</p>
@@ -212,7 +588,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="ckxsxv30100011su3f7io8j7g" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cl9fmoxeb0001ig3mbz4o2ryd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="ckxsxv2zx00001su3fy6o83b4" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cl9fmoxen000dig3m35ledk3j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +676,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
     </div>
   </div>
 
@@ -313,6 +689,14 @@
       <ul>
         
           <li>
+            <a href="/2022/10/18/colorList/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
           </li>
         
@@ -322,10 +706,6 @@
         
           <li>
             <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/">JavaScript定义变量</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/23/first/">我的第一篇博客</a>
           </li>
         
       </ul>
@@ -340,7 +720,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2021 - 2021 Helen Peng<br>
+      &copy; 2021 - 2022 Helen Peng<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

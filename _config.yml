@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: PengHelen
-subtitle: ''
-description: ''
-keywords:
+title: PengHelen # 网站标题
+subtitle: "This is Helen's blog." # 网站副标题
+description: 'A nice front-end coder' # 网站描述
+keywords: 'Helen,front-end,blog' # 网站关键词
 author: 'Helen Peng'
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -21,14 +21,15 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
-source_dir: source
-public_dir: public
+source_dir: source # 存放内容
+public_dir: public # 存放生成的站点文件
 tag_dir: tags
-archive_dir: archives
+archive_dir: archives # 归档
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
+i18n_dir: :lang 
+## 跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。
+skip_render: "_post/Base64与图片互转.md"
 
 # Writing
 new_post_name: :title.md # File name of new posts
