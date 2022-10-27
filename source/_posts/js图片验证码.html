@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>js图片验证码 | PengHelen</title>
+  <meta property="og:title" content="js图片验证码">
+  <style>
+    #vertifyCode {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body onload="drawCode()">
+  <canvas id="vertifyCode" onclick="repaint()"></canvas>
+  <script>
+    let code = '', box_width = 300, box_height = 150
+    let codeCanvas = document.getElementById('vertifyCode');
+    codeCanvas.width = box_width;
+    codeCanvas.height = box_height
+    let codeCtx = codeCanvas.getContext('2d');
+    function changeCode() {
+      let characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      for (let i = 0; i < 4; i++) {
+        // 随机字符
+        let index = Math.floor(Math.random() * (60 + 1))
+        code += characters[index]
+      }
+      console.log('code', code)
+    }
+    function drawCharacters() {
+      for (let i = 0; i < code.length; i++) {
+        let x = box_height / 10 + box_height / 2 * i
+        let y = box_width / 4 + Math.random() * 4
+        let deg = Math.random() * 0.5
+        codeCtx.font = "bold 48px 微软雅黑"
+        codeCtx.translate(x, y)
+        codeCtx.rotate(deg)
+        codeCtx.fillStyle = getColor()
+        codeCtx.fillText(code[i], 0, 0)
+        codeCtx.rotate(-deg);
+        codeCtx.translate(-x, -y)
+      }
+    }
+    function drawDotAndLine() {
+      for (let i = 0; i < 40; i++) {
+        codeCtx.fillStyle = getColor()
+        codeCtx.beginPath()
+        let x = Math.floor(Math.random() * box_width)
+        let y = Math.floor(Math.random() * box_height)
+        // 随机点
+        codeCtx.arc(x, y, 2, 0, Math.PI)
+        codeCtx.fill()
+        codeCtx.closePath()
+      }
+      for (let i = 0; i < 8; i++) {
+        codeCtx.strokeStyle = getColor()
+        codeCtx.beginPath()
+        var x = Math.floor(Math.random() * box_width)
+        var y = Math.floor(Math.random() * box_height)
+        // 随机线条 
+        codeCtx.moveTo(Math.random() * box_width, Math.random() * box_height)
+        codeCtx.lineTo(Math.random() * box_width, Math.random() * box_height)
+        codeCtx.stroke()
+        codeCtx.closePath()
+      }
+    }
+    function getColor() {
+      // 随机颜色
+      let r = Math.floor(Math.random() * 255)
+      let g = Math.floor(Math.random() * 255)
+      let b = Math.floor(Math.random() * 255)
+      return `rgb(${r},${g},${b})`;
+    }
+    function drawCode() {
+      changeCode()
+      drawCharacters()
+      drawDotAndLine()
+    }
+    function repaint() {
+      code = ''
+      // 清空画布
+      codeCanvas.width = box_width
+      codeCanvas.height = box_height
+      codeCtx.clearRect(0, 0, box_width, box_height)
+      drawCode()
+    }
+  </script>
+</body>
+
+</html>
