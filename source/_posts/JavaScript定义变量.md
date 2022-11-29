@@ -34,7 +34,7 @@ var a=1;
 b=2;
 delete this.a;//在严格模式下抛出typeError，其他情况下执行失败，但无提示
 delete this.b;
-console.log(a,b);//抛出refrenceerror（引用错误，b已被删除）
+console.info(a,b);//抛出refrenceerror（引用错误，b已被删除）
 ```
 
 #### 声明多个变量
@@ -49,11 +49,11 @@ b='A';
 var a='A';
 //连等操作是从右向左执行的，相当于b = 'A'、let a = b，很明显b没有声明就直接赋值了，所以会隐式创建为一个全局变量
 var a=(b='A');
-console.log(a,b);//'A','A'
+console.info(a,b);//'A','A'
 //并且赋值号返回右侧变量的值
 
 var x=y,y='A';
-console.log(x+y);//undefinedA
+console.info(x+y);//undefinedA
 //当"x = y"执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是'undefined'
 
 var x=0;
@@ -61,7 +61,7 @@ function f(){
   var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1
 }
 f();//不执行函数f，获取x的值全局声明的x，y则是未定义
-console.log(x,y);//0,1 //此处获取的全局的x,y
+console.info(x,y);//0,1 //此处获取的全局的x,y
 ```
 
 ## 二、var 定义变量
@@ -105,10 +105,10 @@ test();
 
 function go(n) {
   // n here is defined!
-  console.log(n); // Object {a: [1,2,3]}
+  console.info(n); // Object {a: [1,2,3]}
 
   for (let n of n.a) { // ReferenceError，n.a被解析为位于指令本身("let n")中的“ n”对象的属性“ a”。
-    console.log(n);
+    console.info(n);
   }
 }
 go({a: [1, 2, 3]});
@@ -140,11 +140,11 @@ if (MY_FAV === 7) {
   // 没问题，并且创建了一个块作用域变量 MY_FAV
   // (works equally well with let to declare a block scoped non const variable)
   let MY_FAV = 20;
-  console.log('my favorite number is ' + MY_FAV);//20
+  console.info('my favorite number is ' + MY_FAV);//20
   // 这被提升到全局上下文并引发错误
   var MY_FAV = 20;//SyntaxError for re-declaration 语法错误，重复声明
 }
-console.log('my favorite number is ' + MY_FAV);//全局,7
+console.info('my favorite number is ' + MY_FAV);//全局,7
 
 const MY_OBJECT={'key':'value'}
 MY_OBJECT={'OTHER_KEY':'value'};//Uncaught TypeError: Assignment to constant variable 分配常量值错误
