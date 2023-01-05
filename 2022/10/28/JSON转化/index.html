@@ -5,17 +5,17 @@
   
 
   
-  <title>About me | PengHelen</title>
+  <title>PengHelen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A nice front-end coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About me">
-<meta property="og:url" content="https://penghelen.github.io/lifetime/me.html">
+  <meta name="description" content="JSON转化 | PengHelen                            let jsonInput &#x3D; document.getElementById(&#39;jsonStr&#39;)     let jsInput &#x3D; document.getElementById(&#39;jsStr&#39;)     function jsonTojs() {       let testValue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PengHelen">
+<meta property="og:url" content="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/index.html">
 <meta property="og:site_name" content="PengHelen">
-<meta property="og:description" content="A nice front-end coder">
+<meta property="og:description" content="JSON转化 | PengHelen                            let jsonInput &#x3D; document.getElementById(&#39;jsonStr&#39;)     let jsInput &#x3D; document.getElementById(&#39;jsStr&#39;)     function jsonTojs() {       let testValue">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-19T12:44:57.000Z">
-<meta property="article:modified_time" content="2022-10-19T12:44:57.834Z">
+<meta property="article:published_time" content="2022-10-28T02:41:06.075Z">
+<meta property="article:modified_time" content="2022-11-29T06:57:24.163Z">
 <meta property="article:author" content="Helen Peng">
 <meta property="article:tag" content="Helen,front-end,blog">
 <meta name="twitter:card" content="summary">
@@ -68,39 +68,84 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JSON转化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/lifetime/me.html" class="article-date">
-  <time datetime="2022-10-19T12:44:57.000Z" itemprop="datePublished">2022-10-19</time>
+    <a href="/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" class="article-date">
+  <time datetime="2022-10-28T02:41:06.075Z" itemprop="datePublished">2022-10-28</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      About me
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON转化 | PengHelen</title>
+  <meta property="og:title" content="JSON转化">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <textarea id="jsonStr" placeholder="请输入json字符串" onblur="jsonTojs()" cols="50" rows="20"></textarea>
+  <textarea id="jsStr" placeholder="请输入js对象" onblur="jsTojson()" cols="50" rows="20"></textarea>
+
+  <script>
+    let jsonInput = document.getElementById('jsonStr')
+    let jsInput = document.getElementById('jsStr')
+    function jsonTojs() {
+      let testValue = jsonInput.value
+      if (testValue.indexOf('\\') === -1) {//js对象
+        testValue = JSON.stringify(testValue)
+      }
+      jsInput.value = JSON.parse(testValue)
+    }
+    function jsTojson() {
+      let jsValue = { "bool_wait": 0, "call_lift": "", "lift_id": "", "lift_info": "", "name": "0", "neighbor_node": "1,", "qr_list": "", "road_info": "1,n;", "rviz_flag_name": "", "slowpoint_list": "", "virtue_1": "", "virtue_2": "", "virtue_3": "d", "virtue_4": "", "x": "-0.1280", "y": "0.0170" }
+      // jsInput.value
+      console.info('jsValue', jsValue + '')
+      let arr = (jsValue + '').split(',')
+      console.info('arr', arr)
+      jsonInput.value = JSON.stringify(jsValue)
+    }
+  </script>
+</body>
+
+</html>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/lifetime/me.html" data-id="clciv977q0000w83m2n5149wn" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" data-id="clciv977v0003w83m2ji35sb8" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          浏览器标签/Tab的标题和图标
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">变量和事件名</div>
+    </a>
+  
+</nav>
+
   
 </article>
 

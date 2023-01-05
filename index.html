@@ -68,6 +68,131 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-浏览器标签-Tab的标题和图标" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" class="article-date">
+  <time datetime="2023-01-05T06:12:54.000Z" itemprop="datePublished">2023-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="一、图标"><a href="#一、图标" class="headerlink" title="一、图标"></a>一、图标</h2><p>favicon.ico只需要放到网站根目录，并不需要添加到程序中，浏览器会直接通过域名调取这个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>rel表示关系relationship，icon是一个网站图标的链接，type属性包含了链接资源的MIME类型</p>
+<p>图片格式，type可接受类型：</p>
+<ul>
+<li>image/png(PNG)</li>
+<li>image/gif(GIF)</li>
+<li>image/jpg(JPEG)</li>
+<li>image/x-icon(ICO)</li>
+<li>image/svg+xml(SVG)</li>
+</ul>
+<p>一个favicon图标必须满足以下要求：</p>
+<ul>
+<li>默认名字是：favicon.ico</li>
+<li>尺寸大小范围有：16x16，32x32，48x48，64x64，128x128（单位是px）</li>
+<li>颜色通道值：8/24/32 bites</li>
+</ul>
+<p>更新窗口图标后，浏览器仍不显示，需要清除浏览器缓存刷新网页（ctrl+f5）</p>
+<p>参考文档：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/audreyfeldroy/favicon-cheat-sheet">https://github.com/audreyfeldroy/favicon-cheat-sheet</a> </p>
+<h2 id="二、标题"><a href="#二、标题" class="headerlink" title="二、标题"></a>二、标题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;文档标题&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态修改标题"><a href="#动态修改标题" class="headerlink" title="动态修改标题"></a>动态修改标题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.title = &quot;新标题&quot;;</span><br><span class="line">document.querySelector(&#x27;title&#x27;).textContent = &#x27;新标题&#x27;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clciv9785000gw83md1ggepu2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JSON转化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" class="article-date">
+  <time datetime="2022-10-28T02:41:06.075Z" itemprop="datePublished">2022-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON转化 | PengHelen</title>
+  <meta property="og:title" content="JSON转化">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <textarea id="jsonStr" placeholder="请输入json字符串" onblur="jsonTojs()" cols="50" rows="20"></textarea>
+  <textarea id="jsStr" placeholder="请输入js对象" onblur="jsTojson()" cols="50" rows="20"></textarea>
+
+  <script>
+    let jsonInput = document.getElementById('jsonStr')
+    let jsInput = document.getElementById('jsStr')
+    function jsonTojs() {
+      let testValue = jsonInput.value
+      if (testValue.indexOf('\\') === -1) {//js对象
+        testValue = JSON.stringify(testValue)
+      }
+      jsInput.value = JSON.parse(testValue)
+    }
+    function jsTojson() {
+      let jsValue = { "bool_wait": 0, "call_lift": "", "lift_id": "", "lift_info": "", "name": "0", "neighbor_node": "1,", "qr_list": "", "road_info": "1,n;", "rviz_flag_name": "", "slowpoint_list": "", "virtue_1": "", "virtue_2": "", "virtue_3": "d", "virtue_4": "", "x": "-0.1280", "y": "0.0170" }
+      // jsInput.value
+      console.info('jsValue', jsValue + '')
+      let arr = (jsValue + '').split(',')
+      console.info('arr', arr)
+      jsonInput.value = JSON.stringify(jsValue)
+    }
+  </script>
+</body>
+
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" data-id="clciv977v0003w83m2ji35sb8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-变量和事件名" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" class="article-date">
@@ -472,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cl9qoyox7000b943mduft5z7s" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clciv9784000fw83m7rpq715s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -524,7 +649,6 @@
         let index = Math.floor(Math.random() * (60 + 1))
         code += characters[index]
       }
-      console.log('code', code)
     }
     function drawCharacters() {
       for (let i = 0; i < code.length; i++) {
@@ -590,7 +714,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" data-id="cl9qoyox50008943m01cu7bzb" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" data-id="clciv9781000bw83m5itc46p0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -785,7 +909,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="cl9qoyox10004943m0ofse0tt" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="clciv97800009w83maqd73rxs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -963,7 +1087,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="cl9qoyowy0001943m0iaa11dc" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="clciv977s0001w83ma2zbhlzf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1002,7 +1126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cl9qoyox6000a943mgeslf4tp" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clciv9781000aw83mb6a1amxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1048,7 +1172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cl9qoyox40007943mbm5j3ni3" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clciv977x0005w83mdiqq9266" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1092,10 +1216,10 @@
 <p>声明变量的方法：<br>ES5：var 和 function<br>ES6：var、function、let、const、import、class</p>
 <hr>
 <h4 id="优先执行"><a href="#优先执行" class="headerlink" title="优先执行"></a>优先执行</h4><p><strong>变量提升：</strong> 变量在任意代码执行之前处理，意味着变量可以在声明之前使用，这种行为叫做“hosting”<br>始终在作用域顶部声明变量（全局/函数代码的顶部）<br>变量提升影响变量声明，不影响其值的初始化</p>
-<h4 id="不可配置性"><a href="#不可配置性" class="headerlink" title="不可配置性"></a>不可配置性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">b=2;</span><br><span class="line">delete this.a;//在严格模式下抛出typeError，其他情况下执行失败，但无提示</span><br><span class="line">delete this.b;</span><br><span class="line">console.log(a,b);//抛出refrenceerror（引用错误，b已被删除）</span><br></pre></td></tr></table></figure>
+<h4 id="不可配置性"><a href="#不可配置性" class="headerlink" title="不可配置性"></a>不可配置性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">b=2;</span><br><span class="line">delete this.a;//在严格模式下抛出typeError，其他情况下执行失败，但无提示</span><br><span class="line">delete this.b;</span><br><span class="line">console.info(a,b);//抛出refrenceerror（引用错误，b已被删除）</span><br></pre></td></tr></table></figure>
 
 <h4 id="声明多个变量"><a href="#声明多个变量" class="headerlink" title="声明多个变量"></a>声明多个变量</h4><p><strong>隐式声明全局变量</strong><br>在非严格模式下，直接赋值给未声明的变量中，则执行赋值后，该变量会被隐式地创建为全局变量（它将成为全局对象的属性）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a=b=&#x27;A&#x27;;</span><br><span class="line">//等效于</span><br><span class="line">b=&#x27;A&#x27;;</span><br><span class="line">var a=&#x27;A&#x27;;</span><br><span class="line">//连等操作是从右向左执行的，相当于b = &#x27;A&#x27;、let a = b，很明显b没有声明就直接赋值了，所以会隐式创建为一个全局变量</span><br><span class="line">var a=(b=&#x27;A&#x27;);</span><br><span class="line">console.log(a,b);//&#x27;A&#x27;,&#x27;A&#x27;</span><br><span class="line">//并且赋值号返回右侧变量的值</span><br><span class="line"></span><br><span class="line">var x=y,y=&#x27;A&#x27;;</span><br><span class="line">console.log(x+y);//undefinedA</span><br><span class="line">//当&quot;x = y&quot;执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是&#x27;undefined&#x27;</span><br><span class="line"></span><br><span class="line">var x=0;</span><br><span class="line">function f()&#123;</span><br><span class="line">  var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1</span><br><span class="line">&#125;</span><br><span class="line">f();//不执行函数f，获取x的值全局声明的x，y则是未定义</span><br><span class="line">console.log(x,y);//0,1 //此处获取的全局的x,y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a=b=&#x27;A&#x27;;</span><br><span class="line">//等效于</span><br><span class="line">b=&#x27;A&#x27;;</span><br><span class="line">var a=&#x27;A&#x27;;</span><br><span class="line">//连等操作是从右向左执行的，相当于b = &#x27;A&#x27;、let a = b，很明显b没有声明就直接赋值了，所以会隐式创建为一个全局变量</span><br><span class="line">var a=(b=&#x27;A&#x27;);</span><br><span class="line">console.info(a,b);//&#x27;A&#x27;,&#x27;A&#x27;</span><br><span class="line">//并且赋值号返回右侧变量的值</span><br><span class="line"></span><br><span class="line">var x=y,y=&#x27;A&#x27;;</span><br><span class="line">console.info(x+y);//undefinedA</span><br><span class="line">//当&quot;x = y&quot;执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是&#x27;undefined&#x27;</span><br><span class="line"></span><br><span class="line">var x=0;</span><br><span class="line">function f()&#123;</span><br><span class="line">  var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1</span><br><span class="line">&#125;</span><br><span class="line">f();//不执行函数f，获取x的值全局声明的x，y则是未定义</span><br><span class="line">console.info(x,y);//0,1 //此处获取的全局的x,y</span><br></pre></td></tr></table></figure>
 
 <h2 id="二、var-定义变量"><a href="#二、var-定义变量" class="headerlink" title="二、var 定义变量"></a>二、var 定义变量</h2><p>var 声明的变量作用域是它当前的<strong>执行上下文</strong>，作用域是函数内或全局<br>多次用 var 声明变量，变量不会丢失其值</p>
 <h2 id="三、let-定义变量"><a href="#三、let-定义变量" class="headerlink" title="三、let 定义变量"></a>三、let 定义变量</h2><p>let 声明的变量作用域被限制在块级中的变量、语句或者表达式<br>在同一个函数或块作用域中重复声明同一个变量会引起 SyntaxError（语法错误）<br><strong>注：</strong> 在 switch 语句中只有一个块，多次 let 声明同一个变量则报错；在 case 子句中的块会创建一个新的块作用域的词法环境，就不会产生上诉重复声明的错误</p>
@@ -1103,10 +1227,10 @@
 <h4 id="暂存死区"><a href="#暂存死区" class="headerlink" title="暂存死区"></a>暂存死区</h4><p>“暂时性死区”（temporal dead zone，简称 TDZ）</p>
 <p>暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量（摘自 ES6 入门–&gt;阮一峰）</p>
 <p>(let,const)在变量初始化之前访问变量导致 ReferenceError，该变量处在一个自顶部到初始化处理的“暂存死区”中<br>使用 typeof 检测暂存死区中的变量，抛出异常 RefeferenceError</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">   var foo = 33;</span><br><span class="line">   if (foo) &#123;</span><br><span class="line">      let foo = (foo + 55); // ReferenceError</span><br><span class="line">      //先计算foo+55，但是foo存在暂时性死区中（foo在if块中声明foo之前使用，作用域是从内到外……就近）</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">function go(n) &#123;</span><br><span class="line">  // n here is defined!</span><br><span class="line">  console.log(n); // Object &#123;a: [1,2,3]&#125;</span><br><span class="line"></span><br><span class="line">  for (let n of n.a) &#123; // ReferenceError，n.a被解析为位于指令本身(&quot;let n&quot;)中的“ n”对象的属性“ a”。</span><br><span class="line">    console.log(n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">go(&#123;a: [1, 2, 3]&#125;);</span><br><span class="line"></span><br><span class="line">let x = 1;</span><br><span class="line">&#123;</span><br><span class="line">  var x = 2; // SyntaxError for re-declaration</span><br><span class="line">&#125;</span><br><span class="line">//var会将变量提升至块的顶部, 这会导致隐式地重复声明变量</span><br><span class="line">//等效--&gt;</span><br><span class="line">let x=1;</span><br><span class="line">var x;//重复</span><br><span class="line">&#123;</span><br><span class="line">  x=2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">   var foo = 33;</span><br><span class="line">   if (foo) &#123;</span><br><span class="line">      let foo = (foo + 55); // ReferenceError</span><br><span class="line">      //先计算foo+55，但是foo存在暂时性死区中（foo在if块中声明foo之前使用，作用域是从内到外……就近）</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">function go(n) &#123;</span><br><span class="line">  // n here is defined!</span><br><span class="line">  console.info(n); // Object &#123;a: [1,2,3]&#125;</span><br><span class="line"></span><br><span class="line">  for (let n of n.a) &#123; // ReferenceError，n.a被解析为位于指令本身(&quot;let n&quot;)中的“ n”对象的属性“ a”。</span><br><span class="line">    console.info(n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">go(&#123;a: [1, 2, 3]&#125;);</span><br><span class="line"></span><br><span class="line">let x = 1;</span><br><span class="line">&#123;</span><br><span class="line">  var x = 2; // SyntaxError for re-declaration</span><br><span class="line">&#125;</span><br><span class="line">//var会将变量提升至块的顶部, 这会导致隐式地重复声明变量</span><br><span class="line">//等效--&gt;</span><br><span class="line">let x=1;</span><br><span class="line">var x;//重复</span><br><span class="line">&#123;</span><br><span class="line">  x=2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="四、cosnt-定义变量"><a href="#四、cosnt-定义变量" class="headerlink" title="四、cosnt 定义变量"></a>四、cosnt 定义变量</h2><p>与 let 声明变量类似<br>const 定义块级常量，声明必须赋值<br>创建一个值的只读引用，变量标识符不能重新分配<br>在引用内容是对象的情况下，可以改变对象的内容（例如，其参数）<br>一个常量不能和它所在作用域内的其他变量或函数拥有相同的名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const MY_FAV=7;</span><br><span class="line">if (MY_FAV === 7) &#123;</span><br><span class="line">  // 没问题，并且创建了一个块作用域变量 MY_FAV</span><br><span class="line">  // (works equally well with let to declare a block scoped non const variable)</span><br><span class="line">  let MY_FAV = 20;</span><br><span class="line">  console.log(&#x27;my favorite number is &#x27; + MY_FAV);//20</span><br><span class="line">  // 这被提升到全局上下文并引发错误</span><br><span class="line">  var MY_FAV = 20;//SyntaxError for re-declaration 语法错误，重复声明</span><br><span class="line">&#125;</span><br><span class="line">console.log(&#x27;my favorite number is &#x27; + MY_FAV);//全局,7</span><br><span class="line"></span><br><span class="line">const MY_OBJECT=&#123;&#x27;key&#x27;:&#x27;value&#x27;&#125;</span><br><span class="line">MY_OBJECT=&#123;&#x27;OTHER_KEY&#x27;:&#x27;value&#x27;&#125;;//Uncaught TypeError: Assignment to constant variable 分配常量值错误</span><br><span class="line">MY_OBJECT.key=&#x27;otherValue&#x27;;</span><br><span class="line"></span><br><span class="line">const MY_ARRAY = [];</span><br><span class="line">// 可以向数组填充数据</span><br><span class="line">MY_ARRAY.push(&#x27;A&#x27;); // [&quot;A&quot;]</span><br><span class="line">// 但是，将一个新数组赋给变量会引发错误</span><br><span class="line">MY_ARRAY = [&#x27;B&#x27;];// Uncaught TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const MY_FAV=7;</span><br><span class="line">if (MY_FAV === 7) &#123;</span><br><span class="line">  // 没问题，并且创建了一个块作用域变量 MY_FAV</span><br><span class="line">  // (works equally well with let to declare a block scoped non const variable)</span><br><span class="line">  let MY_FAV = 20;</span><br><span class="line">  console.info(&#x27;my favorite number is &#x27; + MY_FAV);//20</span><br><span class="line">  // 这被提升到全局上下文并引发错误</span><br><span class="line">  var MY_FAV = 20;//SyntaxError for re-declaration 语法错误，重复声明</span><br><span class="line">&#125;</span><br><span class="line">console.info(&#x27;my favorite number is &#x27; + MY_FAV);//全局,7</span><br><span class="line"></span><br><span class="line">const MY_OBJECT=&#123;&#x27;key&#x27;:&#x27;value&#x27;&#125;</span><br><span class="line">MY_OBJECT=&#123;&#x27;OTHER_KEY&#x27;:&#x27;value&#x27;&#125;;//Uncaught TypeError: Assignment to constant variable 分配常量值错误</span><br><span class="line">MY_OBJECT.key=&#x27;otherValue&#x27;;</span><br><span class="line"></span><br><span class="line">const MY_ARRAY = [];</span><br><span class="line">// 可以向数组填充数据</span><br><span class="line">MY_ARRAY.push(&#x27;A&#x27;); // [&quot;A&quot;]</span><br><span class="line">// 但是，将一个新数组赋给变量会引发错误</span><br><span class="line">MY_ARRAY = [&#x27;B&#x27;];// Uncaught TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
 
 <p>将对象冻结，使用 Object.freeze()，不让对象的引用值改变</p>
 <h2 id="五、块级作用域与函数声明"><a href="#五、块级作用域与函数声明" class="headerlink" title="五、块级作用域与函数声明"></a>五、块级作用域与函数声明</h2><p>ES5 规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明<br>浏览器没有遵守这个规定，为了兼容以前的旧代码，还是支持在块级作用域之中声明函数<br>ES6 规定，块级作用域之中，函数声明语句的行为类似于 let，在块级作用域之外不可引用<br>ES6 的块级作用域必须有大括号，如果没有大括号，JavaScript 引擎就认为不存在块级作用域。</p>
@@ -1120,7 +1244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cl9qoyox00003943m17a49rxc" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clciv977w0004w83mh02h9n9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1159,7 +1283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cl9qoyox30006943mhwlp2nfw" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clciv977z0007w83mhheigsxc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1208,7 +1332,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1221,6 +1345,14 @@
       <ul>
         
           <li>
+            <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/28/JSON%E8%BD%AC%E5%8C%96/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
           </li>
         
@@ -1230,14 +1362,6 @@
         
           <li>
             <a href="/2022/10/18/colorList/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
           </li>
         
       </ul>
@@ -1252,7 +1376,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2021 - 2022 Helen Peng<br>
+      &copy; 2021 - 2023 Helen Peng<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
