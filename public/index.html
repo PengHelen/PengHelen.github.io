@@ -68,6 +68,82 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-CSS篇-auto关键词" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" class="article-date">
+  <time datetime="2023-01-06T03:09:07.000Z" itemprop="datePublished">2023-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>根据auto在CSS常用属性的实际表现来探究auto的作用</p>
+</blockquote>
+<p>auto是自适应，自动的意思</p>
+<h1 id="1-width-auto"><a href="#1-width-auto" class="headerlink" title="1.width:auto;"></a>1.width:auto;</h1><p>width默认值（即不设置width值时）是auto<br>当使用<code>width:auto;</code>时，元素的宽被限制在父元素内，元素内容的宽度会自动减去元素的margin，padding和border，即元素内容自动充满元素剩余空间</p>
+<h2 id="width-auto-VS-width-100"><a href="#width-auto-VS-width-100" class="headerlink" title="width:auto; VS width:100%;"></a>width:auto; VS width:100%;</h2><p><code>width:auto;</code>表示：父元素内容宽度=子元素margin+padding+border+content(元素内容宽度，即元素的剩余空间)</p>
+<p><code>width:100%;</code>表示：父元素内容宽度=子元素content(即子元素内容宽度等于父元素宽度)</p>
+<p><strong>注意：适用标准浏览器的盒子模型，不适用IE盒子模型</strong></p>
+<h1 id="2-height-auto"><a href="#2-height-auto" class="headerlink" title="2.height:auto;"></a>2.height:auto;</h1><p>height默认值是auto<br><code>height:auto;</code>，元素高度等于元素内容高度，此时即使设置<code>height:100%;</code>元素高度也还是元素的内容高度</p>
+<h1 id="3-margin-auto"><a href="#3-margin-auto" class="headerlink" title="3.margin:auto;"></a>3.margin:auto;</h1><p>margin的默认值是0，表示元素没有margin<br>当使用<code>margin:auto;</code>，除去元素的content内容的宽高、padding、border，剩余空间都由margin来填充</p>
+<p>如下代码，元素宽高确定，巧用<code>margin:auto;</code>，达到水平垂直居中效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;I am centered.&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下代码，元素宽确定，巧用<code>margin:0 auto;</code>，让元素水平居中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;I am centered.&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.item &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>margin-inline和margin-block属性是实验中属性，暂不研究</strong></p>
+<h1 id="4-background-size-auto"><a href="#4-background-size-auto" class="headerlink" title="4.background-size:auto;"></a>4.background-size:auto;</h1><p>background-size默认值是auto，以背景图片的比例缩放背景图片</p>
+<h1 id="5-top-right-bottom-left-auto"><a href="#5-top-right-bottom-left-auto" class="headerlink" title="5.top/right/bottom/left:auto;"></a>5.top/right/bottom/left:auto;</h1><p>top/right/bottom/left的默认值是auto</p>
+<p><strong>MDN</strong><br><strong>left:auto</strong></p>
+<p><strong>对于绝对定位元素，元素将忽略此属性而以right属性为准，如果此时设置width: auto，将基于内容需要的宽度设置宽度；如果right也为auto的话，元素的水平位置就是它假如作为静态 (即 static) 元素时该在的位置</strong></p>
+<p><strong>对于相对定位元素，元素相对正常位置的偏移量将基于right属性；如果right也为auto的话，元素将不会有偏移</strong></p>
+<h1 id="6-z-index-auto"><a href="#6-z-index-auto" class="headerlink" title="6.z-index:auto;"></a>6.z-index:auto;</h1><p>z-index默认值是auto<br>盒子不会创建一个新的本地堆叠上下文<br>在当前堆叠上下文中生成的盒子的堆叠层级和父级盒子相同</p>
+<h1 id="7-overflow-auto"><a href="#7-overflow-auto" class="headerlink" title="7.overflow:auto;"></a>7.overflow:auto;</h1><p>overflow默认值是visible，内容不能被裁减并且可能渲染到边距盒（padding）的外部</p>
+<p><strong>MDN：<code>overflow:auto;</code></strong><br><strong>取决于用户代理。如果内容适应边距（padding）盒，它看起来与 visible 相同，但是仍然建立了一个新的块级格式化上下文；如果内容溢出，则浏览器提供滚动条</strong></p>
+<h1 id="8-cursor-auto"><a href="#8-cursor-auto" class="headerlink" title="8.cursor:auto;"></a>8.cursor:auto;</h1><p>cursor默认值是auto，浏览器根据当前内容决定指针样式</p>
+<h1 id="9-table-layout-auto"><a href="#9-table-layout-auto" class="headerlink" title="9.table-layout:auto;"></a>9.table-layout:auto;</h1><p>table-layout默认值是auto，表格及单元格的宽度取决于其包含的内容</p>
+<h1 id="10-flex-auto"><a href="#10-flex-auto" class="headerlink" title="10.flex:auto;"></a>10.flex:auto;</h1><p>flex默认值是<code>0 1 auto</code>，flex是flex-grow，flex-shrink，flex-basis的合并简写属性<br>当使用<code>flex:auto;</code>，等同于<code>flex:1 1 auto;</code></p>
+<h3 id="flex-margin-left-auto-可使元素右对齐"><a href="#flex-margin-left-auto-可使元素右对齐" class="headerlink" title="flex+margin-left:auto;可使元素右对齐"></a>flex+margin-left:auto;可使元素右对齐</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;Item1&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item item-2&quot;&gt;Item2&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.item-2 &#123;</span><br><span class="line">  margin-left: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-margin-auto-可使元素水平垂直居中"><a href="#flex-margin-auto-可使元素水平垂直居中" class="headerlink" title="flex+margin:auto;可使元素水平垂直居中"></a>flex+margin:auto;可使元素水平垂直居中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;Item1&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  height: 400px;</span><br><span class="line">  background-color: blue;</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  margin: auto auto;</span><br><span class="line">  background-color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>grid可参考flex，暂不研究</strong></p>
+<hr>
+<hr>
+<blockquote>
+<p>参考文献：<br>英文版：<a target="_blank" rel="noopener" href="https://ishadeed.com/article/auto-css/">https://ishadeed.com/article/auto-css/</a><br>中文翻译版：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq449245884/article/details/105963479/">https://blog.csdn.net/qq449245884/article/details/105963479/</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/how-auto-margins-work-in-flexbox/">https://css-tricks.com/how-auto-margins-work-in-flexbox/</a>  </p>
+</blockquote>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clckamt320005283mfdoy2ang" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-浏览器标签-Tab的标题和图标" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" class="article-date">
@@ -121,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clciv9785000gw83md1ggepu2" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clckamt3a000h283m4p480awh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" data-id="clciv977v0003w83m2ji35sb8" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" data-id="clckamt2x0001283m8izo13fn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,7 +673,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clciv9784000fw83m7rpq715s" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clckamt37000c283m9zaa3ge8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -714,7 +790,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" data-id="clciv9781000bw83m5itc46p0" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" data-id="clckamt36000b283mc1yi3bq6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -909,7 +985,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="clciv97800009w83maqd73rxs" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="clckamt310004283m3os00tbj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1087,7 +1163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="clciv977s0001w83ma2zbhlzf" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="clckamt300003283mfp7sfuo4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1126,7 +1202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clciv9781000aw83mb6a1amxn" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clckamt39000g283m4s8p4m65" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1172,7 +1248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clciv977x0005w83mdiqq9266" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clckamt330007283mb9mf20ad" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1244,46 +1320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clciv977w0004w83mh02h9n9t" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/12/23/first/" class="article-date">
-  <time datetime="2021-12-22T16:00:00.000Z" itemprop="datePublished">2021-12-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/23/first/">我的第一篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>太激动了！从大学学web到毕业以来，一直想拥有属于自己的博客，奈何一直觉得博客很难搭建，就迟迟未开始……<br>终于拥有一个属于我自己的博客啦~哈哈哈哈<br>喔喔，欢迎来到我的小空间，Helen的博客主页~<br>事实证明，拖延症是个坏毛病，解决一个问题，开始一件事情，最好就是从问题发现开始，或者现在立马开始！</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clciv977z0007w83mhheigsxc" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clckamt330006283mfkr25m43" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1294,6 +1331,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -1345,6 +1387,10 @@
       <ul>
         
           <li>
+            <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
           </li>
         
@@ -1358,10 +1404,6 @@
         
           <li>
             <a href="/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/18/colorList/">(no title)</a>
           </li>
         
       </ul>
