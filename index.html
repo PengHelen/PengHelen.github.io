@@ -68,6 +68,140 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-类型转换" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time datetime="2023-01-13T02:10:06.000Z" itemprop="datePublished">2023-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、结果类型"><a href="#一、结果类型" class="headerlink" title="一、结果类型"></a>一、结果类型</h1><ul>
+<li>String</li>
+<li>Boolean</li>
+<li>Number</li>
+</ul>
+<h1 id="二、String-字符串-、Number-数值-和Boolean-布尔-转换"><a href="#二、String-字符串-、Number-数值-和Boolean-布尔-转换" class="headerlink" title="二、String(字符串)、Number(数值)和Boolean(布尔)转换"></a>二、String(字符串)、Number(数值)和Boolean(布尔)转换</h1><h3 id="1-字符串"><a href="#1-字符串" class="headerlink" title="1.字符串"></a>1.字符串</h3><p>除<code>null</code>和<code>undefined</code>外，所有值都有<code>toString()</code>方法，结果与<code>String()</code>方法一致</p>
+<p><strong>String</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String();&#x27;&#x27;</span><br><span class="line">String(&#123;&#125;);//&#x27;[object Object]&#x27;</span><br><span class="line">String([]);//&#x27;&#x27;</span><br><span class="line">String(undefined);//&#x27;undefined&#x27;</span><br><span class="line">String(null);//&#x27;null&#x27;</span><br><span class="line">String(NaN);//&#x27;NaN&#x27;</span><br><span class="line">String(Symbol());//&#x27;Symbol()&#x27;</span><br><span class="line">String([0]);//&#x27;0&#x27;</span><br><span class="line">String([0,1]);//&#x27;0,1&#x27;</span><br><span class="line">String(0);//&#x27;0&#x27;</span><br><span class="line">String(&#x27; &#x27;);//&#x27; &#x27; 非空串，包含一个空格</span><br></pre></td></tr></table></figure>
+
+<p><strong>toSting()</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">toString();//&#x27;[object Undefined]&#x27;</span><br><span class="line"></span><br><span class="line">&#123;&#125;.toString();//Uncaught SyntaxError: Unexpected token &#x27;.&#x27;</span><br><span class="line">(&#123;&#125;.toString());//&#x27;[object Object]&#x27;</span><br><span class="line"></span><br><span class="line">[].toString();//&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">(undefined.toString())或undefined.toString();//Uncaught TypeError: Cannot read properties of undefined (reading &#x27;toString&#x27;)</span><br><span class="line"></span><br><span class="line">null.toString();//Uncaught TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span><br><span class="line"></span><br><span class="line">NaN.toString();//&#x27;NaN&#x27;</span><br><span class="line"></span><br><span class="line">Symbol().toString();//&#x27;Symbol()&#x27;</span><br><span class="line"></span><br><span class="line">[0].toString();//&#x27;0&#x27;</span><br><span class="line"></span><br><span class="line">[0,1].toString();//&#x27;0,1&#x27;</span><br><span class="line"></span><br><span class="line">0.toString();//Uncaught SyntaxError: Invalid or unexpected token</span><br><span class="line">(0.toString());//Uncaught SyntaxError: Invalid or unexpected token</span><br><span class="line"></span><br><span class="line">&#x27; &#x27;.toString();//&#x27; &#x27;非空串，包含一个空格</span><br></pre></td></tr></table></figure>
+
+<p><strong>空串(‘’)+特殊值</strong> </p>
+<p>为了更清晰，字符串+任何值=&gt;字符串，实验以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;+0;//&#x27;0&#x27;</span><br><span class="line">&#x27;&#x27;+[];//&#x27;&#x27;</span><br><span class="line">&#x27;&#x27;+&#123;&#125;;//&#x27;[object Object]&#x27;</span><br><span class="line">&#x27;&#x27;+undefined;//&#x27;undefined&#x27;</span><br><span class="line">&#x27;&#x27;+null;//&#x27;null&#x27;</span><br><span class="line">&#x27;&#x27;+NaN;//&#x27;NaN&#x27;</span><br><span class="line">&#x27;&#x27;+[0];//&#x27;0&#x27;</span><br><span class="line">&#x27;&#x27;+[0,1];//&#x27;0,1&#x27;</span><br><span class="line">&#x27;&#x27;+Symbol();//Uncaught TypeError: Cannot convert a Symbol value to a string</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-数值"><a href="#2-数值" class="headerlink" title="2.数值"></a>2.数值</h3><p>字符串转换成数值：引擎都会先去除字符串起始和末尾的空白，比如\n \t，去除空表后，字符串无法转换成数字时，则返回NaN</p>
+<p><strong>Number</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;&#125;);//NaN</span><br><span class="line">Number(NaN);//NaN</span><br><span class="line">Number(undefined);//NaN</span><br><span class="line">Number(&#x27;true&#x27;);//NaN</span><br><span class="line">Number(&#x27;false&#x27;);//NaN</span><br><span class="line">Number(&#x27;123id&#x27;);//NaN</span><br><span class="line">Number(&#x27;id123&#x27;);//NaN</span><br><span class="line">Number([0,1]);//NaN</span><br><span class="line">Number([0]);//0</span><br><span class="line">Number();//0</span><br><span class="line">Number(null);//0</span><br><span class="line">Number([]);//0</span><br><span class="line">Number(&#x27;&#x27;);//0</span><br><span class="line">Number(&#x27; &#x27;);//0 非空串，包含一个空格</span><br><span class="line">Number(false);//0</span><br><span class="line">Number(true);//1</span><br><span class="line">Number(&quot;-12.34&quot;);// -12.34</span><br><span class="line">Number(&quot;\n&quot;);// 0</span><br><span class="line">Number(Symbol());//Uncaught TypeError: Cannot convert a Symbol value to a number</span><br></pre></td></tr></table></figure>
+
+<p><strong>+(一元)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+&#123;&#125;;//NaN</span><br><span class="line">+NaN;//NaN</span><br><span class="line">+undefined;//NaN</span><br><span class="line">+&#x27;true&#x27;;//NaN</span><br><span class="line">+&#x27;123id&#x27;;//NaN</span><br><span class="line">+&#x27;id123&#x27;;//NaN</span><br><span class="line">+[0,1];//NaN</span><br><span class="line">+[0];//0</span><br><span class="line">+0;//0</span><br><span class="line">+null;//0</span><br><span class="line">+[];//0</span><br><span class="line">+&#x27;&#x27;;//0</span><br><span class="line">+&#x27; &#x27;;//0</span><br><span class="line">+false;//0</span><br><span class="line">+true;//1</span><br></pre></td></tr></table></figure>
+
+<p><strong>parseFloat/parseInt</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">parseInt([0,1]);//0</span><br><span class="line">parseInt(0);//0</span><br><span class="line">parseInt(1);//1</span><br><span class="line">parseInt(&#x27;123id&#x27;);//123</span><br><span class="line">parseInt(&#x27;id123&#x27;);//NaN</span><br><span class="line">parseInt();//NaN</span><br><span class="line">parseInt(&#123;&#125;);//NaN</span><br><span class="line">parseInt([]);//NaN</span><br><span class="line">parseInt(undefined);//NaN</span><br><span class="line">parseInt(null);//NaN</span><br><span class="line">parseInt(&#x27;true&#x27;);//NaN</span><br><span class="line">parseInt(&#x27;&#x27;);//NaN</span><br><span class="line">parseInt(&#x27; &#x27;);//NaN</span><br><span class="line">parseInt(false);//NaN</span><br><span class="line">parseInt(true);//NaN</span><br><span class="line">parseInt(NaN);//NaN</span><br><span class="line">parseInt(&#x27;0x89id&#x27;);//137</span><br><span class="line">parseInt(&#x27;0x89ed&#x27;);//35309</span><br></pre></td></tr></table></figure>
+<p><em><strong>parseInt语法</strong></em><br>parseInt(string, radix);<br>string：要被解析的值。将参数转换为字符串 (使用 ToString抽象操作)，字符串开头的空白符将会被忽略<br>radix：从 2 到 36 的整数，表示进制的基数，超出这个范围，将返回 NaN；假如指定 0 或未指定，基数将会根据字符串的值进行推算（没有默认值，不是10，例0x开头会自动转成8进制）</p>
+<p><strong>运算符(待完善…)</strong></p>
+<ul>
+<li><p><code>-</code> <code>*</code> <code>/</code> <code>%</code> 适用<code>Number</code>将两操作数转换后得到的结果</p>
+</li>
+<li><p><code>|</code> <code>&amp;</code> <code>^</code> <code>~</code> </p>
+</li>
+<li><p><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code><br><code>NaN</code> , <code>undefined</code> 与转换后的值比较都为 <code>false</code></p>
+</li>
+</ul>
+<p><code>&#123;&#125;</code> 的特殊比较结果<br><code>&#123;&#125;</code> 放在操作符第一位最好用括号分组，否则引擎认为 <code>&#123;&#125;</code> 是块语句声明，直接忽略，无转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;&gt;0);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;1);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;undefined);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;NaN);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;null);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&gt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;&gt;[]);//true</span><br><span class="line">(&#123;&#125;&gt;=[]);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;1&#x27;);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;0&#x27;);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;&#x27;);//true</span><br><span class="line">(&#123;&#125;&lt;[]);//false</span><br><span class="line">(&#123;&#125;&lt;=[]);//false</span><br><span class="line">(undefined&gt;[]);//false</span><br><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-布尔"><a href="#3-布尔" class="headerlink" title="3.布尔"></a>3.布尔</h3><ul>
+<li>字符串转布尔值：除了空串(‘’)，其他字符串转换成布尔值都是<code>true</code></li>
+<li>数字转布尔值：除了数字0（和非数字NaN），其他数字布尔值为<code>true</code></li>
+<li>任何非基本类型值总是转换成<code>true</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Boolean();//false</span><br><span class="line">Boolean(&#x27;&#x27;);//false</span><br><span class="line">Boolean(NaN);//false</span><br><span class="line">Boolean(undefined);//false</span><br><span class="line">Boolean(null);//false</span><br><span class="line">Boolean(false);//false</span><br><span class="line">Boolean(&#x27; &#x27;);//true</span><br><span class="line">Boolean(&#x27;true&#x27;);//true</span><br><span class="line">Boolean(&#x27;false&#x27;);//true</span><br><span class="line">Boolean(&#x27;0&#x27;);//true</span><br><span class="line">Boolean(true);//true</span><br><span class="line">Boolean(&#123;&#125;);//true</span><br><span class="line">Boolean([]);//true</span><br><span class="line">Boolean(Symbol());//true</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="三、不严格相等"><a href="#三、不严格相等" class="headerlink" title="三、不严格相等(==)"></a>三、不严格相等(==)</h1><h3 id="1-转换规则"><a href="#1-转换规则" class="headerlink" title="1.转换规则"></a>1.转换规则</h3><p><code>==</code>两边的操作数通常进行数值转换（除以下 <em><strong>特殊规则</strong></em>外）</p>
+<h4 id="参考表格"><a href="#参考表格" class="headerlink" title="参考表格"></a>参考表格</h4><ul>
+<li><p>==或!= 特殊值的不严格相等<br><a target="_blank" rel="noopener" href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript-Equality-Table</a></p>
+</li>
+<li><p>==或!= 特殊值的不严格相等-图片<br><img src="/images/JS-Equality-Table.png" alt="截图"></p>
+</li>
+</ul>
+<h3 id="2-特殊规则"><a href="#2-特殊规则" class="headerlink" title="2.特殊规则"></a>2.特殊规则</h3><ul>
+<li><p><code>null/undefined</code>只与<code>null</code>和<code>undefined</code>等，且==两边操作数不转换成数字</p>
+</li>
+<li><p>NaN与任何值都不等，包括自身(==,===均适用)</p>
+</li>
+<li><p>当<code>==</code>两个操作数都是字符串时，操作数都 <em><strong>不转换</strong></em> 为数字</p>
+</li>
+</ul>
+<h1 id="四、-（加）隐式转换"><a href="#四、-（加）隐式转换" class="headerlink" title="四、+（加）隐式转换"></a>四、+（加）隐式转换</h1><h3 id="优先级顺序"><a href="#优先级顺序" class="headerlink" title="优先级顺序"></a>优先级顺序</h3><ul>
+<li><p>1.操作数都是非基本类型，使用<code>[ToPrimitive]</code>转换成基本类型</p>
+</li>
+<li><p>2.其中一个操作数是string（字符串），另一个操作数转换成字符串进行运算</p>
+</li>
+<li><p>3.以上都不是，俩操作数都转成数值进行运算</p>
+</li>
+</ul>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
+<li><p>运算顺序是从左到右</p>
+</li>
+<li><p>将字面量[]转成空串’’</p>
+</li>
+</ul>
+<h1 id="五、Symbol"><a href="#五、Symbol" class="headerlink" title="五、Symbol"></a>五、Symbol</h1><ul>
+<li><p>1.symbol只能显示转换，不支持隐式转换，隐式转换会报错：TypeError</p>
+</li>
+<li><p>2.symbol无法转换成数字，抛出TypeError错误</p>
+</li>
+</ul>
+<h1 id="六、对象值"><a href="#六、对象值" class="headerlink" title="六、对象值"></a>六、对象值</h1><p>对象值转换成数字或字符串有专用内置属性<code>[[ToPrimitive]]</code><br>对象值转换主要使用定义在<code>Object.prototype</code>上的<code>valueOf</code>和<code>toString</code>两种方法<br><code>==</code>转换数组为数值时，数组先执行<code>valueOf()</code>，返回数组本身，再执行<code>toString()</code>，相当于执行数组的<code>join()</code>方法，将数组拼接成字符串</p>
+<p>运算规则：</p>
+<ul>
+<li>1).输入值本就是基本类型，不转换，直接返回；</li>
+<li>2).调佣<code>toString()</code>方法，结果是基本类型，返回；</li>
+<li>3).调用<code>valueOf()</code>，结果是基本类型，返回；</li>
+<li>4).<code>toString()</code>和<code>valueOf()</code>都无法得到基本类型值，抛出错误<code>TypeError</code></li>
+</ul>
+<p>注：数值先调用<code>valueOf()</code>，返回值再调用<code>toString()</code>；字符串则相反先<code>toString()</code>再<code>valueOf()</code><br>数组和对象的<code>valueOf()</code>方法返回对象本身，因此被忽略<br>大多数内置类型没有<code>valueOf()</code>方法，因此转换成数值和转换成字符串最后都是调用<code>toString()</code></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt">MDN:parseInt</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.programiz.com/javascript/type-conversion">JavaScript Type Conversions</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/">JavaScript type coercion explained</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.openreplay.com/javascript-type-conversions-explained/">JavaScript Type Conversions Explained</a></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clcuffzdh000bos3mcx90dnq2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-CSS篇-auto关键词" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" class="article-date">
@@ -134,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clckamt320005283mfdoy2ang" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clcuffzd80001os3mddn8dl2f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,69 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clckamt3a000h283m4p480awh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JSON转化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" class="article-date">
-  <time datetime="2022-10-28T02:41:06.075Z" itemprop="datePublished">2022-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-
-<head>
-  <title>JSON转化 | PengHelen</title>
-  <meta property="og:title" content="JSON转化">
-  <style>
-
-  </style>
-</head>
-
-<body>
-  <textarea id="jsonStr" placeholder="请输入json字符串" onblur="jsonTojs()" cols="50" rows="20"></textarea>
-  <textarea id="jsStr" placeholder="请输入js对象" onblur="jsTojson()" cols="50" rows="20"></textarea>
-
-  <script>
-    let jsonInput = document.getElementById('jsonStr')
-    let jsInput = document.getElementById('jsStr')
-    function jsonTojs() {
-      let testValue = jsonInput.value
-      if (testValue.indexOf('\\') === -1) {//js对象
-        testValue = JSON.stringify(testValue)
-      }
-      jsInput.value = JSON.parse(testValue)
-    }
-    function jsTojson() {
-      let jsValue = { "bool_wait": 0, "call_lift": "", "lift_id": "", "lift_info": "", "name": "0", "neighbor_node": "1,", "qr_list": "", "road_info": "1,n;", "rviz_flag_name": "", "slowpoint_list": "", "virtue_1": "", "virtue_2": "", "virtue_3": "d", "virtue_4": "", "x": "-0.1280", "y": "0.0170" }
-      // jsInput.value
-      console.info('jsValue', jsValue + '')
-      let arr = (jsValue + '').split(',')
-      console.info('arr', arr)
-      jsonInput.value = JSON.stringify(jsValue)
-    }
-  </script>
-</body>
-
-</html>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/28/JSON%E8%BD%AC%E5%8C%96/" data-id="clckamt2x0001283m8izo13fn" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clcuffzdi000eos3mezw7b2n3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -673,499 +745,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clckamt37000c283m9zaa3ge8" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clcuffzdi000dos3m8nrfdiii" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js图片验证码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="article-date">
-  <time datetime="2022-10-27T02:39:06.306Z" itemprop="datePublished">2022-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-
-<head>
-  <title>js图片验证码 | PengHelen</title>
-  <meta property="og:title" content="js图片验证码">
-  <style>
-    #vertifyCode {
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body onload="drawCode()">
-  <canvas id="vertifyCode" onclick="repaint()"></canvas>
-  <script>
-    let code = '', box_width = 300, box_height = 150
-    let codeCanvas = document.getElementById('vertifyCode');
-    codeCanvas.width = box_width;
-    codeCanvas.height = box_height
-    let codeCtx = codeCanvas.getContext('2d');
-    function changeCode() {
-      let characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      for (let i = 0; i < 4; i++) {
-        // 随机字符
-        let index = Math.floor(Math.random() * (60 + 1))
-        code += characters[index]
-      }
-    }
-    function drawCharacters() {
-      for (let i = 0; i < code.length; i++) {
-        let x = box_height / 10 + box_height / 2 * i
-        let y = box_width / 4 + Math.random() * 4
-        let deg = Math.random() * 0.5
-        codeCtx.font = "bold 48px 微软雅黑"
-        codeCtx.translate(x, y)
-        codeCtx.rotate(deg)
-        codeCtx.fillStyle = getColor()
-        codeCtx.fillText(code[i], 0, 0)
-        codeCtx.rotate(-deg);
-        codeCtx.translate(-x, -y)
-      }
-    }
-    function drawDotAndLine() {
-      for (let i = 0; i < 40; i++) {
-        codeCtx.fillStyle = getColor()
-        codeCtx.beginPath()
-        let x = Math.floor(Math.random() * box_width)
-        let y = Math.floor(Math.random() * box_height)
-        // 随机点
-        codeCtx.arc(x, y, 2, 0, Math.PI)
-        codeCtx.fill()
-        codeCtx.closePath()
-      }
-      for (let i = 0; i < 8; i++) {
-        codeCtx.strokeStyle = getColor()
-        codeCtx.beginPath()
-        var x = Math.floor(Math.random() * box_width)
-        var y = Math.floor(Math.random() * box_height)
-        // 随机线条 
-        codeCtx.moveTo(Math.random() * box_width, Math.random() * box_height)
-        codeCtx.lineTo(Math.random() * box_width, Math.random() * box_height)
-        codeCtx.stroke()
-        codeCtx.closePath()
-      }
-    }
-    function getColor() {
-      // 随机颜色
-      let r = Math.floor(Math.random() * 255)
-      let g = Math.floor(Math.random() * 255)
-      let b = Math.floor(Math.random() * 255)
-      return `rgb(${r},${g},${b})`;
-    }
-    function drawCode() {
-      changeCode()
-      drawCharacters()
-      drawDotAndLine()
-    }
-    function repaint() {
-      code = ''
-      // 清空画布
-      codeCanvas.width = box_width
-      codeCanvas.height = box_height
-      codeCtx.clearRect(0, 0, box_width, box_height)
-      drawCode()
-    }
-  </script>
-</body>
-
-</html>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/" data-id="clckamt36000b283mc1yi3bq6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-colorList" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/10/18/colorList/" class="article-date">
-  <time datetime="2022-10-18T07:55:10.225Z" itemprop="datePublished">2022-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-
-<head>
-  <title>拾色器与颜色值互转 | PengHelen</title>
-  <meta property="og:title" content="拾色器与颜色值互转">
-  <style>
-    .box {
-      padding: 16px;
-    }
-
-    #area {
-      width: 100px;
-      height: 100px;
-    }
-
-    .input {
-      height: 32px;
-    }
-
-    .color-picker {
-      margin-top: 10px;
-      overflow: auto;
-      max-height: 300px;
-    }
-  </style>
-</head>
-
-<body onload="onColorChange()">
-  <input type="text" class="input" id="diskInput" value="#0099ff" />
-  <button type="button" class="button" onclick="onInputChange()">预览颜色</button>
-  <div class="container">
-    <input type="color" id="myColor" value="#0099ff" oninput="onColorChange()" />
-    <div id="area"></div>
-    <ul style="list-style: none;">
-      <!-- list-style放在<style></style>标签中不生效 -->
-      <li id="hex"></li>
-      <li id="rgb"></li>
-      <li id="hsl"></li>
-    </ul>
-  </div>
-  <div>
-    <input placeholder="请选择图片" type="file" id="imgColor" onchange="onImgChange()" />
-    <div class="color-picker">
-      <canvas id="selectedImg" width="30" height="30"></canvas>
-    </div>
-  </div>
-  <script>
-    const diskInput = document.getElementById('diskInput'),
-      disk = document.getElementById('myColor'),
-      hex = document.getElementById('hex'),
-      rgb = document.getElementById('rgb'),
-      hsl = document.getElementById('hsl'),
-      imgColor = document.getElementById('imgColor'),
-      canvas = document.getElementById('selectedImg'),
-      ctx = canvas.getContext('2d');
-    function onInputChange() {
-      let data = diskInput.value
-      disk.value = data
-      if (data.indexOf('rgb') > -1) {
-        disk.value = rgb2Hex(data)
-      }
-      if (data.indexOf('hsl') > -1) {
-        disk.value = hsl2Hex(data)
-      }
-      onColorChange()
-    }
-    function onColorChange() {
-      let area = document.getElementById('area')
-      if (area) {
-        area.style.backgroundColor = disk.value
-        hex.innerText = '16进制颜色值：' + disk.value
-        rgb.innerText = 'rgb颜色值：' + area.style.backgroundColor
-        hsl.innerText = 'hsl颜色值：' + toHSL(disk.value)
-      }
-    }
-    function toHSL(hex) {
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      var r = parseInt(result[1], 16);
-      var g = parseInt(result[2], 16);
-      var b = parseInt(result[3], 16);
-      r /= 255, g /= 255, b /= 255;
-      var max = Math.max(r, g, b), min = Math.min(r, g, b);
-      var h, s, l = (max + min) / 2;
-      if (max == min) {
-        h = s = 0; // achromatic
-      } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-          case g: h = (b - r) / d + 2; break;
-          case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-      }
-      s = s * 100;
-      s = Math.round(s);
-      l = l * 100;
-      l = Math.round(l);
-      h = Math.floor(h * 360)
-
-      var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-      return colorInHSL
-    }
-    function onImgChange() {
-      let file = imgColor.files[0]
-      let img = new Image()
-      img.crossOrigin = 'anonymous';
-      img.onload = (() => {
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        canvas.addEventListener('click', handleClick)
-      })
-      img.src = URL.createObjectURL(file)
-    }
-    function handleClick(e) {
-      let x = e.offsetX;
-      let y = e.offsetY;
-      let pixel = ctx.getImageData(x, y, 1, 1);
-      let data = pixel.data;
-      const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255})`;
-      disk.value = rgb2Hex(rgba).slice(0, 7)//暂不加透明度
-      onColorChange()
-    }
-    function rgb2Hex(value) {
-      if (value.indexOf('rgb') > -1) {
-        let array = value.split(',');
-        if (array.length < 3) return "";
-        value = "#"
-        for (let i = 0, color; color = array[i++];) {
-          if (i < 4) {
-            color = parseInt(color.replace(/[^\d]/gi, ''), 10).toString(16)
-            value += color.length == 1 ? "0" + color : color;
-          } else {
-            color = color.replace(')', '')
-            let colorA = parseInt(color * 255);
-            let colorAHex = colorA.toString(16);
-            value += colorAHex
-          }
-        }
-        value = value.toUpperCase();
-      }
-      return value;
-    }
-    function hsl2Hex(hsl) {
-      // h s l 三个值为整数
-      let [h, s, l] = (hsl.slice(4).replace(')', '')).split(',').map(m => parseInt(m))
-      l /= 100;
-      const a = s * Math.min(l, 1 - l) / 100;
-      const f = n => {
-        const k = (n + h / 30) % 12;
-        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-        return Math.round(255 * color).toString(16).padStart(2, '0');
-      };
-      return `#${f(0)}${f(8)}${f(4)}`;
-    }
-// r2,g2,b2背景色
-// function RGBAtoRGB(r, g, b, a, r2,g2,b2){
-// var r3 = Math.round(((1 - a) * r2) + (a * r))
-// var g3 = Math.round(((1 - a) * g2) + (a * g))
-// var b3 = Math.round(((1 - a) * b2) + (a * b))
-// return "rgb("+r3+","+g3+","+b3+")";
-// } 
-// $("#result").html(RGBAtoRGB(225,110,0,0.5,255,255,255));
-  </script>
-</body>
-
-</html>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/18/colorList/" data-id="clckamt310004283m3os00tbj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Base64与图片互转" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" class="article-date">
-  <time datetime="2022-10-13T08:17:59.597Z" itemprop="datePublished">2022-10-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-
-<head>
-  <title>Base64与图片互转 | PengHelen</title>
-  <meta property="og:title" content="Base64与图片互转">
-  <style>
-    .container {
-      padding: 16px;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-
-    .button {
-      align-items: center;
-      padding: 4px;
-      font-size: 16px;
-      background-color: #0099ff;
-      color: #fff;
-      border-radius: 4px;
-      border-color: rgb(0, 153, 255);
-      cursor: pointer;
-    }
-
-    #image {
-      display: none;
-    }
-
-    .btns {
-      text-align: right;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <input placeholder="请选择图片" type="file" id="file" accept=".jpeg,.jpg,.png,.webp" onchange="onChange()" />
-    <img alt="暂无图片或图片格式错误" id="image" width="200" height="200" />
-    <textarea placeholder="请输入Base64" rows="20" cols="50" id="textarea"></textarea>
-  </div>
-  <div class="btns">
-    <button type="button" class="button" onclick="imageToBase64()">图片转Base64</button>
-    <button type="button" class="button" onclick="base64ToImage()">Base64转图片</button>
-    <button type="button" class="button" onclick="saveImage()">保存图片</button>
-    <button type="button" class="button" onclick="clearAll()">清空所有</button>
-  </div>
-  <script>
-    const fileDOM = document.getElementById('file'),
-      textDOM = document.getElementById('textarea'),
-      image = document.getElementById('image');
-    let imageSrc = '', base64Text = '', file = '', imgType = '',
-      imageType = ['data:image/jpg;base64,', 'data:image/jpeg;base64,', 'data:image/png;base64,', 'data:image/webp;base64,']
-    // 'data:image/*;base64,'
-    function base64ToImage() {
-      base64Text = textDOM.value
-      imgType = base64Text.slice(base64Text.indexOf(':') + 1, base64Text.indexOf(';'))
-      if (!base64Text) {
-        alert('请输入Base64字符串！')
-        return;
-      }
-      let type = imageType.indexOf(base64Text.slice(0, base64Text.indexOf(',') + 1)) === -1
-      if (type) {
-        base64Text = 'data:image/jpeg;base64,' + base64Text
-      }
-      imageSrc = base64Text
-      showImage('textToImg')
-    }
-    function showImage(mode = 'imgToText') {
-      image.setAttribute('src', imageSrc);
-      image.style.display = 'block'
-      fileDOM.style.display = 'none'
-    }
-    function onChange() {
-      file = fileDOM.files[0]
-      imageSrc = URL.createObjectURL(file);
-      imgType = file.type
-      showImage('imgToText')
-    }
-    function imageToBase64() {
-      if (!file) {
-        alert('请选择图片！')
-        return;
-      }
-      let img = new Image()
-      img.onload = () => {
-        let canvas = document.createElement('canvas')
-        canvas.width = img.width;
-        canvas.height = img.height;
-        let ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        let text = canvas.toDataURL(imgType)
-        textDOM.value = text
-      }
-      img.src = imageSrc
-    }
-    function clearAll() {
-      // 函数名为clear不执行？？？
-      base64Text = ''
-      imageSrc = ''
-      file = ''
-      fileDOM.style.display = 'block'
-      image.style.display = 'none'
-      fileDOM.value = ''// 清空input[type=file]的文件/值
-      textDOM.value = ''
-    }
-    function saveImage() {
-      fileName = file ? file.name : 'img.' + imgType.slice(imgType.indexOf('/') + 1)
-      if ("download" in document.createElement("a")) {
-        var elink = document.createElement("a");
-        elink.download = fileName;
-        elink.style.display = "none";
-        if (file) {
-          elink.href = imageSrc
-          document.body.appendChild(elink);
-          elink.click();
-        } else {
-          elink.href = URL.createObjectURL(base64ToBlob());
-          document.body.appendChild(elink);
-          elink.click();
-          URL.revokeObjectURL(elink.href);
-        }
-        document.body.removeChild(elink);
-      } else {
-        // IE10+下载
-        if (file) {
-          var oPop = window.open(imageSrc, "", "width=0,height=0,top=5000,left=5000");
-          for (; oPop.document.readyState != "complete";) {
-            if (oPop.document.readyState == "complete") break;
-          }
-          oPop.document.execCommand("SaveAs");
-          oPop.close();
-          return;
-        }
-        navigator.msSaveBlob(base64ToBlob(), fileName);
-      }
-    }
-    function base64ToBlob() {
-      let parts = base64Text.split(';base64,');
-      // atob() 对经过 base-64 编码的字符串进行解码
-      let raw = window.atob(parts[1])
-      let rawLength = raw.length
-      let unit8Array = new Uint8Array(rawLength);
-      for (let i = 0; i < rawLength; i++) {
-        unit8Array[i] = raw.charCodeAt(i);
-      }
-      return new Blob([unit8Array], { type: imgType })
-    }
-  </script>
-</body>
-
-</html>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="clckamt300003283mfp7sfuo4" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -1202,7 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clckamt39000g283m4s8p4m65" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clcuffzdd0006os3mgllk5tp0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1248,7 +832,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clckamt330007283mb9mf20ad" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clcuffzdg000aos3m9due52q4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1320,7 +904,46 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clckamt330006283mfkr25m43" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clcuffzda0003os3mazt2d7o2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/23/first/" class="article-date">
+  <time datetime="2021-12-22T16:00:00.000Z" itemprop="datePublished">2021-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/23/first/">我的第一篇博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>太激动了！从大学学web到毕业以来，一直想拥有属于自己的博客，奈何一直觉得博客很难搭建，就迟迟未开始……<br>终于拥有一个属于我自己的博客啦~哈哈哈哈<br>喔喔，欢迎来到我的小空间，Helen的博客主页~<br>事实证明，拖延症是个坏毛病，解决一个问题，开始一件事情，最好就是从问题发现开始，或者现在立马开始！</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clcuffzdb0004os3m7nbuhf3n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1331,11 +954,6 @@
 
   
 
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         
@@ -1387,6 +1005,10 @@
       <ul>
         
           <li>
+            <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
           </li>
         
@@ -1395,15 +1017,11 @@
           </li>
         
           <li>
-            <a href="/2022/10/28/JSON%E8%BD%AC%E5%8C%96/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
           </li>
         
           <li>
-            <a href="/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/">(no title)</a>
+            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
           </li>
         
       </ul>
