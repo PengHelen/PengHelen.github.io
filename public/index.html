@@ -109,7 +109,7 @@
 
 
 <h3 id="2-数值"><a href="#2-数值" class="headerlink" title="2.数值"></a>2.数值</h3><p>字符串转换成数值：引擎都会先去除字符串起始和末尾的空白，比如\n \t，去除空表后，字符串无法转换成数字时，则返回NaN</p>
-<p><strong>Number</strong></p>
+<p><strong>Number,Math.floor,Math.ceil</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;&#125;);//NaN</span><br><span class="line">Number(NaN);//NaN</span><br><span class="line">Number(undefined);//NaN</span><br><span class="line">Number(&#x27;true&#x27;);//NaN</span><br><span class="line">Number(&#x27;false&#x27;);//NaN</span><br><span class="line">Number(&#x27;123id&#x27;);//NaN</span><br><span class="line">Number(&#x27;id123&#x27;);//NaN</span><br><span class="line">Number([0,1]);//NaN</span><br><span class="line">Number([0]);//0</span><br><span class="line">Number();//0</span><br><span class="line">Number(null);//0</span><br><span class="line">Number([]);//0</span><br><span class="line">Number(&#x27;&#x27;);//0</span><br><span class="line">Number(&#x27; &#x27;);//0 非空串，包含一个空格</span><br><span class="line">Number(false);//0</span><br><span class="line">Number(true);//1</span><br><span class="line">Number(&quot;-12.34&quot;);// -12.34</span><br><span class="line">Number(&quot;\n&quot;);// 0</span><br><span class="line">Number(Symbol());//Uncaught TypeError: Cannot convert a Symbol value to a number</span><br></pre></td></tr></table></figure>
 
 <p><strong>+(一元)</strong></p>
@@ -118,19 +118,6 @@
 <p><strong>parseFloat/parseInt</strong> </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">parseInt([0,1]);//0</span><br><span class="line">parseInt(0);//0</span><br><span class="line">parseInt(1);//1</span><br><span class="line">parseInt(&#x27;123id&#x27;);//123</span><br><span class="line">parseInt(&#x27;id123&#x27;);//NaN</span><br><span class="line">parseInt();//NaN</span><br><span class="line">parseInt(&#123;&#125;);//NaN</span><br><span class="line">parseInt([]);//NaN</span><br><span class="line">parseInt(undefined);//NaN</span><br><span class="line">parseInt(null);//NaN</span><br><span class="line">parseInt(&#x27;true&#x27;);//NaN</span><br><span class="line">parseInt(&#x27;&#x27;);//NaN</span><br><span class="line">parseInt(&#x27; &#x27;);//NaN</span><br><span class="line">parseInt(false);//NaN</span><br><span class="line">parseInt(true);//NaN</span><br><span class="line">parseInt(NaN);//NaN</span><br><span class="line">parseInt(&#x27;0x89id&#x27;);//137</span><br><span class="line">parseInt(&#x27;0x89ed&#x27;);//35309</span><br></pre></td></tr></table></figure>
 <p><em><strong>parseInt语法</strong></em><br>parseInt(string, radix);<br>string：要被解析的值。将参数转换为字符串 (使用 ToString抽象操作)，字符串开头的空白符将会被忽略<br>radix：从 2 到 36 的整数，表示进制的基数，超出这个范围，将返回 NaN；假如指定 0 或未指定，基数将会根据字符串的值进行推算（没有默认值，不是10，例0x开头会自动转成8进制）</p>
-<p><strong>运算符(待完善…)</strong></p>
-<ul>
-<li><p><code>-</code> <code>*</code> <code>/</code> <code>%</code> 适用<code>Number</code>将两操作数转换后得到的结果</p>
-</li>
-<li><p><code>|</code> <code>&amp;</code> <code>^</code> <code>~</code> </p>
-</li>
-<li><p><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code><br><code>NaN</code> , <code>undefined</code> 与转换后的值比较都为 <code>false</code></p>
-</li>
-</ul>
-<p><code>&#123;&#125;</code> 的特殊比较结果<br><code>&#123;&#125;</code> 放在操作符第一位最好用括号分组，否则引擎认为 <code>&#123;&#125;</code> 是块语句声明，直接忽略，无转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;&gt;0);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;1);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;undefined);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;NaN);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;null);// &gt; &lt; &gt;= &lt;= 均false</span><br><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&gt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;&gt;[]);//true</span><br><span class="line">(&#123;&#125;&gt;=[]);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;1&#x27;);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;0&#x27;);//true</span><br><span class="line">(&#123;&#125;&gt;&#x27;&#x27;);//true</span><br><span class="line">(&#123;&#125;&lt;[]);//false</span><br><span class="line">(&#123;&#125;&lt;=[]);//false</span><br><span class="line">(undefined&gt;[]);//false</span><br><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br></pre></td></tr></table></figure>
-
-
 <h3 id="3-布尔"><a href="#3-布尔" class="headerlink" title="3.布尔"></a>3.布尔</h3><ul>
 <li>字符串转布尔值：除了空串(‘’)，其他字符串转换成布尔值都是<code>true</code></li>
 <li>数字转布尔值：除了数字0（和非数字NaN），其他数字布尔值为<code>true</code></li>
@@ -183,6 +170,14 @@
 <li>4).<code>toString()</code>和<code>valueOf()</code>都无法得到基本类型值，抛出错误<code>TypeError</code></li>
 </ul>
 <p>注：数值先调用<code>valueOf()</code>，返回值再调用<code>toString()</code>；字符串则相反先<code>toString()</code>再<code>valueOf()</code><br>数组和对象的<code>valueOf()</code>方法返回对象本身，因此被忽略<br>大多数内置类型没有<code>valueOf()</code>方法，因此转换成数值和转换成字符串最后都是调用<code>toString()</code></p>
+<h1 id="七、运算符-待完善…"><a href="#七、运算符-待完善…" class="headerlink" title="七、运算符(待完善…)"></a>七、运算符(待完善…)</h1><h3 id=""><a href="#" class="headerlink" title="- * / %"></a><code>-</code> <code>*</code> <code>/</code> <code>%</code></h3><p>适用<code>Number</code>将两操作数转换后得到的结果</p>
+<h3 id="amp"><a href="#amp" class="headerlink" title="| &amp; ^ ~"></a><code>|</code> <code>&amp;</code> <code>^</code> <code>~</code></h3><h3 id="gt-lt-gt-lt"><a href="#gt-lt-gt-lt" class="headerlink" title="&gt; &lt; &gt;= &lt;="></a><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></h3><p><code>NaN</code> , <code>undefined</code> 与转换后的值比较都为 <code>false</code></p>
+<h3 id="的特殊比较结果"><a href="#的特殊比较结果" class="headerlink" title="{} 的特殊比较结果"></a><code>&#123;&#125;</code> 的特殊比较结果</h3><p><code>&#123;&#125;</code> 放在操作符第一位最好用括号分组，否则引擎认为 <code>&#123;&#125;</code> 是块语句声明，直接忽略，无转换<br><code>&#123;&#125;</code> 与<code>0,1,undefined,NaN,null</code>比较，<code>&#123;&#125;</code>转换成<code>NaN</code>，因此与<code>&gt;,&lt;,&gt;=,&lt;=</code>比较结果均为<code>false</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&gt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;&lt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&lt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;==&#123;&#125;);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;[]);//true [[]]同[]结果</span><br><span class="line">(&#123;&#125;&gt;=[]);//true</span><br><span class="line">(&#123;&#125;&lt;=[]);//false</span><br><span class="line">(&#123;&#125;&lt;[]);//false</span><br><span class="line">(&#123;&#125;==[]);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;&#x27;1&#x27;);//true &#x27;0&#x27;,&#x27;&#x27;(空串)同&#x27;1&#x27;一致</span><br><span class="line">(&#123;&#125;&gt;=&#x27;1&#x27;);//true</span><br><span class="line">(&#123;&#125;&lt;=&#x27;1&#x27;);//false</span><br><span class="line">(&#123;&#125;&lt;&#x27;1&#x27;);//false</span><br><span class="line">(&#123;&#125;==&#x27;1&#x27;);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;[1]);//true</span><br><span class="line">(&#123;&#125;&gt;=[1]);//true</span><br><span class="line">(&#123;&#125;&lt;=[1]);//false</span><br><span class="line">(&#123;&#125;&lt;[1]);//false</span><br><span class="line">(&#123;&#125;==[1]);//false</span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊结果"><a href="#特殊结果" class="headerlink" title="[] 特殊结果"></a><code>[]</code> 特殊结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[]&gt;null;//false</span><br><span class="line">[]&gt;=null;//true</span><br><span class="line">[]&lt;null;//false</span><br><span class="line">[]&lt;=null;//true</span><br><span class="line">[]==null;//false</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt">MDN:parseInt</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.programiz.com/javascript/type-conversion">JavaScript Type Conversions</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/">JavaScript type coercion explained</a></p>
@@ -192,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clcuffzdh000bos3mcx90dnq2" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clcuinj4m000bf83m1s1dhn97" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clcuffzd80001os3mddn8dl2f" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clcuinj4e0001f83m3u1936ee" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clcuffzdi000eos3mezw7b2n3" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clcuinj4m000af83mcoga360t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -745,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clcuffzdi000dos3m8nrfdiii" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clcuinj4k0007f83mblmzg2de" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -786,7 +781,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clcuffzdd0006os3mgllk5tp0" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clcuinj4j0006f83m1sd5hw5i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -832,7 +827,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clcuffzdg000aos3m9due52q4" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clcuinj4l0009f83m67nx09vu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -904,7 +899,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clcuffzda0003os3mazt2d7o2" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clcuinj4h0003f83mfe8p9obo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -943,7 +938,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clcuffzdb0004os3m7nbuhf3n" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clcuinj4i0004f83m9h780dmk" class="article-share-link">Share</a>
       
       
     </footer>
