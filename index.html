@@ -68,6 +68,122 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-正则表达式" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2023-01-30T03:20:51.000Z" itemprop="datePublished">2023-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h1><p>例：<code>/a-z/gi</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g 全局搜索</span><br><span class="line">i 不区分大小写</span><br><span class="line">m 多行</span><br><span class="line">s 允许 .匹配</span><br><span class="line">u 使用uniocde码的模式进行匹配</span><br><span class="line">y 粘性搜索，匹配从目标字符串的当前位置开始</span><br></pre></td></tr></table></figure>
+
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h3 id="正则表达式方法"><a href="#正则表达式方法" class="headerlink" title="正则表达式方法"></a>正则表达式方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exec 返回：数组（未匹配到返回null）</span><br><span class="line">/a&#123;1,3&#125;/.exec(&#x27;caaaandy&#x27;)</span><br><span class="line">[&#x27;aaa&#x27;, index: 1, input: &#x27;caaaandy&#x27;, groups: undefined]</span><br><span class="line"></span><br><span class="line">test 返回true或false</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">match </span><br><span class="line">&#x27;caaaaaandy&#x27;.match(/a&#123;1,3&#125;/)</span><br><span class="line">[&#x27;aaa&#x27;, index: 1, input: &#x27;caaaaaandy&#x27;, groups: undefined]</span><br><span class="line"></span><br><span class="line">matchAll</span><br><span class="line">必须加可选参数g，否则报错String.prototype.matchAll called with a non-global RegExp argument</span><br><span class="line">[...&#x27;caaaaaaandy&#x27;.match(/a&#123;1,3&#125;/g)]</span><br><span class="line">[&#x27;aaa&#x27;, &#x27;aaa&#x27;, &#x27;a&#x27;]</span><br><span class="line"></span><br><span class="line">search 返回匹配到的位置索引，或者在失败时返回 -1 </span><br><span class="line"></span><br><span class="line">replace  </span><br><span class="line">&#x27;dcaaaaaaandy&#x27;.replace(/a&#123;1,3&#125;/g,&#x27;HH&#x27;)</span><br><span class="line">&#x27;dcHHHHHHndy&#x27;</span><br><span class="line"></span><br><span class="line">split</span><br></pre></td></tr></table></figure>
+
+<h1 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h1><h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 边界类断言</span><br><span class="line">^ 首</span><br><span class="line">$ 尾</span><br><span class="line"></span><br><span class="line">\b 匹配字边界的长度为零</span><br><span class="line">\B 匹配非单词边界(\b的否定版)</span><br><span class="line">\b在前，则regExp前要么是字符串开头，要么是空格；反之则为\B</span><br><span class="line">\b在后，则regExp后要么是字符串结尾，要么是空格；反之则为\B</span><br><span class="line"></span><br><span class="line">// 其他断言</span><br><span class="line">x(x?=y) 先行断言： x 被 y 跟随时匹配 x</span><br><span class="line">x(?!y) 先行否定断言： x 没有被 y 紧随时匹配 x</span><br><span class="line">(?&lt;=y)x 后行断言： x 跟随 y 的情况下匹配 x</span><br><span class="line">(?&lt;!y)x 后行否定断言： x 不跟随 y 时匹配 x</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[xyz][a-c] 匹配包含在方括号中的任何字符</span><br><span class="line">[^xyz][^a-c] 匹配【未】包含在方括号中的任何字符</span><br><span class="line"></span><br><span class="line">. 匹配除行终止符（\n, \r, \u2028或\u2029）之外的任何单个字符；若 s (&quot;dotAll&quot;) 标志位被设为 true（即加上可选参数s），它也会匹配换行符</span><br><span class="line"></span><br><span class="line">\d [0-9]</span><br><span class="line">\D [^0-9]</span><br><span class="line"></span><br><span class="line">\w [A-Za-z0-9_]</span><br><span class="line">\W [^A-Za-z0-9_]</span><br><span class="line"></span><br><span class="line">\s [\f\n\r\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]</span><br><span class="line">\S [^\f\n\r\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]</span><br><span class="line"></span><br><span class="line">\t 水平制表符</span><br><span class="line">\r 回车符</span><br><span class="line">\n 换行符</span><br><span class="line">\v 垂直制表符</span><br><span class="line">\f 换页符</span><br><span class="line">[\b] 退格键</span><br><span class="line">\0 匹配一个 NUL 字符；不要在此后面加上另一个数字</span><br><span class="line"></span><br><span class="line">（暂不考究）</span><br><span class="line">\cX</span><br><span class="line">\xhh</span><br><span class="line">\uhhhh</span><br><span class="line">\u&#123;hhhh&#125;或\u&#123;hhhhh&#125;</span><br><span class="line">\p&#123;UnicodeProperty&#125;或\P&#123;UnicodeProperty&#125;</span><br><span class="line">\</span><br><span class="line"></span><br><span class="line">x|y 匹配“x”或“y”。每个由管道符 (|) 分隔的部分称为一个可选项</span><br></pre></td></tr></table></figure>
+
+<h3 id="组和范围"><a href="#组和范围" class="headerlink" title="组和范围"></a>组和范围</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x|y</span><br><span class="line">[xyz][a-c]</span><br><span class="line">[^xyz][^a-c]</span><br><span class="line">(x)</span><br><span class="line">\n</span><br><span class="line">(?&lt;Name&gt;x)</span><br><span class="line">(?:x)</span><br></pre></td></tr></table></figure>
+
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 0或多次（贪婪）</span><br><span class="line">+ 1+（贪婪）</span><br><span class="line">? 0次或1次（非贪婪）</span><br><span class="line">&#123;n&#125; n正整数，例：/a&#123;2&#125;/ 匹配“caandy”中的所有“a”，以及“caaandy”中的前两个“a”</span><br><span class="line">&#123;n,&#125; n正整数，至少匹配n次，例：匹配“caandy”和“caaaaaaandy”中的所有 a</span><br><span class="line">&#123;n,m&#125; n自然数，至少匹配n次，至多匹配m次</span><br><span class="line">*? </span><br><span class="line">+?</span><br><span class="line">??</span><br><span class="line">&#123;n&#125;?</span><br><span class="line">&#123;n,&#125;?</span><br><span class="line">&#123;n,m&#125;?</span><br></pre></td></tr></table></figure>
+
+<h3 id="Unicode属性转义"><a href="#Unicode属性转义" class="headerlink" title="Unicode属性转义"></a>Unicode属性转义</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.regular-expressions.info/wordboundaries.html">https://www.regular-expressions.info/wordboundaries.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pineboat.in/post/regular-expressions-your-ally/">https://www.pineboat.in/post/regular-expressions-your-ally/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cldit10de00098s3m342lcmy8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="layout-CSS层级" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" class="article-date">
+  <time datetime="2023-01-16T07:19:26.000Z" itemprop="datePublished">2023-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="层叠影响因素"><a href="#层叠影响因素" class="headerlink" title="层叠影响因素"></a>层叠影响因素</h1><ul>
+<li>资源顺序（平级）</li>
+<li>优先级（等级压制）</li>
+<li>重要程度（覆盖所有优先级）</li>
+</ul>
+<h1 id="资源顺序"><a href="#资源顺序" class="headerlink" title="资源顺序"></a>资源顺序</h1><p>当应用两条同级别的规则到一个元素的时候，写在后面的（在CSS样式表中的顺序，<s>在HTML中顺序</s>）就是实际使用的规则</p>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>仅当某一列的优先级权重相同时，才评估下一列；<br>否则，可直接忽略低等级的选择器，因为它们无法覆盖高优先级等级的选择器</p>
+<p>例：即无论选择器中有多少个 ID，内联样式总是比其它任何优先级的权重都要高</p>
+<ul>
+<li>内联样式(1000)</li>
+<li>ID(100)</li>
+<li>类，伪类，属性选择器(10)</li>
+<li>元素，伪元素（如::after）(1)</li>
+</ul>
+<p>否定（:not()）和任意匹配（:is()）的参数，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级</p>
+<h3 id="不影响优先级"><a href="#不影响优先级" class="headerlink" title="不影响优先级"></a>不影响优先级</h3><p>通用选择器 * 组合选择器(+,&gt;,~,’’) 调整优先级选择器(:where())</p>
+<h1 id="重要程度"><a href="#重要程度" class="headerlink" title="重要程度"></a>重要程度</h1><p>覆盖所有上面所有优先级计算<br>!important与优先级无关，但它与最终的结果直接相关</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>覆盖内联样式</li>
+<li>覆盖优先级高的选择器</li>
+</ul>
+<h1 id="a标签伪类元素优先级"><a href="#a标签伪类元素优先级" class="headerlink" title="a标签伪类元素优先级"></a>a标签伪类元素优先级</h1><p>link-visited-hover-active<br>LVHA<br>趣味记法：LoVe HAte</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/what-is-css-specificity/">https://www.freecodecamp.org/news/what-is-css-specificity/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cldit10d700018s3mbtnsevsr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-类型转换" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
@@ -187,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clcuinj4m000bf83m1s1dhn97" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cldit10di000g8s3m3j3o5ad8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clcuinj4e0001f83m3u1936ee" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cldit10da00048s3m04dydx8t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clcuinj4m000af83mcoga360t" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cldit10df000b8s3m6izz71j2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -740,7 +856,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clcuinj4k0007f83mblmzg2de" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cldit10dh000f8s3m43jmeo09" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -781,7 +897,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clcuinj4j0006f83m1sd5hw5i" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cldit10dc00068s3m6jj8g4tj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -827,7 +943,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clcuinj4l0009f83m67nx09vu" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cldit10de000a8s3mep4sepf6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -899,7 +1015,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clcuinj4h0003f83mfe8p9obo" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cldit10d900038s3mgxl42i1x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -938,7 +1054,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clcuinj4i0004f83m9h780dmk" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cldit10dd00078s3mhjqahspc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1000,6 +1116,14 @@
       <ul>
         
           <li>
+            <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
           </li>
         
@@ -1009,14 +1133,6 @@
         
           <li>
             <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
           </li>
         
       </ul>
