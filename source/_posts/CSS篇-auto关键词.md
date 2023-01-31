@@ -138,8 +138,9 @@ flex默认值是`0 1 auto`，flex是flex-grow，flex-shrink，flex-basis的合�
 
 ---
 
-> 参考文献：  
+# 参考文献：  
 英文版：https://ishadeed.com/article/auto-css/  
+
 中文翻译版：https://blog.csdn.net/qq449245884/article/details/105963479/   
 https://css-tricks.com/how-auto-margins-work-in-flexbox/  
 

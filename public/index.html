@@ -68,6 +68,210 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-Promise" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/31/Promise/" class="article-date">
+  <time datetime="2023-01-31T02:02:41.000Z" itemprop="datePublished">2023-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/31/Promise/">Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h1><ul>
+<li>pending 初始状态，未成功也未拒绝</li>
+<li>fulfilled 操作成功完成</li>
+<li>rejected 操作失败</li>
+</ul>
+<h1 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h1><p>链式调用中的第一个 <code>promise</code> 是嵌套最深的一个，也将是第一个被弹出的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const myPromise = new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">  setTimeout(()=&gt;&#123;</span><br><span class="line">    resolve(&#x27;foo&#x27;);</span><br><span class="line">  &#125;,500)</span><br><span class="line">&#125;);</span><br><span class="line">myPromise</span><br><span class="line">  .then()</span><br><span class="line">  .then()</span><br><span class="line">  .then()</span><br><span class="line">  .catch()</span><br><span class="line">  .finally()</span><br></pre></td></tr></table></figure>
+
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p><code>Promise()</code></p>
+<h1 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h1><ul>
+<li>Promise.all(iterable)</li>
+<li>Promise.allSettled(iterable)</li>
+<li>Promise.any(iterable)</li>
+<li>Promise.race(iterable)</li>
+<li>Promise.reject(reason)</li>
+<li>Promise.resolve(value)</li>
+</ul>
+<h1 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h1><ul>
+<li>Promise.prototype.catch()</li>
+<li>Promise.prototype.then()</li>
+<li>Promise.prototype.finally()</li>
+</ul>
+<h1 id="Promise-all-VS-Promise-allSettled"><a href="#Promise-all-VS-Promise-allSettled" class="headerlink" title="Promise.all() VS Promise.allSettled()"></a><code>Promise.all()</code> VS <code>Promise.allSettled()</code></h1><ul>
+<li><p>Promise.all()：所有promise都成功则返回所有成功的结果；数组中出现一个rejected，返回出现rejected的promise</p>
+</li>
+<li><p>Promise.allSettled()：结果允许resolved和rejected两种状态，因此返回的都是敲定结果之后的状态，返回的是由多个 <code>&#123;status:&#39;fulfilled&#39;/&#39;reject&#39;,value:&#39;&#39;&#125;</code> 组成的数组</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const promise1 = Promise.resolve(31);</span><br><span class="line">const promise2 = Promise.reject(&#x27;23&#x27;);</span><br><span class="line">//(1) const promise2 = 23</span><br><span class="line">const promise3 = new Promise(resolve=&gt;setTimeout(()=&gt;resolve(2023),50));</span><br><span class="line">let allPromise = [promise1,promise2,promise3];</span><br><span class="line"></span><br><span class="line">Promise.all(allPromise).then(res=&gt;console.log(res))</span><br><span class="line">// Promise &#123;&lt;rejected&gt;: &#x27;23&#x27;&#125;</span><br><span class="line">// [[Prototype]]: Promise</span><br><span class="line">// [[PromiseState]]: &quot;rejected&quot;</span><br><span class="line">// [[PromiseResult]]: &quot;23&quot;</span><br><span class="line">//(1) [31,23,2023] </span><br><span class="line"></span><br><span class="line">Promise.allSettled(allPromise).then(res=&gt;console.log(res))</span><br><span class="line">// [</span><br><span class="line">//   &#123;status: &#x27;fulfilled&#x27;, value: 31&#125;,</span><br><span class="line">//   &#123;status: &#x27;rejected&#x27;, reason: &#x27;23&#x27;&#125;,</span><br><span class="line">//   &#123;status: &#x27;fulfilled&#x27;, value: 2023&#125;,</span><br><span class="line">// ]</span><br><span class="line">// (1) 将以上数组中第二个元素的status修改成&#x27;fulfilled&#x27;即可</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="async-await-ES2017"><a href="#async-await-ES2017" class="headerlink" title="async/await (ES2017)"></a><code>async/await</code> (ES2017)</h1><p>异步Promise的同步写法</p>
+<p><code>async</code>关键字可定义一个异步函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">async function sayHi()&#123;</span><br><span class="line">  return &#x27;Hi&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">// 等同于</span><br><span class="line">async function sayHi()&#123;</span><br><span class="line">  return Promise.resolve(&#x27;Hi&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>await</code> 关键字等待一个promise敲定状态，resolved和rejected；仅能放在async声明的函数中，否则报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">async function display()&#123;</span><br><span class="line">  let result = await sayHi();</span><br><span class="line">  console.log(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误处理：try…catch"><a href="#错误处理：try…catch" class="headerlink" title="错误处理：try…catch"></a>错误处理：try…catch</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">async function getUser(userId) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">       const user = await Promise.reject(new Error(&#x27;Invalid User Id&#x27;));</span><br><span class="line">    &#125; catch(error) &#123;</span><br><span class="line">       console.log(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="promise-与-async-await-区别"><a href="#promise-与-async-await-区别" class="headerlink" title="promise 与 async/await 区别"></a><code>promise</code> 与 <code>async/await</code> 区别</h3><ul>
+<li><code>async/awai</code>t 是<code>promise</code>处理异步事件的同步写法，一种语法糖</li>
+<li><code>promise</code> 有三种状态；<code>async/await</code> 没有状态，无论resolved还是rejected军返回一个promise</li>
+<li><code>promise</code> 的错误处理可使用<code>.then()</code>和<code>.catch()</code>；async/await使用<code>try...catch</code></li>
+<li><code>promise</code>链式调用太长时会臃肿难理解，<code>async/await</code>简洁、易读</li>
+<li><code>promise</code>链是异步的；<code>async/await</code>整个函数作用域都是异步的</li>
+<li>多个promise时，可使用<code>Promise.all()</code>；<code>async/await</code>拆分成多个变量</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.to/viclafouch/promise-allsettled-vs-promise-all-in-javascript-4mle">https://dev.to/viclafouch/promise-allsettled-vs-promise-all-in-javascript-4mle</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/es-next/javascript-async-await/">https://www.javascripttutorial.net/es-next/javascript-async-await/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/difference-between-promise-and-async-await-in-node-js/">https://www.geeksforgeeks.org/difference-between-promise-and-async-await-in-node-js/</a></p>
+<p><a target="_blank" rel="noopener" href="https://levelup.gitconnected.com/async-await-vs-promises-4fe98d11038f">https://levelup.gitconnected.com/async-await-vs-promises-4fe98d11038f</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="cldjxb8890005403mhfv665cc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="layout-正则表达式" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2023-01-30T03:20:51.000Z" itemprop="datePublished">2023-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h1><p>例：<code>/a-z/gi</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g 全局搜索</span><br><span class="line">i 不区分大小写</span><br><span class="line">m 多行</span><br><span class="line">s 允许 .匹配</span><br><span class="line">u 使用uniocde码的模式进行匹配</span><br><span class="line">y 粘性搜索，匹配从目标字符串的当前位置开始</span><br></pre></td></tr></table></figure>
+
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h3 id="正则表达式方法"><a href="#正则表达式方法" class="headerlink" title="正则表达式方法"></a>正则表达式方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exec 返回：数组（未匹配到返回null）</span><br><span class="line">/a&#123;1,3&#125;/.exec(&#x27;caaaandy&#x27;)</span><br><span class="line">[&#x27;aaa&#x27;, index: 1, input: &#x27;caaaandy&#x27;, groups: undefined]</span><br><span class="line"></span><br><span class="line">test 返回true或false</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">match </span><br><span class="line">&#x27;caaaaaandy&#x27;.match(/a&#123;1,3&#125;/)</span><br><span class="line">[&#x27;aaa&#x27;, index: 1, input: &#x27;caaaaaandy&#x27;, groups: undefined]</span><br><span class="line"></span><br><span class="line">matchAll</span><br><span class="line">必须加可选参数g，否则报错String.prototype.matchAll called with a non-global RegExp argument</span><br><span class="line">[...&#x27;caaaaaaandy&#x27;.match(/a&#123;1,3&#125;/g)]</span><br><span class="line">[&#x27;aaa&#x27;, &#x27;aaa&#x27;, &#x27;a&#x27;]</span><br><span class="line"></span><br><span class="line">search 返回匹配到的位置索引，或者在失败时返回 -1 </span><br><span class="line"></span><br><span class="line">replace  </span><br><span class="line">&#x27;dcaaaaaaandy&#x27;.replace(/a&#123;1,3&#125;/g,&#x27;HH&#x27;)</span><br><span class="line">&#x27;dcHHHHHHndy&#x27;</span><br><span class="line"></span><br><span class="line">split</span><br></pre></td></tr></table></figure>
+
+<h1 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h1><h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 边界类断言</span><br><span class="line">^ 首</span><br><span class="line">$ 尾</span><br><span class="line"></span><br><span class="line">\b 匹配字边界的长度为零</span><br><span class="line">\B 匹配非单词边界(\b的否定版)</span><br><span class="line">\b在前，则regExp前要么是字符串开头，要么是空格；反之则为\B</span><br><span class="line">\b在后，则regExp后要么是字符串结尾，要么是空格；反之则为\B</span><br><span class="line"></span><br><span class="line">// 其他断言</span><br><span class="line">x(x?=y) 先行断言： x 被 y 跟随时匹配 x</span><br><span class="line">x(?!y) 先行否定断言： x 没有被 y 紧随时匹配 x</span><br><span class="line">(?&lt;=y)x 后行断言： x 跟随 y 的情况下匹配 x</span><br><span class="line">(?&lt;!y)x 后行否定断言： x 不跟随 y 时匹配 x</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[xyz][a-c] 匹配包含在方括号中的任何字符</span><br><span class="line">[^xyz][^a-c] 匹配【未】包含在方括号中的任何字符</span><br><span class="line"></span><br><span class="line">. 匹配除行终止符（\n, \r, \u2028或\u2029）之外的任何单个字符；若 s (&quot;dotAll&quot;) 标志位被设为 true（即加上可选参数s），它也会匹配换行符</span><br><span class="line"></span><br><span class="line">\d [0-9]</span><br><span class="line">\D [^0-9]</span><br><span class="line"></span><br><span class="line">\w [A-Za-z0-9_]</span><br><span class="line">\W [^A-Za-z0-9_]</span><br><span class="line"></span><br><span class="line">\s [\f\n\r\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]</span><br><span class="line">\S [^\f\n\r\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]</span><br><span class="line"></span><br><span class="line">\t 水平制表符</span><br><span class="line">\r 回车符</span><br><span class="line">\n 换行符</span><br><span class="line">\v 垂直制表符</span><br><span class="line">\f 换页符</span><br><span class="line">[\b] 退格键</span><br><span class="line">\0 匹配一个 NUL 字符；不要在此后面加上另一个数字</span><br><span class="line"></span><br><span class="line">（暂不考究）</span><br><span class="line">\cX</span><br><span class="line">\xhh</span><br><span class="line">\uhhhh</span><br><span class="line">\u&#123;hhhh&#125;或\u&#123;hhhhh&#125;</span><br><span class="line">\p&#123;UnicodeProperty&#125;或\P&#123;UnicodeProperty&#125;</span><br><span class="line">\</span><br><span class="line"></span><br><span class="line">x|y 匹配“x”或“y”。每个由管道符 (|) 分隔的部分称为一个可选项</span><br></pre></td></tr></table></figure>
+
+<h3 id="组和范围"><a href="#组和范围" class="headerlink" title="组和范围"></a>组和范围</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x|y</span><br><span class="line">[xyz][a-c]</span><br><span class="line">[^xyz][^a-c]</span><br><span class="line">(x)</span><br><span class="line">\n</span><br><span class="line">(?&lt;Name&gt;x)</span><br><span class="line">(?:x)</span><br></pre></td></tr></table></figure>
+
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 0或多次（贪婪）</span><br><span class="line">+ 1+（贪婪）</span><br><span class="line">? 0次或1次（非贪婪）</span><br><span class="line">&#123;n&#125; n正整数，例：/a&#123;2&#125;/ 匹配“caandy”中的所有“a”，以及“caaandy”中的前两个“a”</span><br><span class="line">&#123;n,&#125; n正整数，至少匹配n次，例：匹配“caandy”和“caaaaaaandy”中的所有 a</span><br><span class="line">&#123;n,m&#125; n自然数，至少匹配n次，至多匹配m次</span><br><span class="line">*? </span><br><span class="line">+?</span><br><span class="line">??</span><br><span class="line">&#123;n&#125;?</span><br><span class="line">&#123;n,&#125;?</span><br><span class="line">&#123;n,m&#125;?</span><br></pre></td></tr></table></figure>
+
+<h3 id="Unicode属性转义"><a href="#Unicode属性转义" class="headerlink" title="Unicode属性转义"></a>Unicode属性转义</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.regular-expressions.info/wordboundaries.html">https://www.regular-expressions.info/wordboundaries.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pineboat.in/post/regular-expressions-your-ally/">https://www.pineboat.in/post/regular-expressions-your-ally/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cldjxb88d000b403m06qmaz5j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="layout-CSS层级" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" class="article-date">
+  <time datetime="2023-01-16T07:19:26.000Z" itemprop="datePublished">2023-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="层叠影响因素"><a href="#层叠影响因素" class="headerlink" title="层叠影响因素"></a>层叠影响因素</h1><ul>
+<li>资源顺序（平级）</li>
+<li>优先级（等级压制）</li>
+<li>重要程度（覆盖所有优先级）</li>
+</ul>
+<h1 id="资源顺序"><a href="#资源顺序" class="headerlink" title="资源顺序"></a>资源顺序</h1><p>当应用两条同级别的规则到一个元素的时候，写在后面的（在CSS样式表中的顺序，<s>在HTML中顺序</s>）就是实际使用的规则</p>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>仅当某一列的优先级权重相同时，才评估下一列；<br>否则，可直接忽略低等级的选择器，因为它们无法覆盖高优先级等级的选择器</p>
+<p>例：即无论选择器中有多少个 ID，内联样式总是比其它任何优先级的权重都要高</p>
+<ul>
+<li>内联样式(1000)</li>
+<li>ID(100)</li>
+<li>类，伪类，属性选择器(10)</li>
+<li>元素，伪元素（如::after）(1)</li>
+</ul>
+<p>否定（:not()）和任意匹配（:is()）的参数，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级</p>
+<h3 id="不影响优先级"><a href="#不影响优先级" class="headerlink" title="不影响优先级"></a>不影响优先级</h3><p>通用选择器 * 组合选择器(+,&gt;,~,’’) 调整优先级选择器(:where())</p>
+<h1 id="重要程度"><a href="#重要程度" class="headerlink" title="重要程度"></a>重要程度</h1><p>覆盖所有上面所有优先级计算<br>!important与优先级无关，但它与最终的结果直接相关</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>覆盖内联样式</li>
+<li>覆盖优先级高的选择器</li>
+</ul>
+<h1 id="a标签伪类元素优先级"><a href="#a标签伪类元素优先级" class="headerlink" title="a标签伪类元素优先级"></a>a标签伪类元素优先级</h1><p>link-visited-hover-active<br>LVHA<br>趣味记法：LoVe HAte</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/what-is-css-specificity/">https://www.freecodecamp.org/news/what-is-css-specificity/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cldjxb8870003403m3x3k97u2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-类型转换" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
@@ -187,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clcuinj4m000bf83m1s1dhn97" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cldjxb88i000h403md7u1e0jr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,15 +459,14 @@
 <p><strong>grid可参考flex，暂不研究</strong></p>
 <hr>
 <hr>
-<blockquote>
-<p>参考文献：<br>英文版：<a target="_blank" rel="noopener" href="https://ishadeed.com/article/auto-css/">https://ishadeed.com/article/auto-css/</a><br>中文翻译版：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq449245884/article/details/105963479/">https://blog.csdn.net/qq449245884/article/details/105963479/</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/how-auto-margins-work-in-flexbox/">https://css-tricks.com/how-auto-margins-work-in-flexbox/</a>  </p>
-</blockquote>
+<h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><p>英文版：<a target="_blank" rel="noopener" href="https://ishadeed.com/article/auto-css/">https://ishadeed.com/article/auto-css/</a>  </p>
+<p>中文翻译版：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq449245884/article/details/105963479/">https://blog.csdn.net/qq449245884/article/details/105963479/</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/how-auto-margins-work-in-flexbox/">https://css-tricks.com/how-auto-margins-work-in-flexbox/</a>  </p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clcuinj4e0001f83m3u1936ee" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cldjxb8850001403m5dx76uro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clcuinj4m000af83mcoga360t" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cldjxb88j000j403mbdbx2g0d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -740,7 +943,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clcuinj4k0007f83mblmzg2de" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cldjxb88h000g403m7gai82ct" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -781,7 +984,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clcuinj4j0006f83m1sd5hw5i" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cldjxb88a0007403mba8p3fx0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -827,7 +1030,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clcuinj4l0009f83m67nx09vu" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cldjxb88c0009403mfqdmbavq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -899,46 +1102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clcuinj4h0003f83mfe8p9obo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/12/23/first/" class="article-date">
-  <time datetime="2021-12-22T16:00:00.000Z" itemprop="datePublished">2021-12-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/23/first/">我的第一篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>太激动了！从大学学web到毕业以来，一直想拥有属于自己的博客，奈何一直觉得博客很难搭建，就迟迟未开始……<br>终于拥有一个属于我自己的博客啦~哈哈哈哈<br>喔喔，欢迎来到我的小空间，Helen的博客主页~<br>事实证明，拖延症是个坏毛病，解决一个问题，开始一件事情，最好就是从问题发现开始，或者现在立马开始！</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clcuinj4i0004f83m9h780dmk" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cldjxb88a0006403m1wm8g7kx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -949,6 +1113,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -1000,23 +1169,23 @@
       <ul>
         
           <li>
+            <a href="/2023/01/31/Promise/">Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
           </li>
         
           <li>
             <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
           </li>
         
       </ul>
