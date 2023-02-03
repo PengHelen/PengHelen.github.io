@@ -48,6 +48,8 @@ widgets:
 - tagcloud
 - archives
 - recent_posts
+- lifetime
+- work
 
 # Miscellaneous
 google_analytics:
@@ -88,6 +90,8 @@ Landscape provides 5 built-in widgets:
 - tagcloud
 - archives
 - recent_posts
+- lifetime
+- work
 
 All of them are enabled by default. You can edit them in `widget` setting.
 
