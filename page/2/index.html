@@ -70,6 +70,76 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript定义变量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" class="article-date">
+  <time datetime="2021-12-23T06:22:39.000Z" itemprop="datePublished">2021-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/work/">work</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/">JavaScript定义变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、声明变量"><a href="#一、声明变量" class="headerlink" title="一、声明变量"></a>一、声明变量</h2><p><strong>1.</strong> 优先执行：在执行任何代码之前进行处理<br><strong>2.</strong> 不可配置性：声明变量所在上下文环境的不可配置属性，非声明变量是可配置的<br><strong>3.</strong> 作用域在当前执行上下文：作用域限制函数内或全局作用域</p>
+<p><strong>注：</strong> 建议先声明变量再使用，在 ES5 严格模式下，分配值给未声明变量将引发错误</p>
+<hr>
+<p>声明变量的方法：<br>ES5：var 和 function<br>ES6：var、function、let、const、import、class</p>
+<hr>
+<h4 id="优先执行"><a href="#优先执行" class="headerlink" title="优先执行"></a>优先执行</h4><p><strong>变量提升：</strong> 变量在任意代码执行之前处理，意味着变量可以在声明之前使用，这种行为叫做“hosting”<br>始终在作用域顶部声明变量（全局/函数代码的顶部）<br>变量提升影响变量声明，不影响其值的初始化</p>
+<h4 id="不可配置性"><a href="#不可配置性" class="headerlink" title="不可配置性"></a>不可配置性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">b=2;</span><br><span class="line">delete this.a;//在严格模式下抛出typeError，其他情况下执行失败，但无提示</span><br><span class="line">delete this.b;</span><br><span class="line">console.info(a,b);//抛出refrenceerror（引用错误，b已被删除）</span><br></pre></td></tr></table></figure>
+
+<h4 id="声明多个变量"><a href="#声明多个变量" class="headerlink" title="声明多个变量"></a>声明多个变量</h4><p><strong>隐式声明全局变量</strong><br>在非严格模式下，直接赋值给未声明的变量中，则执行赋值后，该变量会被隐式地创建为全局变量（它将成为全局对象的属性）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a=b=&#x27;A&#x27;;</span><br><span class="line">//等效于</span><br><span class="line">b=&#x27;A&#x27;;</span><br><span class="line">var a=&#x27;A&#x27;;</span><br><span class="line">//连等操作是从右向左执行的，相当于b = &#x27;A&#x27;、let a = b，很明显b没有声明就直接赋值了，所以会隐式创建为一个全局变量</span><br><span class="line">var a=(b=&#x27;A&#x27;);</span><br><span class="line">console.info(a,b);//&#x27;A&#x27;,&#x27;A&#x27;</span><br><span class="line">//并且赋值号返回右侧变量的值</span><br><span class="line"></span><br><span class="line">var x=y,y=&#x27;A&#x27;;</span><br><span class="line">console.info(x+y);//undefinedA</span><br><span class="line">//当&quot;x = y&quot;执行时，y 已经存在，所以不抛出ReferenceError，并且它的值是&#x27;undefined&#x27;</span><br><span class="line"></span><br><span class="line">var x=0;</span><br><span class="line">function f()&#123;</span><br><span class="line">  var x=y=1;//此处x为函数内局部变量，执行函数f之后隐式创建全局变量y并赋值1</span><br><span class="line">&#125;</span><br><span class="line">f();//不执行函数f，获取x的值全局声明的x，y则是未定义</span><br><span class="line">console.info(x,y);//0,1 //此处获取的全局的x,y</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、var-定义变量"><a href="#二、var-定义变量" class="headerlink" title="二、var 定义变量"></a>二、var 定义变量</h2><p>var 声明的变量作用域是它当前的<strong>执行上下文</strong>，作用域是函数内或全局<br>多次用 var 声明变量，变量不会丢失其值</p>
+<h2 id="三、let-定义变量"><a href="#三、let-定义变量" class="headerlink" title="三、let 定义变量"></a>三、let 定义变量</h2><p>let 声明的变量作用域被限制在块级中的变量、语句或者表达式<br>在同一个函数或块作用域中重复声明同一个变量会引起 SyntaxError（语法错误）<br><strong>注：</strong> 在 switch 语句中只有一个块，多次 let 声明同一个变量则报错；在 case 子句中的块会创建一个新的块作用域的词法环境，就不会产生上诉重复声明的错误</p>
+<h4 id="var-与-let-不同"><a href="#var-与-let-不同" class="headerlink" title="var 与 let 不同"></a>var 与 let 不同</h4><p>初始化：<br>let 定义被执行时（编译时）才初始化<br>var 在作用域最顶部初始化且值为 undefined<br>作用域：<br>let 被限制在块级中的变量、语句或者表达式<br>var 只能是全局或者整个函数块的</p>
+<h4 id="暂存死区"><a href="#暂存死区" class="headerlink" title="暂存死区"></a>暂存死区</h4><p>“暂时性死区”（temporal dead zone，简称 TDZ）</p>
+<p>暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量（摘自 ES6 入门–&gt;阮一峰）</p>
+<p>(let,const)在变量初始化之前访问变量导致 ReferenceError，该变量处在一个自顶部到初始化处理的“暂存死区”中<br>使用 typeof 检测暂存死区中的变量，抛出异常 RefeferenceError</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">   var foo = 33;</span><br><span class="line">   if (foo) &#123;</span><br><span class="line">      let foo = (foo + 55); // ReferenceError</span><br><span class="line">      //先计算foo+55，但是foo存在暂时性死区中（foo在if块中声明foo之前使用，作用域是从内到外……就近）</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">function go(n) &#123;</span><br><span class="line">  // n here is defined!</span><br><span class="line">  console.info(n); // Object &#123;a: [1,2,3]&#125;</span><br><span class="line"></span><br><span class="line">  for (let n of n.a) &#123; // ReferenceError，n.a被解析为位于指令本身(&quot;let n&quot;)中的“ n”对象的属性“ a”。</span><br><span class="line">    console.info(n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">go(&#123;a: [1, 2, 3]&#125;);</span><br><span class="line"></span><br><span class="line">let x = 1;</span><br><span class="line">&#123;</span><br><span class="line">  var x = 2; // SyntaxError for re-declaration</span><br><span class="line">&#125;</span><br><span class="line">//var会将变量提升至块的顶部, 这会导致隐式地重复声明变量</span><br><span class="line">//等效--&gt;</span><br><span class="line">let x=1;</span><br><span class="line">var x;//重复</span><br><span class="line">&#123;</span><br><span class="line">  x=2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、cosnt-定义变量"><a href="#四、cosnt-定义变量" class="headerlink" title="四、cosnt 定义变量"></a>四、cosnt 定义变量</h2><p>与 let 声明变量类似<br>const 定义块级常量，声明必须赋值<br>创建一个值的只读引用，变量标识符不能重新分配<br>在引用内容是对象的情况下，可以改变对象的内容（例如，其参数）<br>一个常量不能和它所在作用域内的其他变量或函数拥有相同的名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const MY_FAV=7;</span><br><span class="line">if (MY_FAV === 7) &#123;</span><br><span class="line">  // 没问题，并且创建了一个块作用域变量 MY_FAV</span><br><span class="line">  // (works equally well with let to declare a block scoped non const variable)</span><br><span class="line">  let MY_FAV = 20;</span><br><span class="line">  console.info(&#x27;my favorite number is &#x27; + MY_FAV);//20</span><br><span class="line">  // 这被提升到全局上下文并引发错误</span><br><span class="line">  var MY_FAV = 20;//SyntaxError for re-declaration 语法错误，重复声明</span><br><span class="line">&#125;</span><br><span class="line">console.info(&#x27;my favorite number is &#x27; + MY_FAV);//全局,7</span><br><span class="line"></span><br><span class="line">const MY_OBJECT=&#123;&#x27;key&#x27;:&#x27;value&#x27;&#125;</span><br><span class="line">MY_OBJECT=&#123;&#x27;OTHER_KEY&#x27;:&#x27;value&#x27;&#125;;//Uncaught TypeError: Assignment to constant variable 分配常量值错误</span><br><span class="line">MY_OBJECT.key=&#x27;otherValue&#x27;;</span><br><span class="line"></span><br><span class="line">const MY_ARRAY = [];</span><br><span class="line">// 可以向数组填充数据</span><br><span class="line">MY_ARRAY.push(&#x27;A&#x27;); // [&quot;A&quot;]</span><br><span class="line">// 但是，将一个新数组赋给变量会引发错误</span><br><span class="line">MY_ARRAY = [&#x27;B&#x27;];// Uncaught TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
+
+<p>将对象冻结，使用 Object.freeze()，不让对象的引用值改变</p>
+<h2 id="五、块级作用域与函数声明"><a href="#五、块级作用域与函数声明" class="headerlink" title="五、块级作用域与函数声明"></a>五、块级作用域与函数声明</h2><p>ES5 规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明<br>浏览器没有遵守这个规定，为了兼容以前的旧代码，还是支持在块级作用域之中声明函数<br>ES6 规定，块级作用域之中，函数声明语句的行为类似于 let，在块级作用域之外不可引用<br>ES6 的块级作用域必须有大括号，如果没有大括号，JavaScript 引擎就认为不存在块级作用域。</p>
+<h4 id="对-ES6-的浏览器"><a href="#对-ES6-的浏览器" class="headerlink" title="对 ES6 的浏览器"></a>对 ES6 的浏览器</h4><ul>
+<li>允许在块级作用域内声明函数</li>
+<li>函数声明类似于 var，即会提升到全局作用域或函数作用域的头部</li>
+<li>同时，函数声明还会提升到所在的块级作用域的头部</li>
+</ul>
+<p>严格模式下，函数只能声明在当前作用域的顶层。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cldu4zzx60003zk3mcrdh4g6d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/12/23/first/" class="article-date">
@@ -99,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cldsfpwae000au83mh6cjdvk7" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cldu4zzx90008zk3makaz2krr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
     </div>
   </div>
 
@@ -164,6 +234,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/02/07/closure/">closure</a>
+          </li>
         
           <li>
             <a href="/2023/01/31/Promise/">Promise</a>
@@ -179,10 +253,6 @@
         
           <li>
             <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
           </li>
         
       </ul>
