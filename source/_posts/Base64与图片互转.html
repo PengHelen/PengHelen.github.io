@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Base64与图片互转 | PengHelen</title>
+  <meta property="og:title" content="Base64与图片互转">
+  <style>
+    .container {
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .button {
+      align-items: center;
+      padding: 4px;
+      font-size: 16px;
+      background-color: #0099ff;
+      color: #fff;
+      border-radius: 4px;
+      border-color: rgb(0, 153, 255);
+      cursor: pointer;
+    }
+
+    #image {
+      display: none;
+    }
+
+    .btns {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <input placeholder="请选择图片" type="file" id="file" accept=".jpeg,.jpg,.png,.webp" onchange="onChange()" />
+    <img alt="暂无图片或图片格式错误" id="image" width="200" height="200" />
+    <textarea placeholder="请输入Base64" rows="20" cols="50" id="textarea"></textarea>
+  </div>
+  <div class="btns">
+    <button type="button" class="button" onclick="imageToBase64()">图片转Base64</button>
+    <button type="button" class="button" onclick="base64ToImage()">Base64转图片</button>
+    <button type="button" class="button" onclick="saveImage()">保存图片</button>
+    <button type="button" class="button" onclick="clearAll()">清空所有</button>
+  </div>
+  <script>
+    const fileDOM = document.getElementById('file'),
+      textDOM = document.getElementById('textarea'),
+      image = document.getElementById('image');
+    let imageSrc = '', base64Text = '', file = '', imgType = '',
+      imageType = ['data:image/jpg;base64,', 'data:image/jpeg;base64,', 'data:image/png;base64,', 'data:image/webp;base64,']
+    // 'data:image/*;base64,'
+    function base64ToImage() {
+      base64Text = textDOM.value
+      imgType = base64Text.slice(base64Text.indexOf(':') + 1, base64Text.indexOf(';'))
+      if (!base64Text) {
+        alert('请输入Base64字符串！')
+        return;
+      }
+      let type = imageType.indexOf(base64Text.slice(0, base64Text.indexOf(',') + 1)) === -1
+      if (type) {
+        base64Text = 'data:image/jpeg;base64,' + base64Text
+      }
+      imageSrc = base64Text
+      showImage('textToImg')
+    }
+    function showImage(mode = 'imgToText') {
+      image.setAttribute('src', imageSrc);
+      image.style.display = 'block'
+      fileDOM.style.display = 'none'
+    }
+    function onChange() {
+      file = fileDOM.files[0]
+      imageSrc = URL.createObjectURL(file);
+      imgType = file.type
+      showImage('imgToText')
+    }
+    function imageToBase64() {
+      if (!file) {
+        alert('请选择图片！')
+        return;
+      }
+      let img = new Image()
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        canvas.width = img.width;
+        canvas.height = img.height;
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        let text = canvas.toDataURL(imgType)
+        textDOM.value = text
+      }
+      img.src = imageSrc
+    }
+    function clearAll() {
+      // 函数名为clear不执行？？？
+      base64Text = ''
+      imageSrc = ''
+      file = ''
+      fileDOM.style.display = 'block'
+      image.style.display = 'none'
+      fileDOM.value = ''// 清空input[type=file]的文件/值
+      textDOM.value = ''
+    }
+    function saveImage() {
+      fileName = file ? file.name : 'img.' + imgType.slice(imgType.indexOf('/') + 1)
+      if ("download" in document.createElement("a")) {
+        var elink = document.createElement("a");
+        elink.download = fileName;
+        elink.style.display = "none";
+        if (file) {
+          elink.href = imageSrc
+          document.body.appendChild(elink);
+          elink.click();
+        } else {
+          elink.href = URL.createObjectURL(base64ToBlob());
+          document.body.appendChild(elink);
+          elink.click();
+          URL.revokeObjectURL(elink.href);
+        }
+        document.body.removeChild(elink);
+      } else {
+        // IE10+下载
+        if (file) {
+          var oPop = window.open(imageSrc, "", "width=0,height=0,top=5000,left=5000");
+          for (; oPop.document.readyState != "complete";) {
+            if (oPop.document.readyState == "complete") break;
+          }
+          oPop.document.execCommand("SaveAs");
+          oPop.close();
+          return;
+        }
+        navigator.msSaveBlob(base64ToBlob(), fileName);
+      }
+    }
+    function base64ToBlob() {
+      let parts = base64Text.split(';base64,');
+      // atob() 对经过 base-64 编码的字符串进行解码
+      let raw = window.atob(parts[1])
+      let rawLength = raw.length
+      let unit8Array = new Uint8Array(rawLength);
+      for (let i = 0; i < rawLength; i++) {
+        unit8Array[i] = raw.charCodeAt(i);
+      }
+      return new Blob([unit8Array], { type: imgType })
+    }
+  </script>
+</body>
+
+</html>

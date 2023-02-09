@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PengHelen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Base64与图片互转 | PengHelen           .container {       padding: 16px;       display: flex;       flex-direction: row;       align-items: flex-start;       justify-content: space-between;     }">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PengHelen">
+<meta property="og:url" content="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/index.html">
+<meta property="og:site_name" content="PengHelen">
+<meta property="og:description" content="Base64与图片互转 | PengHelen           .container {       padding: 16px;       display: flex;       flex-direction: row;       align-items: flex-start;       justify-content: space-between;     }">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-13T08:17:59.597Z">
+<meta property="article:modified_time" content="2022-10-18T09:42:56.901Z">
+<meta property="article:author" content="Helen Peng">
+<meta property="article:tag" content="Helen,front-end,blog">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="PengHelen" type="application/atom+xml">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PengHelen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/work">工作</a>
+        
+          <a class="main-nav-link" href="/lifetime">生活</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://penghelen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Base64与图片互转" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" class="article-date">
+  <time datetime="2022-10-13T08:17:59.597Z" itemprop="datePublished">2022-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Base64与图片互转 | PengHelen</title>
+  <meta property="og:title" content="Base64与图片互转">
+  <style>
+    .container {
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .button {
+      align-items: center;
+      padding: 4px;
+      font-size: 16px;
+      background-color: #0099ff;
+      color: #fff;
+      border-radius: 4px;
+      border-color: rgb(0, 153, 255);
+      cursor: pointer;
+    }
+
+    #image {
+      display: none;
+    }
+
+    .btns {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <input placeholder="请选择图片" type="file" id="file" accept=".jpeg,.jpg,.png,.webp" onchange="onChange()" />
+    <img alt="暂无图片或图片格式错误" id="image" width="200" height="200" />
+    <textarea placeholder="请输入Base64" rows="20" cols="50" id="textarea"></textarea>
+  </div>
+  <div class="btns">
+    <button type="button" class="button" onclick="imageToBase64()">图片转Base64</button>
+    <button type="button" class="button" onclick="base64ToImage()">Base64转图片</button>
+    <button type="button" class="button" onclick="saveImage()">保存图片</button>
+    <button type="button" class="button" onclick="clearAll()">清空所有</button>
+  </div>
+  <script>
+    const fileDOM = document.getElementById('file'),
+      textDOM = document.getElementById('textarea'),
+      image = document.getElementById('image');
+    let imageSrc = '', base64Text = '', file = '', imgType = '',
+      imageType = ['data:image/jpg;base64,', 'data:image/jpeg;base64,', 'data:image/png;base64,', 'data:image/webp;base64,']
+    // 'data:image/*;base64,'
+    function base64ToImage() {
+      base64Text = textDOM.value
+      imgType = base64Text.slice(base64Text.indexOf(':') + 1, base64Text.indexOf(';'))
+      if (!base64Text) {
+        alert('请输入Base64字符串！')
+        return;
+      }
+      let type = imageType.indexOf(base64Text.slice(0, base64Text.indexOf(',') + 1)) === -1
+      if (type) {
+        base64Text = 'data:image/jpeg;base64,' + base64Text
+      }
+      imageSrc = base64Text
+      showImage('textToImg')
+    }
+    function showImage(mode = 'imgToText') {
+      image.setAttribute('src', imageSrc);
+      image.style.display = 'block'
+      fileDOM.style.display = 'none'
+    }
+    function onChange() {
+      file = fileDOM.files[0]
+      imageSrc = URL.createObjectURL(file);
+      imgType = file.type
+      showImage('imgToText')
+    }
+    function imageToBase64() {
+      if (!file) {
+        alert('请选择图片！')
+        return;
+      }
+      let img = new Image()
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        canvas.width = img.width;
+        canvas.height = img.height;
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        let text = canvas.toDataURL(imgType)
+        textDOM.value = text
+      }
+      img.src = imageSrc
+    }
+    function clearAll() {
+      // 函数名为clear不执行？？？
+      base64Text = ''
+      imageSrc = ''
+      file = ''
+      fileDOM.style.display = 'block'
+      image.style.display = 'none'
+      fileDOM.value = ''// 清空input[type=file]的文件/值
+      textDOM.value = ''
+    }
+    function saveImage() {
+      fileName = file ? file.name : 'img.' + imgType.slice(imgType.indexOf('/') + 1)
+      if ("download" in document.createElement("a")) {
+        var elink = document.createElement("a");
+        elink.download = fileName;
+        elink.style.display = "none";
+        if (file) {
+          elink.href = imageSrc
+          document.body.appendChild(elink);
+          elink.click();
+        } else {
+          elink.href = URL.createObjectURL(base64ToBlob());
+          document.body.appendChild(elink);
+          elink.click();
+          URL.revokeObjectURL(elink.href);
+        }
+        document.body.removeChild(elink);
+      } else {
+        // IE10+下载
+        if (file) {
+          var oPop = window.open(imageSrc, "", "width=0,height=0,top=5000,left=5000");
+          for (; oPop.document.readyState != "complete";) {
+            if (oPop.document.readyState == "complete") break;
+          }
+          oPop.document.execCommand("SaveAs");
+          oPop.close();
+          return;
+        }
+        navigator.msSaveBlob(base64ToBlob(), fileName);
+      }
+    }
+    function base64ToBlob() {
+      let parts = base64Text.split(';base64,');
+      // atob() 对经过 base-64 编码的字符串进行解码
+      let raw = window.atob(parts[1])
+      let rawLength = raw.length
+      let unit8Array = new Uint8Array(rawLength);
+      for (let i = 0; i < rawLength; i++) {
+        unit8Array[i] = raw.charCodeAt(i);
+      }
+      return new Blob([unit8Array], { type: imgType })
+    }
+  </script>
+</body>
+
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/" data-id="cl9qoyowy0001943m0iaa11dc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/18/colorList/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js深拷贝与浅拷贝</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/work/">work</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/work/" style="font-size: 10px;">work</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/27/js%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/18/colorList/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/13/Base64%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BA%92%E8%BD%AC/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 - 2022 Helen Peng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/work" class="mobile-nav-link">工作</a>
+  
+    <a href="/lifetime" class="mobile-nav-link">生活</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
