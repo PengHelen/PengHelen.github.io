@@ -31,11 +31,11 @@ work_dir: work # 工作
 code_dir: downloads/code
 i18n_dir: :lang 
 ## 跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。
-skip_render: 
-  - "_post/Base64与图片互转.html"
-  - "_post/colorList.html"
-  - "_post/js图片验证码.html"
-  - "_post/JSON转化.html"
+# skip_render: 
+#  - "_post/Base64与图片互转.html"
+#  - "_post/colorList.html"
+#  - "_post/js图片验证码.html"
+#  - "_post/JSON转化.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
