@@ -70,6 +70,122 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-宏任务和微任务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" class="article-date">
+  <time datetime="2023-02-08T06:33:00.000Z" itemprop="datePublished">2023-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">宏任务和微任务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="macrotasks-宏任务"><a href="#macrotasks-宏任务" class="headerlink" title="macrotasks 宏任务"></a><code>macrotasks</code> 宏任务</h1><ul>
+<li>UI rendering<code>&lt;script&gt;</code></li>
+<li>I/O 鼠标事件 <code>mousemove</code>,<code>click</code></li>
+<li><code>setTimeout()</code></li>
+<li><code>setImmediate()</code></li>
+<li><code>setInterval()</code></li>
+<li><code>requestAnimationFrame()</code></li>
+</ul>
+<p>split the task into pieces.</p>
+<p><code>there’s the in-browser minimal delay of 4ms for many nested setTimeout calls. Even if we set 0, it’s 4ms (or a bit more)</code><br>在浏览器中，嵌套调用<code>setTimeout</code>最小延迟为4ms，即使是<code>setTimeout(fn,0)</code>，也是4ms+</p>
+<h1 id="microtasks-微任务"><a href="#microtasks-微任务" class="headerlink" title="microtasks 微任务"></a><code>microtasks</code> 微任务</h1><ul>
+<li><code>Promise</code>,<code>await</code></li>
+<li><code>process.nextTick()</code></li>
+<li><code>queue Microtask()</code></li>
+<li><code>MutationObserver</code></li>
+</ul>
+<h1 id="event-loop-执行顺序"><a href="#event-loop-执行顺序" class="headerlink" title="event loop 执行顺序"></a>event loop 执行顺序</h1><p>1.常规同步调用<br>2.微任务调用<br>3.宏任务调用</p>
+<h3 id="宏任务中："><a href="#宏任务中：" class="headerlink" title="宏任务中："></a>宏任务中：</h3><p>常规同步–&gt;所有微任务–&gt;下一个宏任务</p>
+<h1 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h1><p>注意使用 <code>setTimeout</code> 时，第一个参数是函数，调用已定义的函数，无需加<code>()</code><br><code>setTimeout</code> 调用的必须是函数，<code>promise.resolve().then()</code>是表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">function log1()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">function log2()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line">function log3()&#123;</span><br><span class="line">  console.log(3);</span><br><span class="line">&#125;</span><br><span class="line">function log4()&#123;</span><br><span class="line">  console.log(4);</span><br><span class="line">&#125;</span><br><span class="line">function log5()&#123;</span><br><span class="line">  console.log(5);</span><br><span class="line">&#125;</span><br><span class="line">function log6()&#123;</span><br><span class="line">  console.log(6);</span><br><span class="line">&#125;</span><br><span class="line">function log7()&#123;</span><br><span class="line">  console.log(7);</span><br><span class="line">&#125;</span><br><span class="line">function log8()&#123;</span><br><span class="line">  console.log(8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log1();</span><br><span class="line"></span><br><span class="line">setTimeout(log2);</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(log3);</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(setTimeout(log4));</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(log5);</span><br><span class="line"></span><br><span class="line">setTimeout(log6);</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;Promise.resolve().then(log8))</span><br><span class="line"></span><br><span class="line">log7();</span><br><span class="line"></span><br><span class="line">// 1 7 3 5 2 4 6 8</span><br></pre></td></tr></table></figure>
+
+<p>先执行匿名箭头函数，再执行箭头函数里面的内容<br>宏任务需要执行完内部代码（包含常规同步函数，所有微任务）才能执行下一个宏任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">function log1()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">function log2()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line">function log3()&#123;</span><br><span class="line">  console.log(3);</span><br><span class="line">&#125;</span><br><span class="line">function log4()&#123;</span><br><span class="line">  console.log(4);</span><br><span class="line">&#125;</span><br><span class="line">function log5()&#123;</span><br><span class="line">  console.log(5);</span><br><span class="line">&#125;</span><br><span class="line">function log6()&#123;</span><br><span class="line">  console.log(6);</span><br><span class="line">&#125;</span><br><span class="line">function log7()&#123;</span><br><span class="line">  console.log(7);</span><br><span class="line">&#125;</span><br><span class="line">function log8()&#123;</span><br><span class="line">  console.log(8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log1();</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;log2());</span><br><span class="line">// 等价： setTimeout(()=&gt;&#123;log2()&#125;)</span><br><span class="line">// 等价： setTimeout(function ()&#123;log2()&#125;)</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(()=&gt;log3());</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(()=&gt;setTimeout(()=&gt;log4()));</span><br><span class="line">// 等价： Promise.resolve().then(()=&gt;&#123;setTimeout(()=&gt;&#123;log4()&#125;)&#125;)</span><br><span class="line">// 等价： Promise.resolve().then(function ()&#123;setTimeout(function ()&#123;log4()&#125;)&#125;</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(()=&gt;log5());</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;log6());</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;Promise.resolve().then(()=&gt;log8()))</span><br><span class="line"></span><br><span class="line">log7();</span><br><span class="line"></span><br><span class="line">// 1 7 3 5 2 6 8 4</span><br></pre></td></tr></table></figure>
+
+<p><code>promise</code> 链中的需要等待回复之后才能执行下一个<code>then</code><br>在 <code>promise</code> 中的宏任务无需等待回复，直接添加到宏任务队列中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">function logA() &#123;</span><br><span class="line">  console.log(&#x27;A&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logB() &#123;</span><br><span class="line">  console.log(&#x27;B&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logC() &#123;</span><br><span class="line">  console.log(&#x27;C&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logD() &#123;</span><br><span class="line">  console.log(&#x27;D&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logE() &#123;</span><br><span class="line">  console.log(&#x27;E&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logF() &#123;</span><br><span class="line">  console.log(&#x27;F&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logG() &#123;</span><br><span class="line">  console.log(&#x27;G&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logH() &#123;</span><br><span class="line">  console.log(&#x27;H&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logI() &#123;</span><br><span class="line">  console.log(&#x27;I&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function logJ() &#123;</span><br><span class="line">  console.log(&#x27;J&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logA();</span><br><span class="line">setTimeout(logG, 0);</span><br><span class="line">Promise.resolve()</span><br><span class="line">  .then(logC)</span><br><span class="line">  .then(setTimeout(logH))</span><br><span class="line">  .then(logD)</span><br><span class="line">  .then(logE)</span><br><span class="line">  .then(logF);</span><br><span class="line">setTimeout(logI);</span><br><span class="line">setTimeout(logJ);</span><br><span class="line">logB();</span><br><span class="line">// A B C D E F G H I J</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://javascript.info/event-loop">宏任务和微任务</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jsv9000.app/">在线工具</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/dkatalis/eventloop-in-nodejs-macrotasks-and-microtasks-164417e619b9">宏任务和微任务执行</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" data-id="cldwpkkgh000l1o3mbwto1lwb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vuejs的nextTick" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/08/vuejs%E7%9A%84nextTick/" class="article-date">
+  <time datetime="2023-02-08T02:38:46.000Z" itemprop="datePublished">2023-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/08/vuejs%E7%9A%84nextTick/">vuejs的nextTick</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>Vue更新DOM是异步的</p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>回调被推迟到下一个DOM更新周期之后执行</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Vue.nextTick(function()&#123;</span><br><span class="line">  //...</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">mounted () &#123;</span><br><span class="line">  this.$nextTick(() =&gt; &#123;</span><br><span class="line">    /...</span><br><span class="line">  &#125;);</span><br><span class="line">  this.$nextTick().then(() =&gt; &#123;</span><br><span class="line">    /...</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async mounted () &#123;</span><br><span class="line">  await this.$nextTick(() =&gt; &#123;</span><br><span class="line">    //...</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
+<li><code>created</code>（dom还没渲染）中获取DOM的操作需要使用它</li>
+<li>数据改变，改变DOM</li>
+</ul>
+<h1 id="nextTick-VS-setTimeout-fun-0"><a href="#nextTick-VS-setTimeout-fun-0" class="headerlink" title="$nextTick VS setTimeout(fun,0)"></a>$nextTick VS setTimeout(fun,0)</h1><p><code>$nextTick</code> 在DOM更新后执行操作<br><code>setTimeout(fun,0)</code> 回调在其他代码执行完之后（无论多长时间都等）立马执行</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://nlrx-wjc.github.io/Learn-Vue-Source-Code/instanceMethods/lifecycle.html#_3-vm-nexttick">vue源码解读之vm.$nextTick</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63669783/what-is-the-difference-between-using-vue-nexttick-vs-settimeout-0-in-vuejs">$nextTick VS setTimeout</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33955650/what-is-settimeout-doing-when-set-to-0-milliseconds/33963453#33963453">setTimeout(fn,0)</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/08/vuejs%E7%9A%84nextTick/" data-id="cldwpkkgf000i1o3meg504tz9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-closure" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/02/07/closure/" class="article-date">
@@ -111,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="cldu4zzxa000azk3m47i62ij6" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="cldwpkkg800091o3m7gwj3nym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="cldu4zzxb000czk3m5dmoazly" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="cldwpkkg600051o3m851wgtfd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cldu4zzxe000izk3m7wfpbow4" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cldwpkkgi000p1o3makhw4a6u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cldu4zzx40001zk3mdho8dfzf" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cldwpkkg200011o3m9vj35vi2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cldu4zzxi000ozk3mhqcwexrb" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cldwpkkgi000q1o3m866d5yfa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -519,7 +635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cldu4zzx70005zk3mhaby3oun" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cldwpkkg500031o3m7vsu0x90" class="article-share-link">Share</a>
       
       
     </footer>
@@ -582,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cldu4zzxi000pzk3m22rz96tr" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cldwpkkgh000n1o3m8c4of3vy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -996,94 +1112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cldu4zzxd000ezk3mdtvwe0wd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
-  <time datetime="2021-12-30T08:05:39.000Z" itemprop="datePublished">2021-12-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>深拷贝：两个对象经过拷贝后，除了拷贝下来相同的属性之外，没有任何其他关联的两个对象<br>浅拷贝：两个对象经过拷贝后，虽然属性相同，也是不同对象，但内部的对象指向同一个内存空间</p>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><h4 id="JSON-方法"><a href="#JSON-方法" class="headerlink" title="JSON 方法"></a>JSON 方法</h4><p><code>let newObj = JSON.parse(JSON.stringify(oldObj))</code><br>缺点：无法拷贝对象里的函数、原型链的属性</p>
-<h4 id="循环递归"><a href="#循环递归" class="headerlink" title="循环递归"></a>循环递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(source)&#123;</span><br><span class="line">  let target = Array.isArray(source)?[]:&#123;&#125;</span><br><span class="line">  for(let k in source)&#123;</span><br><span class="line">    if(typeof source[k] ==== &#x27;object&#x27;)&#123;</span><br><span class="line">      target[k]=deepCopy(source[k])</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      target[k] = source[k]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cldu4zzxe000hzk3m4c7e6pi9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-import与export" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/12/27/import%E4%B8%8Eexport/" class="article-date">
-  <time datetime="2021-12-27T02:42:07.000Z" itemprop="datePublished">2021-12-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/27/import%E4%B8%8Eexport/">import与export</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、import"><a href="#一、import" class="headerlink" title="一、import"></a>一、import</h2><h4 id="静态-import"><a href="#静态-import" class="headerlink" title="静态 import"></a>静态 import</h4><p>初始化加载依赖项的最优选择，在加载时就被编译<br>导入的模块运行在严格模式下<br>在浏览器中，import 语句只能在声明了 type=”module” 的 script 的标签中使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import xxx from &#x27;ppp&#x27;</span><br><span class="line">import * as xxx from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx,yyy&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#123;xxx as aaa,yyy as bbb&#125; from &#x27;ppp&#x27;</span><br><span class="line">import &#x27;ppp&#x27;;//整个模块仅为副作，运行模块中的全局代码, 但实际上不导入任何值</span><br></pre></td></tr></table></figure>
-
-<h4 id="动态-import"><a href="#动态-import" class="headerlink" title="动态 import"></a>动态 import</h4><p>按需加载模块<br>不依赖 type=”module” 的 script 标签<br>关键字 import 可以像调用函数一样来动态的导入模块。以这种方式调用，将返回一个 promise，也支持 await 关键字</p>
-<h2 id="二、export"><a href="#二、export" class="headerlink" title="二、export"></a>二、export</h2><p>导出的模块处于严格模式</p>
-<h4 id="命名导出（每个模块包含任意数量）"><a href="#命名导出（每个模块包含任意数量）" class="headerlink" title="命名导出（每个模块包含任意数量）"></a>命名导出（每个模块包含任意数量）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export &#123;myFunction,myVariable&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="默认导出（每个模块包含一个）"><a href="#默认导出（每个模块包含一个）" class="headerlink" title="默认导出（每个模块包含一个）"></a>默认导出（每个模块包含一个）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export let name1,name2,...,nameN;//var const均适用</span><br><span class="line">export let name1=...,name2=...,...,nameN=...;//var const均适用</span><br><span class="line">export function functionName()&#123;...&#125;;</span><br><span class="line">export class className&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cldu4zzxc000dzk3m9zd3c1gm" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cldwpkkgg000k1o3m3rk6dih6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -1152,6 +1181,14 @@
       <ul>
         
           <li>
+            <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">宏任务和微任务</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/08/vuejs%E7%9A%84nextTick/">vuejs的nextTick</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/07/closure/">closure</a>
           </li>
         
@@ -1161,14 +1198,6 @@
         
           <li>
             <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
           </li>
         
       </ul>
