@@ -3,7 +3,7 @@ layout:
   - layout
 title: closure
 date: 2023-02-07 15:40:01
-tags: 
+tags: JS
 ---
 
 # 特征
