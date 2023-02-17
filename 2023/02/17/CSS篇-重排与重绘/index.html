@@ -5,17 +5,19 @@
   
 
   
-  <title>归档: 2021/12 | PengHelen</title>
+  <title>CSS篇-重排与重绘 | PengHelen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A nice front-end coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PengHelen">
-<meta property="og:url" content="https://penghelen.github.io/archives/2021/12/index.html">
+  <meta name="description" content="重排当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素 发生重排的情况 页面初始渲染，开销最大的一次重排 添加&#x2F;删除可见的DOM元素 改变元素位置 改变元素尺寸（margin，padding，border，width，height等） 改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等） 改变浏览器窗口尺寸（resize） CSS伪类（:hover">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS篇-重排与重绘">
+<meta property="og:url" content="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/index.html">
 <meta property="og:site_name" content="PengHelen">
-<meta property="og:description" content="A nice front-end coder">
+<meta property="og:description" content="重排当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素 发生重排的情况 页面初始渲染，开销最大的一次重排 添加&#x2F;删除可见的DOM元素 改变元素位置 改变元素尺寸（margin，padding，border，width，height等） 改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等） 改变浏览器窗口尺寸（resize） CSS伪类（:hover">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-17T03:34:09.000Z">
+<meta property="article:modified_time" content="2023-02-17T03:44:32.899Z">
 <meta property="article:author" content="Helen Peng">
-<meta property="article:tag" content="Helen,front-end,blog">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="PengHelen" type="application/atom+xml">
@@ -68,97 +70,78 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  <time datetime="2021-12-30T08:05:39.000Z" itemprop="datePublished">12月 30</time>
+        <section id="main"><article id="post-CSS篇-重排与重绘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" class="article-date">
+  <time datetime="2023-02-17T03:34:09.000Z" itemprop="datePublished">2023-02-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">js深拷贝与浅拷贝</a>
+    <h1 class="article-title" itemprop="name">
+      CSS篇-重排与重绘
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/27/import%E4%B8%8Eexport/" class="archive-article-date">
-  <time datetime="2021-12-27T02:42:07.000Z" itemprop="datePublished">12月 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/12/27/import%E4%B8%8Eexport/">import与export</a>
-    </h1>
-  
+        <h1 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h1><p>当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素</p>
+<h3 id="发生重排的情况"><a href="#发生重排的情况" class="headerlink" title="发生重排的情况"></a>发生重排的情况</h3><ul>
+<li>页面初始渲染，开销最大的一次重排</li>
+<li>添加/删除可见的DOM元素</li>
+<li>改变元素位置</li>
+<li>改变元素尺寸（margin，padding，border，width，height等）</li>
+<li>改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等）</li>
+<li>改变浏览器窗口尺寸（resize）</li>
+<li>CSS伪类（:hover）</li>
+<li><code>display:none</code></li>
+<li>DOM添加动画</li>
+</ul>
+<h1 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h1><p>由于节点的样式发生改变，表现为某些元素的外观被改变，但不改变布局</p>
+<p><strong>发生重排必然触发重绘</strong></p>
+<h3 id="发生重绘的情况"><a href="#发生重绘的情况" class="headerlink" title="发生重绘的情况"></a>发生重绘的情况</h3><ul>
+<li>color改变</li>
+<li><code>visibility:hidden;</code></li>
+<li>border-style</li>
+<li>圆角、阴影</li>
+<li>ouline</li>
+</ul>
+<h1 id="避免重排重绘"><a href="#避免重排重绘" class="headerlink" title="避免重排重绘"></a>避免重排重绘</h1><ul>
+<li>集中改变样式</li>
+<li>使用<code>documentFragment</code>，<code>document.createDocumentFragment</code>创建一个游离于DOM树之外的节点，<br>在节点上操作，最后插入DOM树，只触发一次重排重回（虚拟DOM？）</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  <time datetime="2021-12-23T06:22:39.000Z" itemprop="datePublished">12月 23</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/">JavaScript定义变量</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/23/first/" class="archive-article-date">
-  <time datetime="2021-12-22T16:00:00.000Z" itemprop="datePublished">12月 23</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" data-id="cle839l0w0008243m2vt1e3kj" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/12/23/first/">我的第一篇博客</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS篇-隐藏属性</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
