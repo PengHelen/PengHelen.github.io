@@ -70,6 +70,132 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS篇-重排与重绘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" class="article-date">
+  <time datetime="2023-02-17T03:34:09.000Z" itemprop="datePublished">2023-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">CSS篇-重排与重绘</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h1><p>当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素</p>
+<h3 id="发生重排的情况"><a href="#发生重排的情况" class="headerlink" title="发生重排的情况"></a>发生重排的情况</h3><ul>
+<li>页面初始渲染，开销最大的一次重排</li>
+<li>添加/删除可见的DOM元素</li>
+<li>改变元素位置</li>
+<li>改变元素尺寸（margin，padding，border，width，height等）</li>
+<li>改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等）</li>
+<li>改变浏览器窗口尺寸（resize）</li>
+<li>CSS伪类（:hover）</li>
+<li><code>display:none</code></li>
+<li>DOM添加动画</li>
+</ul>
+<h1 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h1><p>由于节点的样式发生改变，表现为某些元素的外观被改变，但不改变布局</p>
+<p><strong>发生重排必然触发重绘</strong></p>
+<h3 id="发生重绘的情况"><a href="#发生重绘的情况" class="headerlink" title="发生重绘的情况"></a>发生重绘的情况</h3><ul>
+<li>color改变</li>
+<li><code>visibility:hidden;</code></li>
+<li>border-style</li>
+<li>圆角、阴影</li>
+<li>ouline</li>
+</ul>
+<h1 id="避免重排重绘"><a href="#避免重排重绘" class="headerlink" title="避免重排重绘"></a>避免重排重绘</h1><ul>
+<li>集中改变样式</li>
+<li>使用<code>documentFragment</code>，<code>document.createDocumentFragment</code>创建一个游离于DOM树之外的节点，<br>在节点上操作，最后插入DOM树，只触发一次重排重回（虚拟DOM？）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" data-id="cle839l0w0008243m2vt1e3kj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS篇-隐藏属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" class="article-date">
+  <time datetime="2023-02-17T02:25:09.000Z" itemprop="datePublished">2023-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/">CSS篇-隐藏属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="display-none"><a href="#display-none" class="headerlink" title="display:none;"></a><code>display:none;</code></h1><ul>
+<li>元素不存在，不占空间位置，reflow（页面重排）</li>
+<li>子元素不继承，因为子元素不会被渲染（株连性）</li>
+<li>无法获取焦点（无论是否设置tab），无法响应事件</li>
+<li>不影响表单提交，表单提交依然会将 <code>&lt;input name=&#39;user&#39; style=&quot;display:none; /&gt;&quot;</code> 的值提交上去</li>
+<li>不支持transition</li>
+<li>CSS中的counter会忽略设置<code>display:none;</code>元素</li>
+</ul>
+<h1 id="visibility-hidden"><a href="#visibility-hidden" class="headerlink" title="visibility:hidden;"></a><code>visibility:hidden;</code></h1><ul>
+<li>元素不存在，但占空间位置，repaint（重绘）</li>
+<li>被子元素继承，修改子元素 <code>visibility:visible;</code> 可取消隐藏</li>
+<li>无法获取焦点</li>
+<li>不影响表单提交</li>
+</ul>
+<h1 id="opacity-0"><a href="#opacity-0" class="headerlink" title="opacity:0;"></a><code>opacity:0;</code></h1><ul>
+<li>透明度为0，占据空间位置</li>
+<li>被子元素继承，但无法通过修改子元素 <code>opacity:1;</code> 取消隐藏</li>
+</ul>
+<h1 id="width-0"><a href="#width-0" class="headerlink" title="width:0;"></a><code>width:0;</code></h1><ul>
+<li>宽度为0，不占空间位置</li>
+</ul>
+<h1 id="visibility-布局应用"><a href="#visibility-布局应用" class="headerlink" title="visibility 布局应用"></a><code>visibility</code> 布局应用</h1><ul>
+<li>页面加载，display会触发回流和重排，页面发生抖动，visibility将元素空间位置渲染好，只等显示即可</li>
+<li>动画， <code>display:none</code> 立即显示，不支持transition，无法延时展示动画，</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" data-id="cle839l0v0006243m03p43ze5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-宏任务和微任务" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" class="article-date">
@@ -126,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" data-id="cldwps2j1000jqg3m3n1scm7i" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" data-id="cle839l1a0015243m13lw860b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -176,9 +302,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/08/vuejs%E7%9A%84nextTick/" data-id="cldwps2iz000gqg3m3iim4foi" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/08/vuejs%E7%9A%84nextTick/" data-id="cle839l14000o243me3re2qmk" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
     </footer>
   </div>
   
@@ -227,9 +355,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="cldwps2is0007qg3m4ahi6cpe" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="cle839l11000i243m4xmgbea6" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
+
     </footer>
   </div>
   
@@ -315,9 +445,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="cldwps2iu000aqg3mbse6h5xk" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="cle839l0z000e243mdang75t6" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
+
     </footer>
   </div>
   
@@ -370,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cldwps2j2000mqg3m52uu7kxx" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cle839l1c0017243m7xt8egnr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,9 +563,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cldwps2in0001qg3m52o9gcqk" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="cle839l0q0001243m0y8a92qu" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
     </footer>
   </div>
   
@@ -560,9 +694,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cldwps2j3000qqg3mhyr55epm" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="cle839l1c0019243mho11eb6s" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
+
     </footer>
   </div>
   
@@ -635,487 +771,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cldwps2ip0003qg3m74tg5sna" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="cle839l0t0003243m4h923mve" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="layout-浏览器标签-Tab的标题和图标" class="article article-type-layout" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" class="article-date">
-  <time datetime="2023-01-05T06:12:54.000Z" itemprop="datePublished">2023-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/">浏览器标签/Tab的标题和图标</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="一、图标"><a href="#一、图标" class="headerlink" title="一、图标"></a>一、图标</h2><p>favicon.ico只需要放到网站根目录，并不需要添加到程序中，浏览器会直接通过域名调取这个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>rel表示关系relationship，icon是一个网站图标的链接，type属性包含了链接资源的MIME类型</p>
-<p>图片格式，type可接受类型：</p>
-<ul>
-<li>image/png(PNG)</li>
-<li>image/gif(GIF)</li>
-<li>image/jpg(JPEG)</li>
-<li>image/x-icon(ICO)</li>
-<li>image/svg+xml(SVG)</li>
-</ul>
-<p>一个favicon图标必须满足以下要求：</p>
-<ul>
-<li>默认名字是：favicon.ico</li>
-<li>尺寸大小范围有：16x16，32x32，48x48，64x64，128x128（单位是px）</li>
-<li>颜色通道值：8/24/32 bites</li>
-</ul>
-<p>更新窗口图标后，浏览器仍不显示，需要清除浏览器缓存刷新网页（ctrl+f5）</p>
-<p>参考文档：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/audreyfeldroy/favicon-cheat-sheet">https://github.com/audreyfeldroy/favicon-cheat-sheet</a> </p>
-<h2 id="二、标题"><a href="#二、标题" class="headerlink" title="二、标题"></a>二、标题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;文档标题&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="动态修改标题"><a href="#动态修改标题" class="headerlink" title="动态修改标题"></a>动态修改标题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.title = &quot;新标题&quot;;</span><br><span class="line">document.querySelector(&#x27;title&#x27;).textContent = &#x27;新标题&#x27;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cldwps2j3000oqg3m2xyy3yfs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-变量和事件名" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" class="article-date">
-  <time datetime="2022-10-27T05:50:12.000Z" itemprop="datePublished">2022-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/">变量和事件名</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h1><table>
-<thead>
-<tr>
-<th align="left">描述</th>
-<th align="left">前缀</th>
-<th align="left">命名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Array 数组</td>
-<td align="left">a</td>
-<td align="left">aList,aGroup</td>
-</tr>
-<tr>
-<td align="left">Boolean 布尔</td>
-<td align="left">b</td>
-<td align="left">bChecked,bHasLogin</td>
-</tr>
-<tr>
-<td align="left">Function 函数</td>
-<td align="left">f</td>
-<td align="left">fGetHtml,fInit</td>
-</tr>
-<tr>
-<td align="left">Number 数字</td>
-<td align="left">n</td>
-<td align="left">nPage,nTotal</td>
-</tr>
-<tr>
-<td align="left">Object 对象</td>
-<td align="left">o</td>
-<td align="left">oButton,oDate</td>
-</tr>
-<tr>
-<td align="left">Regular Expression 正则</td>
-<td align="left">r</td>
-<td align="left">rDomain,rEmail</td>
-</tr>
-<tr>
-<td align="left">String 字符</td>
-<td align="left">s</td>
-<td align="left">sName,sHtml</td>
-</tr>
-</tbody></table>
-<h1 id="事件名动词"><a href="#事件名动词" class="headerlink" title="事件名动词"></a>事件名动词</h1><table>
-<thead>
-<tr>
-<th align="left">动词</th>
-<th align="left">含义</th>
-<th align="left">动词</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">get</td>
-<td align="left">获取</td>
-<td align="left">set</td>
-<td align="left">设置</td>
-</tr>
-<tr>
-<td align="left">add</td>
-<td align="left">增加</td>
-<td align="left">remove</td>
-<td align="left">删除</td>
-</tr>
-<tr>
-<td align="left">create</td>
-<td align="left">创建</td>
-<td align="left">destory</td>
-<td align="left">移除</td>
-</tr>
-<tr>
-<td align="left">start</td>
-<td align="left">启动</td>
-<td align="left">stop</td>
-<td align="left">停止</td>
-</tr>
-<tr>
-<td align="left">open</td>
-<td align="left">打开</td>
-<td align="left">close</td>
-<td align="left">关闭</td>
-</tr>
-<tr>
-<td align="left">read</td>
-<td align="left">读取</td>
-<td align="left">write</td>
-<td align="left">写入</td>
-</tr>
-<tr>
-<td align="left">load</td>
-<td align="left">载入</td>
-<td align="left">save</td>
-<td align="left">保存</td>
-</tr>
-<tr>
-<td align="left">create</td>
-<td align="left">创建</td>
-<td align="left">destroy</td>
-<td align="left">销毁</td>
-</tr>
-<tr>
-<td align="left">begin</td>
-<td align="left">开始</td>
-<td align="left">end</td>
-<td align="left">结束</td>
-</tr>
-<tr>
-<td align="left">backup</td>
-<td align="left">备份</td>
-<td align="left">restore</td>
-<td align="left">恢复</td>
-</tr>
-<tr>
-<td align="left">import</td>
-<td align="left">导入</td>
-<td align="left">export</td>
-<td align="left">导出</td>
-</tr>
-<tr>
-<td align="left">split</td>
-<td align="left">分割</td>
-<td align="left">merge</td>
-<td align="left">合并</td>
-</tr>
-<tr>
-<td align="left">inject</td>
-<td align="left">注入</td>
-<td align="left">extract</td>
-<td align="left">提取</td>
-</tr>
-<tr>
-<td align="left">attach</td>
-<td align="left">附着</td>
-<td align="left">detach</td>
-<td align="left">脱离</td>
-</tr>
-<tr>
-<td align="left">bind</td>
-<td align="left">绑定</td>
-<td align="left">separate</td>
-<td align="left">分离</td>
-</tr>
-<tr>
-<td align="left">view</td>
-<td align="left">查看</td>
-<td align="left">browse</td>
-<td align="left">浏览</td>
-</tr>
-<tr>
-<td align="left">edit</td>
-<td align="left">编辑</td>
-<td align="left">modify</td>
-<td align="left">修改</td>
-</tr>
-<tr>
-<td align="left">select</td>
-<td align="left">选取</td>
-<td align="left">mark</td>
-<td align="left">标记</td>
-</tr>
-<tr>
-<td align="left">copy</td>
-<td align="left">复制</td>
-<td align="left">paste</td>
-<td align="left">粘贴</td>
-</tr>
-<tr>
-<td align="left">undo</td>
-<td align="left">撤销</td>
-<td align="left">redo</td>
-<td align="left">重做</td>
-</tr>
-<tr>
-<td align="left">insert</td>
-<td align="left">插入</td>
-<td align="left">delete</td>
-<td align="left">移除</td>
-</tr>
-<tr>
-<td align="left">add</td>
-<td align="left">加入</td>
-<td align="left">append</td>
-<td align="left">添加</td>
-</tr>
-<tr>
-<td align="left">clean</td>
-<td align="left">清理</td>
-<td align="left">clear</td>
-<td align="left">清除</td>
-</tr>
-<tr>
-<td align="left">index</td>
-<td align="left">索引</td>
-<td align="left">sort</td>
-<td align="left">排序</td>
-</tr>
-<tr>
-<td align="left">find</td>
-<td align="left">查找</td>
-<td align="left">search</td>
-<td align="left">搜索</td>
-</tr>
-<tr>
-<td align="left">increase</td>
-<td align="left">增加</td>
-<td align="left">decrease</td>
-<td align="left">减少</td>
-</tr>
-<tr>
-<td align="left">play</td>
-<td align="left">播放</td>
-<td align="left">pause</td>
-<td align="left">暂停</td>
-</tr>
-<tr>
-<td align="left">launch</td>
-<td align="left">启动</td>
-<td align="left">run</td>
-<td align="left">运行</td>
-</tr>
-<tr>
-<td align="left">compile</td>
-<td align="left">编译</td>
-<td align="left">execute</td>
-<td align="left">执行</td>
-</tr>
-<tr>
-<td align="left">debug</td>
-<td align="left">调试</td>
-<td align="left">trace</td>
-<td align="left">跟踪</td>
-</tr>
-<tr>
-<td align="left">observe</td>
-<td align="left">观察</td>
-<td align="left">listen</td>
-<td align="left">监听</td>
-</tr>
-<tr>
-<td align="left">build</td>
-<td align="left">构建</td>
-<td align="left">publish</td>
-<td align="left">发布</td>
-</tr>
-<tr>
-<td align="left">input</td>
-<td align="left">输入</td>
-<td align="left">output</td>
-<td align="left">输出</td>
-</tr>
-<tr>
-<td align="left">encode</td>
-<td align="left">编码</td>
-<td align="left">decode</td>
-<td align="left">解码</td>
-</tr>
-<tr>
-<td align="left">encrypt</td>
-<td align="left">加密</td>
-<td align="left">decrypt</td>
-<td align="left">解密</td>
-</tr>
-<tr>
-<td align="left">compress</td>
-<td align="left">压缩</td>
-<td align="left">decompress</td>
-<td align="left">解压缩</td>
-</tr>
-<tr>
-<td align="left">pack</td>
-<td align="left">打包</td>
-<td align="left">unpack</td>
-<td align="left">解包</td>
-</tr>
-<tr>
-<td align="left">parse</td>
-<td align="left">解析</td>
-<td align="left">emit</td>
-<td align="left">生成</td>
-</tr>
-<tr>
-<td align="left">connect</td>
-<td align="left">连接</td>
-<td align="left">disconnect</td>
-<td align="left">断开</td>
-</tr>
-<tr>
-<td align="left">send</td>
-<td align="left">发送</td>
-<td align="left">receive</td>
-<td align="left">接收</td>
-</tr>
-<tr>
-<td align="left">download</td>
-<td align="left">下载</td>
-<td align="left">upload</td>
-<td align="left">上传</td>
-</tr>
-<tr>
-<td align="left">refresh</td>
-<td align="left">刷新</td>
-<td align="left">synchronize</td>
-<td align="left">同步</td>
-</tr>
-<tr>
-<td align="left">update</td>
-<td align="left">更新</td>
-<td align="left">revert</td>
-<td align="left">复原</td>
-</tr>
-<tr>
-<td align="left">lock</td>
-<td align="left">锁定</td>
-<td align="left">unlock</td>
-<td align="left">解锁</td>
-</tr>
-<tr>
-<td align="left">check out</td>
-<td align="left">签出</td>
-<td align="left">check in</td>
-<td align="left">签入</td>
-</tr>
-<tr>
-<td align="left">submit</td>
-<td align="left">提交</td>
-<td align="left">commit</td>
-<td align="left">交付</td>
-</tr>
-<tr>
-<td align="left">push</td>
-<td align="left">推</td>
-<td align="left">pull</td>
-<td align="left">拉</td>
-</tr>
-<tr>
-<td align="left">expand</td>
-<td align="left">展开</td>
-<td align="left">collapse</td>
-<td align="left">折叠</td>
-</tr>
-<tr>
-<td align="left">begin</td>
-<td align="left">起始</td>
-<td align="left">end</td>
-<td align="left">结束</td>
-</tr>
-<tr>
-<td align="left">start</td>
-<td align="left">开始</td>
-<td align="left">finish</td>
-<td align="left">完成</td>
-</tr>
-<tr>
-<td align="left">enter</td>
-<td align="left">进入</td>
-<td align="left">exit</td>
-<td align="left">退出</td>
-</tr>
-<tr>
-<td align="left">abort</td>
-<td align="left">放弃</td>
-<td align="left">quit</td>
-<td align="left">离开</td>
-</tr>
-<tr>
-<td align="left">obsolete</td>
-<td align="left">废弃</td>
-<td align="left">depreciate</td>
-<td align="left">废旧</td>
-</tr>
-<tr>
-<td align="left">collect</td>
-<td align="left">收集</td>
-<td align="left">aggregate</td>
-<td align="left">聚集</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cldwps2j0000iqg3m9q0ufso7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -1149,7 +808,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
     </div>
   </div>
 
@@ -1159,7 +818,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/work/" style="font-size: 10px;">work</a>
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/work/" style="font-size: 20px;">work</a>
     </div>
   </div>
 
@@ -1181,6 +840,14 @@
       <ul>
         
           <li>
+            <a href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">CSS篇-重排与重绘</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/">CSS篇-隐藏属性</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">宏任务和微任务</a>
           </li>
         
@@ -1190,14 +857,6 @@
         
           <li>
             <a href="/2023/02/07/closure/">closure</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/31/Promise/">Promise</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
           </li>
         
       </ul>
