@@ -70,6 +70,214 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-类型转换" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time datetime="2023-01-13T02:10:06.000Z" itemprop="datePublished">2023-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、结果类型"><a href="#一、结果类型" class="headerlink" title="一、结果类型"></a>一、结果类型</h1><ul>
+<li>String</li>
+<li>Boolean</li>
+<li>Number</li>
+</ul>
+<h1 id="二、String-字符串-、Number-数值-和Boolean-布尔-转换"><a href="#二、String-字符串-、Number-数值-和Boolean-布尔-转换" class="headerlink" title="二、String(字符串)、Number(数值)和Boolean(布尔)转换"></a>二、String(字符串)、Number(数值)和Boolean(布尔)转换</h1><h3 id="1-字符串"><a href="#1-字符串" class="headerlink" title="1.字符串"></a>1.字符串</h3><p>除<code>null</code>和<code>undefined</code>外，所有值都有<code>toString()</code>方法，结果与<code>String()</code>方法一致</p>
+<p><strong>String</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String();&#x27;&#x27;</span><br><span class="line">String(&#123;&#125;);//&#x27;[object Object]&#x27;</span><br><span class="line">String([]);//&#x27;&#x27;</span><br><span class="line">String(undefined);//&#x27;undefined&#x27;</span><br><span class="line">String(null);//&#x27;null&#x27;</span><br><span class="line">String(NaN);//&#x27;NaN&#x27;</span><br><span class="line">String(Symbol());//&#x27;Symbol()&#x27;</span><br><span class="line">String([0]);//&#x27;0&#x27;</span><br><span class="line">String([0,1]);//&#x27;0,1&#x27;</span><br><span class="line">String(0);//&#x27;0&#x27;</span><br><span class="line">String(&#x27; &#x27;);//&#x27; &#x27; 非空串，包含一个空格</span><br></pre></td></tr></table></figure>
+
+<p><strong>toSting()</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">toString();//&#x27;[object Undefined]&#x27;</span><br><span class="line"></span><br><span class="line">&#123;&#125;.toString();//Uncaught SyntaxError: Unexpected token &#x27;.&#x27;</span><br><span class="line">(&#123;&#125;.toString());//&#x27;[object Object]&#x27;</span><br><span class="line"></span><br><span class="line">[].toString();//&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">(undefined.toString())或undefined.toString();//Uncaught TypeError: Cannot read properties of undefined (reading &#x27;toString&#x27;)</span><br><span class="line"></span><br><span class="line">null.toString();//Uncaught TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span><br><span class="line"></span><br><span class="line">NaN.toString();//&#x27;NaN&#x27;</span><br><span class="line"></span><br><span class="line">Symbol().toString();//&#x27;Symbol()&#x27;</span><br><span class="line"></span><br><span class="line">[0].toString();//&#x27;0&#x27;</span><br><span class="line"></span><br><span class="line">[0,1].toString();//&#x27;0,1&#x27;</span><br><span class="line"></span><br><span class="line">0.toString();//Uncaught SyntaxError: Invalid or unexpected token</span><br><span class="line">(0.toString());//Uncaught SyntaxError: Invalid or unexpected token</span><br><span class="line"></span><br><span class="line">&#x27; &#x27;.toString();//&#x27; &#x27;非空串，包含一个空格</span><br></pre></td></tr></table></figure>
+
+<p><strong>空串(‘’)+特殊值</strong> </p>
+<p>为了更清晰，字符串+任何值=&gt;字符串，实验以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;+0;//&#x27;0&#x27;</span><br><span class="line">&#x27;&#x27;+[];//&#x27;&#x27;</span><br><span class="line">&#x27;&#x27;+&#123;&#125;;//&#x27;[object Object]&#x27;</span><br><span class="line">&#x27;&#x27;+undefined;//&#x27;undefined&#x27;</span><br><span class="line">&#x27;&#x27;+null;//&#x27;null&#x27;</span><br><span class="line">&#x27;&#x27;+NaN;//&#x27;NaN&#x27;</span><br><span class="line">&#x27;&#x27;+[0];//&#x27;0&#x27;</span><br><span class="line">&#x27;&#x27;+[0,1];//&#x27;0,1&#x27;</span><br><span class="line">&#x27;&#x27;+Symbol();//Uncaught TypeError: Cannot convert a Symbol value to a string</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-数值"><a href="#2-数值" class="headerlink" title="2.数值"></a>2.数值</h3><p>字符串转换成数值：引擎都会先去除字符串起始和末尾的空白，比如\n \t，去除空表后，字符串无法转换成数字时，则返回NaN</p>
+<p><strong>Number,Math.floor,Math.ceil</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;&#125;);//NaN</span><br><span class="line">Number(NaN);//NaN</span><br><span class="line">Number(undefined);//NaN</span><br><span class="line">Number(&#x27;true&#x27;);//NaN</span><br><span class="line">Number(&#x27;false&#x27;);//NaN</span><br><span class="line">Number(&#x27;123id&#x27;);//NaN</span><br><span class="line">Number(&#x27;id123&#x27;);//NaN</span><br><span class="line">Number([0,1]);//NaN</span><br><span class="line">Number([0]);//0</span><br><span class="line">Number();//0</span><br><span class="line">Number(null);//0</span><br><span class="line">Number([]);//0</span><br><span class="line">Number(&#x27;&#x27;);//0</span><br><span class="line">Number(&#x27; &#x27;);//0 非空串，包含一个空格</span><br><span class="line">Number(false);//0</span><br><span class="line">Number(true);//1</span><br><span class="line">Number(&quot;-12.34&quot;);// -12.34</span><br><span class="line">Number(&quot;\n&quot;);// 0</span><br><span class="line">Number(Symbol());//Uncaught TypeError: Cannot convert a Symbol value to a number</span><br></pre></td></tr></table></figure>
+
+<p><strong>+(一元)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+&#123;&#125;;//NaN</span><br><span class="line">+NaN;//NaN</span><br><span class="line">+undefined;//NaN</span><br><span class="line">+&#x27;true&#x27;;//NaN</span><br><span class="line">+&#x27;123id&#x27;;//NaN</span><br><span class="line">+&#x27;id123&#x27;;//NaN</span><br><span class="line">+[0,1];//NaN</span><br><span class="line">+[0];//0</span><br><span class="line">+0;//0</span><br><span class="line">+null;//0</span><br><span class="line">+[];//0</span><br><span class="line">+&#x27;&#x27;;//0</span><br><span class="line">+&#x27; &#x27;;//0</span><br><span class="line">+false;//0</span><br><span class="line">+true;//1</span><br></pre></td></tr></table></figure>
+
+<p><strong>parseFloat/parseInt</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">parseInt([0,1]);//0</span><br><span class="line">parseInt(0);//0</span><br><span class="line">parseInt(1);//1</span><br><span class="line">parseInt(&#x27;123id&#x27;);//123</span><br><span class="line">parseInt(&#x27;id123&#x27;);//NaN</span><br><span class="line">parseInt();//NaN</span><br><span class="line">parseInt(&#123;&#125;);//NaN</span><br><span class="line">parseInt([]);//NaN</span><br><span class="line">parseInt(undefined);//NaN</span><br><span class="line">parseInt(null);//NaN</span><br><span class="line">parseInt(&#x27;true&#x27;);//NaN</span><br><span class="line">parseInt(&#x27;&#x27;);//NaN</span><br><span class="line">parseInt(&#x27; &#x27;);//NaN</span><br><span class="line">parseInt(false);//NaN</span><br><span class="line">parseInt(true);//NaN</span><br><span class="line">parseInt(NaN);//NaN</span><br><span class="line">parseInt(&#x27;0x89id&#x27;);//137</span><br><span class="line">parseInt(&#x27;0x89ed&#x27;);//35309</span><br></pre></td></tr></table></figure>
+<p><em><strong>parseInt语法</strong></em><br>parseInt(string, radix);<br>string：要被解析的值。将参数转换为字符串 (使用 ToString抽象操作)，字符串开头的空白符将会被忽略<br>radix：从 2 到 36 的整数，表示进制的基数，超出这个范围，将返回 NaN；假如指定 0 或未指定，基数将会根据字符串的值进行推算（没有默认值，不是10，例0x开头会自动转成8进制）</p>
+<h3 id="3-布尔"><a href="#3-布尔" class="headerlink" title="3.布尔"></a>3.布尔</h3><ul>
+<li>字符串转布尔值：除了空串(‘’)，其他字符串转换成布尔值都是<code>true</code></li>
+<li>数字转布尔值：除了数字0（和非数字NaN），其他数字布尔值为<code>true</code></li>
+<li>任何非基本类型值总是转换成<code>true</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Boolean();//false</span><br><span class="line">Boolean(&#x27;&#x27;);//false</span><br><span class="line">Boolean(NaN);//false</span><br><span class="line">Boolean(undefined);//false</span><br><span class="line">Boolean(null);//false</span><br><span class="line">Boolean(false);//false</span><br><span class="line">Boolean(&#x27; &#x27;);//true</span><br><span class="line">Boolean(&#x27;true&#x27;);//true</span><br><span class="line">Boolean(&#x27;false&#x27;);//true</span><br><span class="line">Boolean(&#x27;0&#x27;);//true</span><br><span class="line">Boolean(true);//true</span><br><span class="line">Boolean(&#123;&#125;);//true</span><br><span class="line">Boolean([]);//true</span><br><span class="line">Boolean(Symbol());//true</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="三、不严格相等"><a href="#三、不严格相等" class="headerlink" title="三、不严格相等(==)"></a>三、不严格相等(==)</h1><h3 id="1-转换规则"><a href="#1-转换规则" class="headerlink" title="1.转换规则"></a>1.转换规则</h3><p><code>==</code>两边的操作数通常进行数值转换（除以下 <em><strong>特殊规则</strong></em>外）</p>
+<h4 id="参考表格"><a href="#参考表格" class="headerlink" title="参考表格"></a>参考表格</h4><ul>
+<li><p>==或!= 特殊值的不严格相等<br><a target="_blank" rel="noopener" href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript-Equality-Table</a></p>
+</li>
+<li><p>==或!= 特殊值的不严格相等-图片<br><img src="/images/JS-Equality-Table.png" alt="截图"></p>
+</li>
+</ul>
+<h3 id="2-特殊规则"><a href="#2-特殊规则" class="headerlink" title="2.特殊规则"></a>2.特殊规则</h3><ul>
+<li><p><code>null/undefined</code>只与<code>null</code>和<code>undefined</code>等，且==两边操作数不转换成数字</p>
+</li>
+<li><p>NaN与任何值都不等，包括自身(==,===均适用)</p>
+</li>
+<li><p>当<code>==</code>两个操作数都是字符串时，操作数都 <em><strong>不转换</strong></em> 为数字</p>
+</li>
+</ul>
+<h1 id="四、-（加）隐式转换"><a href="#四、-（加）隐式转换" class="headerlink" title="四、+（加）隐式转换"></a>四、+（加）隐式转换</h1><h3 id="优先级顺序"><a href="#优先级顺序" class="headerlink" title="优先级顺序"></a>优先级顺序</h3><ul>
+<li><p>1.操作数都是非基本类型，使用<code>[ToPrimitive]</code>转换成基本类型</p>
+</li>
+<li><p>2.其中一个操作数是string（字符串），另一个操作数转换成字符串进行运算</p>
+</li>
+<li><p>3.以上都不是，俩操作数都转成数值进行运算</p>
+</li>
+</ul>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
+<li><p>运算顺序是从左到右</p>
+</li>
+<li><p>将字面量[]转成空串’’</p>
+</li>
+</ul>
+<h1 id="五、Symbol"><a href="#五、Symbol" class="headerlink" title="五、Symbol"></a>五、Symbol</h1><ul>
+<li><p>1.symbol只能显示转换，不支持隐式转换，隐式转换会报错：TypeError</p>
+</li>
+<li><p>2.symbol无法转换成数字，抛出TypeError错误</p>
+</li>
+</ul>
+<h1 id="六、对象值"><a href="#六、对象值" class="headerlink" title="六、对象值"></a>六、对象值</h1><p>对象值转换成数字或字符串有专用内置属性<code>[[ToPrimitive]]</code><br>对象值转换主要使用定义在<code>Object.prototype</code>上的<code>valueOf</code>和<code>toString</code>两种方法<br><code>==</code>转换数组为数值时，数组先执行<code>valueOf()</code>，返回数组本身，再执行<code>toString()</code>，相当于执行数组的<code>join()</code>方法，将数组拼接成字符串</p>
+<p>运算规则：</p>
+<ul>
+<li>1).输入值本就是基本类型，不转换，直接返回；</li>
+<li>2).调佣<code>toString()</code>方法，结果是基本类型，返回；</li>
+<li>3).调用<code>valueOf()</code>，结果是基本类型，返回；</li>
+<li>4).<code>toString()</code>和<code>valueOf()</code>都无法得到基本类型值，抛出错误<code>TypeError</code></li>
+</ul>
+<p>注：数值先调用<code>valueOf()</code>，返回值再调用<code>toString()</code>；字符串则相反先<code>toString()</code>再<code>valueOf()</code><br>数组和对象的<code>valueOf()</code>方法返回对象本身，因此被忽略<br>大多数内置类型没有<code>valueOf()</code>方法，因此转换成数值和转换成字符串最后都是调用<code>toString()</code></p>
+<h1 id="七、运算符-待完善…"><a href="#七、运算符-待完善…" class="headerlink" title="七、运算符(待完善…)"></a>七、运算符(待完善…)</h1><h3 id=""><a href="#" class="headerlink" title="- * / %"></a><code>-</code> <code>*</code> <code>/</code> <code>%</code></h3><p>适用<code>Number</code>将两操作数转换后得到的结果</p>
+<h3 id="amp"><a href="#amp" class="headerlink" title="| &amp; ^ ~"></a><code>|</code> <code>&amp;</code> <code>^</code> <code>~</code></h3><h3 id="gt-lt-gt-lt"><a href="#gt-lt-gt-lt" class="headerlink" title="&gt; &lt; &gt;= &lt;="></a><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></h3><p><code>NaN</code> , <code>undefined</code> 与转换后的值比较都为 <code>false</code></p>
+<h3 id="的特殊比较结果"><a href="#的特殊比较结果" class="headerlink" title="{} 的特殊比较结果"></a><code>&#123;&#125;</code> 的特殊比较结果</h3><p><code>&#123;&#125;</code> 放在操作符第一位最好用括号分组，否则引擎认为 <code>&#123;&#125;</code> 是块语句声明，直接忽略，无转换<br><code>&#123;&#125;</code> 与<code>0,1,undefined,NaN,null</code>比较，<code>&#123;&#125;</code>转换成<code>NaN</code>，因此与<code>&gt;,&lt;,&gt;=,&lt;=</code>比较结果均为<code>false</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;&gt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&gt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;&lt;&#123;&#125;);//false</span><br><span class="line">(&#123;&#125;&lt;=&#123;&#125;);//true</span><br><span class="line">(&#123;&#125;==&#123;&#125;);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;[]);//true [[]]同[]结果</span><br><span class="line">(&#123;&#125;&gt;=[]);//true</span><br><span class="line">(&#123;&#125;&lt;=[]);//false</span><br><span class="line">(&#123;&#125;&lt;[]);//false</span><br><span class="line">(&#123;&#125;==[]);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;&#x27;1&#x27;);//true &#x27;0&#x27;,&#x27;&#x27;(空串)同&#x27;1&#x27;一致</span><br><span class="line">(&#123;&#125;&gt;=&#x27;1&#x27;);//true</span><br><span class="line">(&#123;&#125;&lt;=&#x27;1&#x27;);//false</span><br><span class="line">(&#123;&#125;&lt;&#x27;1&#x27;);//false</span><br><span class="line">(&#123;&#125;==&#x27;1&#x27;);//false</span><br><span class="line"></span><br><span class="line">(&#123;&#125;&gt;[1]);//true</span><br><span class="line">(&#123;&#125;&gt;=[1]);//true</span><br><span class="line">(&#123;&#125;&lt;=[1]);//false</span><br><span class="line">(&#123;&#125;&lt;[1]);//false</span><br><span class="line">(&#123;&#125;==[1]);//false</span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊结果"><a href="#特殊结果" class="headerlink" title="[] 特殊结果"></a><code>[]</code> 特殊结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[]&gt;null;//false</span><br><span class="line">[]&gt;=null;//true</span><br><span class="line">[]&lt;null;//false</span><br><span class="line">[]&lt;=null;//true</span><br><span class="line">[]==null;//false</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt">MDN:parseInt</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.programiz.com/javascript/type-conversion">JavaScript Type Conversions</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/">JavaScript type coercion explained</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.openreplay.com/javascript-type-conversions-explained/">JavaScript Type Conversions Explained</a></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/13/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="clei5p98m001ibs3mad68aopd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="layout-CSS篇-auto关键词" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" class="article-date">
+  <time datetime="2023-01-06T03:09:07.000Z" itemprop="datePublished">2023-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/">CSS篇-auto关键词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>根据auto在CSS常用属性的实际表现来探究auto的作用</p>
+</blockquote>
+<p>auto是自适应，自动的意思</p>
+<h1 id="1-width-auto"><a href="#1-width-auto" class="headerlink" title="1.width:auto;"></a>1.width:auto;</h1><p>width默认值（即不设置width值时）是auto<br>当使用<code>width:auto;</code>时，元素的宽被限制在父元素内，元素内容的宽度会自动减去元素的margin，padding和border，即元素内容自动充满元素剩余空间</p>
+<h2 id="width-auto-VS-width-100"><a href="#width-auto-VS-width-100" class="headerlink" title="width:auto; VS width:100%;"></a>width:auto; VS width:100%;</h2><p><code>width:auto;</code>表示：父元素内容宽度=子元素margin+padding+border+content(元素内容宽度，即元素的剩余空间)</p>
+<p><code>width:100%;</code>表示：父元素内容宽度=子元素content(即子元素内容宽度等于父元素宽度)</p>
+<p><strong>注意：适用标准浏览器的盒子模型，不适用IE盒子模型</strong></p>
+<h1 id="2-height-auto"><a href="#2-height-auto" class="headerlink" title="2.height:auto;"></a>2.height:auto;</h1><p>height默认值是auto<br><code>height:auto;</code>，元素高度等于元素内容高度，此时即使设置<code>height:100%;</code>元素高度也还是元素的内容高度</p>
+<h1 id="3-margin-auto"><a href="#3-margin-auto" class="headerlink" title="3.margin:auto;"></a>3.margin:auto;</h1><p>margin的默认值是0，表示元素没有margin<br>当使用<code>margin:auto;</code>，除去元素的content内容的宽高、padding、border，剩余空间都由margin来填充</p>
+<p>如下代码，元素宽高确定，巧用<code>margin:auto;</code>，达到水平垂直居中效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;I am centered.&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下代码，元素宽确定，巧用<code>margin:0 auto;</code>，让元素水平居中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;I am centered.&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.item &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>margin-inline和margin-block属性是实验中属性，暂不研究</strong></p>
+<h1 id="4-background-size-auto"><a href="#4-background-size-auto" class="headerlink" title="4.background-size:auto;"></a>4.background-size:auto;</h1><p>background-size默认值是auto，以背景图片的比例缩放背景图片</p>
+<h1 id="5-top-right-bottom-left-auto"><a href="#5-top-right-bottom-left-auto" class="headerlink" title="5.top/right/bottom/left:auto;"></a>5.top/right/bottom/left:auto;</h1><p>top/right/bottom/left的默认值是auto</p>
+<p><strong>MDN</strong><br><strong>left:auto</strong></p>
+<p><strong>对于绝对定位元素，元素将忽略此属性而以right属性为准，如果此时设置width: auto，将基于内容需要的宽度设置宽度；如果right也为auto的话，元素的水平位置就是它假如作为静态 (即 static) 元素时该在的位置</strong></p>
+<p><strong>对于相对定位元素，元素相对正常位置的偏移量将基于right属性；如果right也为auto的话，元素将不会有偏移</strong></p>
+<h1 id="6-z-index-auto"><a href="#6-z-index-auto" class="headerlink" title="6.z-index:auto;"></a>6.z-index:auto;</h1><p>z-index默认值是auto<br>盒子不会创建一个新的本地堆叠上下文<br>在当前堆叠上下文中生成的盒子的堆叠层级和父级盒子相同</p>
+<h1 id="7-overflow-auto"><a href="#7-overflow-auto" class="headerlink" title="7.overflow:auto;"></a>7.overflow:auto;</h1><p>overflow默认值是visible，内容不能被裁减并且可能渲染到边距盒（padding）的外部</p>
+<p><strong>MDN：<code>overflow:auto;</code></strong><br><strong>取决于用户代理。如果内容适应边距（padding）盒，它看起来与 visible 相同，但是仍然建立了一个新的块级格式化上下文；如果内容溢出，则浏览器提供滚动条</strong></p>
+<h1 id="8-cursor-auto"><a href="#8-cursor-auto" class="headerlink" title="8.cursor:auto;"></a>8.cursor:auto;</h1><p>cursor默认值是auto，浏览器根据当前内容决定指针样式</p>
+<h1 id="9-table-layout-auto"><a href="#9-table-layout-auto" class="headerlink" title="9.table-layout:auto;"></a>9.table-layout:auto;</h1><p>table-layout默认值是auto，表格及单元格的宽度取决于其包含的内容</p>
+<h1 id="10-flex-auto"><a href="#10-flex-auto" class="headerlink" title="10.flex:auto;"></a>10.flex:auto;</h1><p>flex默认值是<code>0 1 auto</code>，flex是flex-grow，flex-shrink，flex-basis的合并简写属性<br>当使用<code>flex:auto;</code>，等同于<code>flex:1 1 auto;</code></p>
+<h3 id="flex-margin-left-auto-可使元素右对齐"><a href="#flex-margin-left-auto-可使元素右对齐" class="headerlink" title="flex+margin-left:auto;可使元素右对齐"></a>flex+margin-left:auto;可使元素右对齐</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;Item1&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item item-2&quot;&gt;Item2&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.item-2 &#123;</span><br><span class="line">  margin-left: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-margin-auto-可使元素水平垂直居中"><a href="#flex-margin-auto-可使元素水平垂直居中" class="headerlink" title="flex+margin:auto;可使元素水平垂直居中"></a>flex+margin:auto;可使元素水平垂直居中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;Item1&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  height: 400px;</span><br><span class="line">  background-color: blue;</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  margin: auto auto;</span><br><span class="line">  background-color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>grid可参考flex，暂不研究</strong></p>
+<hr>
+<hr>
+<h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><p>英文版：<a target="_blank" rel="noopener" href="https://ishadeed.com/article/auto-css/">https://ishadeed.com/article/auto-css/</a>  </p>
+<p>中文翻译版：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq449245884/article/details/105963479/">https://blog.csdn.net/qq449245884/article/details/105963479/</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/how-auto-margins-work-in-flexbox/">https://css-tricks.com/how-auto-margins-work-in-flexbox/</a>  </p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/01/06/CSS%E7%AF%87-auto%E5%85%B3%E9%94%AE%E8%AF%8D/" data-id="clei5p97w0003bs3m59fic3wd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="layout-浏览器标签-Tab的标题和图标" class="article article-type-layout" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" class="article-date">
@@ -123,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="cle839l1d001a243m7h5r08wq" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/" data-id="clei5p98m001hbs3mduw77qra" class="article-share-link">Share</a>
       
       
     </footer>
@@ -537,7 +745,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="cle839l1a0013243mgszd3n1a" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/" data-id="clei5p98b0010bs3m6ep04wh0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -578,7 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="cle839l15000r243m49vhbt4a" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/30/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="clei5p988000sbs3m2rk7g30c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -624,7 +832,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="cle839l190012243m3cwv53xb" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/27/import%E4%B8%8Eexport/" data-id="clei5p987000rbs3m11lx8agm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
@@ -696,7 +904,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="cle839l0x000a243mgspk4sou" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/JavaScript%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" data-id="clei5p980000abs3mc8dpgvte" class="article-share-link">Share</a>
       
       
     </footer>
@@ -735,7 +943,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="cle839l13000m243m34ihgooz" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2021/12/23/first/" data-id="clei5p986000obs3ma4rv9v1s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/about/" rel="tag">about</a></li></ul>
@@ -782,7 +990,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/work/" style="font-size: 20px;">work</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/work/" style="font-size: 15px;">work</a>
     </div>
   </div>
 
@@ -804,6 +1012,14 @@
       <ul>
         
           <li>
+            <a href="/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/">for...in和for...of区别</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/24/reduce%E7%94%A8%E6%B3%95%E9%9B%86%E9%94%A6/">reduce用法集锦</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">CSS篇-重排与重绘</a>
           </li>
         
@@ -813,14 +1029,6 @@
         
           <li>
             <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">宏任务和微任务</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/08/vuejs%E7%9A%84nextTick/">vuejs的nextTick</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/07/closure/">closure</a>
           </li>
         
       </ul>
