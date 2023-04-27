@@ -1,7 +1,7 @@
 ---
 title: import与export
 date: 2021-12-27 10:42:07
-tags: work
+tags: JS
 ---
 
 ## 一、import

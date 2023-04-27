@@ -1,8 +1,7 @@
 ---
 title: JavaScript定义变量
 date: 2021-12-23 14:22:39
-categories:
-  - work
+tags: JS
 ---
 
 ## 一、声明变量

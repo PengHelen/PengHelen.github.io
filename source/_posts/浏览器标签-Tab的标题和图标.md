@@ -3,7 +3,7 @@ layout:
   - layout
 title: 浏览器标签/Tab的标题和图标
 date: 2023-01-05 14:12:54
-tags:
+tags: web
 ---
 
 ---

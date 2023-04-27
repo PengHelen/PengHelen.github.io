@@ -1,7 +1,7 @@
 ---
 title: js深拷贝与浅拷贝
 date: 2021-12-30 16:05:39
-tags: work
+tags: JS
 ---
 
 ## 一、概念
