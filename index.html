@@ -70,6 +70,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="layout-鼠标事件" class="article article-type-layout" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/17/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" class="article-date">
+  <time datetime="2023-04-17T03:05:13.000Z" itemprop="datePublished">2023-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/17/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/">鼠标事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、鼠标JS事件"><a href="#一、鼠标JS事件" class="headerlink" title="一、鼠标JS事件"></a>一、鼠标JS事件</h1><p>主测浏览器：Chrome，其他浏览器标注Firefox(F),IE(E),Safari(S),Opera(O)</p>
+<h2 id="click-单击"><a href="#click-单击" class="headerlink" title="click 单击"></a>click 单击</h2><p>type: click<br>which: 1<br>button: 0<br>bubbles: true  </p>
+<h2 id="dblclick-双击-double-click"><a href="#dblclick-双击-double-click" class="headerlink" title="dblclick 双击(double click)"></a>dblclick 双击(double click)</h2><p>仅左键双击有效，右键双击仅一次有效且type: contextmenu<br>type: dblclick<br>which: 1<br>button: 0<br>bubbles: true  </p>
+<h2 id="mousewheel–-gt-wheel"><a href="#mousewheel–-gt-wheel" class="headerlink" title="mousewheel–&gt;wheel"></a>mousewheel–&gt;wheel</h2><p>type: wheel<br>which: 0/1(F)<br>button: 0<br>bubbles: true  </p>
+<h2 id="contextmenu"><a href="#contextmenu" class="headerlink" title="contextmenu"></a>contextmenu</h2><p>type: contextmenu<br>which: 3<br>button: 2<br>bubbles: true  </p>
+<h2 id="mousedown"><a href="#mousedown" class="headerlink" title="mousedown"></a>mousedown</h2><p>鼠标按下（不区分鼠标左、中（滚轮）、右键）<br>type: mousedown<br>bubbles: true  </p>
+<h2 id="mouseup"><a href="#mouseup" class="headerlink" title="mouseup"></a>mouseup</h2><p>鼠标弹起（不区分鼠标左、中（滚轮）、右键）<br>type: mouseup<br>bubbles: true  </p>
+<h2 id="mouseover"><a href="#mouseover" class="headerlink" title="mouseover"></a>mouseover</h2><p>type: mouseover<br>bubbles: true  </p>
+<h2 id="mouseeneter"><a href="#mouseeneter" class="headerlink" title="mouseeneter"></a>mouseeneter</h2><p>type: mouseenter<br>bubbles: false  </p>
+<h2 id="mousemove"><a href="#mousemove" class="headerlink" title="mousemove"></a>mousemove</h2><p>type: mousemove  </p>
+<h2 id="mouseout"><a href="#mouseout" class="headerlink" title="mouseout"></a>mouseout</h2><p>type: mouseout<br>bubbles: true  </p>
+<h2 id="mouseleave"><a href="#mouseleave" class="headerlink" title="mouseleave"></a>mouseleave</h2><p>type: mouseleave<br>bubbles: false</p>
+<h2 id="某个-全局元素监听鼠标事件"><a href="#某个-全局元素监听鼠标事件" class="headerlink" title="某个/全局元素监听鼠标事件"></a>某个/全局元素监听鼠标事件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;idxxx&quot;&gt;&lt;/div&gt;</span><br><span class="line">document.getElementById(&#x27;idxxx&#x27;).addEventListener(&#x27;click&#x27;,function(e)&#123;</span><br><span class="line">  console.log(&#x27;eeeee&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 全局监听</span><br><span class="line">window.addEventListener(&#x27;click&#x27;,function(e)&#123;</span><br><span class="line">  console.log(&#x27;eeeee&#x27;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="剪切板"><a href="#剪切板" class="headerlink" title="剪切板"></a>剪切板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 将剪切板内容写到id为xxx的容器中 paste操作 --&gt;</span><br><span class="line">function pasteClpdToContainer() &#123;</span><br><span class="line">    navigator.clipboard.readText().then(</span><br><span class="line">      clipText =&gt; document.getElementById(&quot;xxx&quot;).innerText = clipText);</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 将内容写入到剪切板中 --&gt;</span><br><span class="line">function writeClipboard() &#123;</span><br><span class="line">    navigator.clipboard.writeText(&quot;&lt;empty clipboard&gt;&quot;).then(function () &#123;</span><br><span class="line">      /* clipboard successfully set */</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">      /* clipboard write failed */</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="坐标值涵义"><a href="#坐标值涵义" class="headerlink" title="坐标值涵义"></a>坐标值涵义</h2><p>screenX 屏幕x轴坐标<br>screenY 屏幕y轴坐标<br>clientX 浏览器窗口x轴坐标；本地（DOM）坐标系中x坐标<br>clientY 浏览器窗口y轴坐标；本地（DOM）坐标系中y坐标<br>layerX 当前触发事件层级的x坐标<br>layerY 当前触发事件层级的y坐标<br>offsetX 相对于目标节点内填充边的x坐标<br>offsetY 相对于目标节点内填充边的y坐标<br>pageX 相对于整个文档的x坐标<br>pageY 相对于整个文档的y坐标</p>
+<h2 id="阻止事件、事件冒泡-捕获"><a href="#阻止事件、事件冒泡-捕获" class="headerlink" title="阻止事件、事件冒泡/捕获"></a>阻止事件、事件冒泡/捕获</h2><h4 id="1-阻止事件发生"><a href="#1-阻止事件发生" class="headerlink" title="1.阻止事件发生"></a>1.阻止事件发生</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.preventDefault();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-阻止事件冒泡-捕获进一步传播"><a href="#2-阻止事件冒泡-捕获进一步传播" class="headerlink" title="2.阻止事件冒泡/捕获进一步传播"></a>2.阻止事件冒泡/捕获进一步传播</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.stopPropagation();</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-stopImmediatePropagation"><a href="#3-stopImmediatePropagation" class="headerlink" title="3.stopImmediatePropagation"></a>3.stopImmediatePropagation</h4><blockquote>
+<p>MDN：如果多个事件监听器被附加到相同元素的相同事件类型上，当此事件触发时，它们会按其被添加的顺序被调用。如果在其中一个事件监听器中执行 stopImmediatePropagation() ，那么剩下的事件监听器都不会被调用。  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.stopImmediatePropagation();</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="二、CSS鼠标显示"><a href="#二、CSS鼠标显示" class="headerlink" title="二、CSS鼠标显示"></a>二、CSS鼠标显示</h1><h2 id="user-select"><a href="#user-select" class="headerlink" title="user-select"></a>user-select</h2><p>文字是否可选</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">user-select:none;//文字无法选中</span><br><span class="line">user-select:auto;//根据浏览器默认值执行</span><br><span class="line">user-select:text;//文本指针</span><br><span class="line">user-select:contain;//与text同</span><br><span class="line">user-select:all;//当前文字点击自动全选</span><br><span class="line"></span><br><span class="line">user-select:inherit;</span><br><span class="line">user-select:initial;</span><br><span class="line">user-select:unset;</span><br><span class="line"></span><br><span class="line">&lt;!-- 前缀 --&gt;</span><br><span class="line">-moz-user-select:none/text/all;</span><br><span class="line">-webkit-user-select:none/text/all;</span><br><span class="line">-ms-user-select:none/text/element;</span><br></pre></td></tr></table></figure>
+
+<h2 id="cursor"><a href="#cursor" class="headerlink" title="cursor"></a>cursor</h2><p>鼠标形状</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">cursor:auto;</span><br><span class="line">cursor:default;// 默认指针，箭头</span><br><span class="line">cursor:none;// 鼠标指针消失</span><br><span class="line"></span><br><span class="line">cursor:context-menu;</span><br><span class="line">cursor:help;</span><br><span class="line">cursor:pointer;// 手型</span><br><span class="line">cursor:progress;</span><br><span class="line">cursor:wait;</span><br><span class="line"></span><br><span class="line">cursor:cell;</span><br><span class="line">cursor:crosshair;</span><br><span class="line">cursor:text;</span><br><span class="line">cursor:vertical;</span><br><span class="line"></span><br><span class="line">cursor:alias;</span><br><span class="line">cursor:copy;</span><br><span class="line">cursor:move;</span><br><span class="line">cursor:no-drop;</span><br><span class="line">cursor:not-allowed;</span><br><span class="line">cursor:grab;</span><br><span class="line">cursor:grabbing;</span><br><span class="line"></span><br><span class="line">cursor:allscroll;</span><br><span class="line">cursor:col-resize;</span><br><span class="line">cursor:row-resize;</span><br><span class="line">cursor:n-resize;</span><br><span class="line">cursor:e-resize;</span><br><span class="line">cursor:s-cursor;</span><br><span class="line">cursor:w-resize;</span><br><span class="line">cursor:ne-resize;</span><br><span class="line">cursor:nw-resize;</span><br><span class="line">cursor:se-resize;</span><br><span class="line">cursor:sw-resize;</span><br><span class="line">cursor:ew-resize;</span><br><span class="line">cursor:ns-resize;</span><br><span class="line">cursor:nesw-resize;</span><br><span class="line">cursor:nwse-resize;</span><br><span class="line"></span><br><span class="line">cursor:zoom-in;</span><br><span class="line">cursor:zoom-out;</span><br><span class="line"></span><br><span class="line">cursor:inherit;</span><br><span class="line">cursor:initial;</span><br><span class="line">cursor:unset;</span><br><span class="line"></span><br><span class="line">&lt;!-- 自定义cursor URL 和 xy 的坐标偏移值，最后提供一个关键字值作为备用 --&gt;</span><br><span class="line">cursor:url(xxx.png) 4,12,auto;</span><br></pre></td></tr></table></figure>
+
+<h2 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h2><p>滚动条选择器</p>
+<p><code>::-webkit-scrollbar</code> 整个滚动条</p>
+<p><code>::-webkit-scrollbar-button</code> 滚动条上的按钮（上下箭头）</p>
+<p><code>::-webkit-scrollbar-thumb</code> 滚动条上的滚动滑块</p>
+<p><code>::-webkit-scrollbar-track</code> 滚动条轨道</p>
+<p><code>::-webkit-scrollbar-track-piece</code> 滚动条没有滑块的轨道部分</p>
+<p><code>::-webkit-scrollbar-corner</code> 当同时有垂直滚动条和水平滚动条时交汇的部分。通常是浏览器窗口的右下角</p>
+<p><code>::-webkit-resizer</code> 出现在某些元素底角的可拖动调整大小的滑块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scrollbar-width: auto;</span><br><span class="line">scrollbar-width: thin;</span><br><span class="line">scrollbar-width: none;// 不显示滚动条，但是该元素依然可以滚动</span><br><span class="line"></span><br><span class="line">scrollbar-color: auto;</span><br><span class="line">scrollbar-color: dark;</span><br><span class="line">scrollbar-color: light;</span><br><span class="line">scrollbar-color: rebeccapurple green;// 两种颜色值</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">MDN-cursor</a><br><a target="_blank" rel="noopener" href="https://webkit.org/blog/363/styling-scrollbars/">设置滚动条样式</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::-webkit-scrollbar">MDN-scrollbar</a>  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/04/17/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" data-id="clgytek6j001j7w3mf8s27rwa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-for-in和for-of区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/" class="article-date">
@@ -120,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/" data-id="clei5p985000mbs3m8psfhntf" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/" data-id="clgytek66000n7w3m4z6r27gh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
@@ -192,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/24/reduce%E7%94%A8%E6%B3%95%E9%9B%86%E9%94%A6/" data-id="clei5p989000vbs3m0zcue86g" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/24/reduce%E7%94%A8%E6%B3%95%E9%9B%86%E9%94%A6/" data-id="clgytek68000r7w3mfxay6z42" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
@@ -255,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" data-id="clei5p97z0008bs3mgiuuef6c" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" data-id="clgytek5z00087w3mf28egosz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
@@ -318,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" data-id="clei5p97y0006bs3m8qc2cthe" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" data-id="clgytek5y00067w3m7bv278ih" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
@@ -386,10 +468,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" data-id="clei5p98d0014bs3m18oicf0f" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" data-id="clgytek6c00147w3m9ysof9l9" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
 
     </footer>
   </div>
@@ -436,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/08/vuejs%E7%9A%84nextTick/" data-id="clei5p98a000xbs3mh5e7hqju" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/08/vuejs%E7%9A%84nextTick/" data-id="clgytek6a000w7w3m0mqe36f6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
@@ -489,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="clei5p984000ibs3m9wxs18ov" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/02/07/closure/" data-id="clgytek64000h7w3m1mcv3p4c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
@@ -579,7 +661,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="clei5p982000ebs3m2luqgcq5" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/31/Promise/" data-id="clgytek62000e7w3m7ib5e7wa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
@@ -636,71 +718,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="clei5p98b0012bs3m9bf7gjft" class="article-share-link">Share</a>
+      <a data-url="https://penghelen.github.io/2023/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="clgytek6c00117w3m18mh72ua" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="layout-CSS层级" class="article article-type-layout" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" class="article-date">
-  <time datetime="2023-01-16T07:19:26.000Z" itemprop="datePublished">2023-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/16/CSS%E5%B1%82%E7%BA%A7/">CSS层级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="层叠影响因素"><a href="#层叠影响因素" class="headerlink" title="层叠影响因素"></a>层叠影响因素</h1><ul>
-<li>资源顺序（平级）</li>
-<li>优先级（等级压制）</li>
-<li>重要程度（覆盖所有优先级）</li>
-</ul>
-<h1 id="资源顺序"><a href="#资源顺序" class="headerlink" title="资源顺序"></a>资源顺序</h1><p>当应用两条同级别的规则到一个元素的时候，写在后面的（在CSS样式表中的顺序，<s>在HTML中顺序</s>）就是实际使用的规则</p>
-<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>仅当某一列的优先级权重相同时，才评估下一列；<br>否则，可直接忽略低等级的选择器，因为它们无法覆盖高优先级等级的选择器</p>
-<p>例：即无论选择器中有多少个 ID，内联样式总是比其它任何优先级的权重都要高</p>
-<ul>
-<li>内联样式(1000)</li>
-<li>ID(100)</li>
-<li>类，伪类，属性选择器(10)</li>
-<li>元素，伪元素（如::after）(1)</li>
-</ul>
-<p>否定（:not()）和任意匹配（:is()）的参数，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级</p>
-<h3 id="不影响优先级"><a href="#不影响优先级" class="headerlink" title="不影响优先级"></a>不影响优先级</h3><p>通用选择器 * 组合选择器(+,&gt;,~,’’) 调整优先级选择器(:where())</p>
-<h1 id="重要程度"><a href="#重要程度" class="headerlink" title="重要程度"></a>重要程度</h1><p>覆盖所有上面所有优先级计算<br>!important与优先级无关，但它与最终的结果直接相关</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
-<li>覆盖内联样式</li>
-<li>覆盖优先级高的选择器</li>
-</ul>
-<h1 id="a标签伪类元素优先级"><a href="#a标签伪类元素优先级" class="headerlink" title="a标签伪类元素优先级"></a>a标签伪类元素优先级</h1><p>link-visited-hover-active<br>LVHA<br>趣味记法：LoVe HAte</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/what-is-css-specificity/">https://www.freecodecamp.org/news/what-is-css-specificity/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://penghelen.github.io/2023/01/16/CSS%E5%B1%82%E7%BA%A7/" data-id="clei5p97t0001bs3mdp3w12om" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
 
     </footer>
   </div>
@@ -721,20 +742,13 @@
           <aside id="sidebar">
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/work/">work</a></li></ul>
-    </div>
-  </div>
-
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
     </div>
   </div>
 
@@ -744,7 +758,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/work/" style="font-size: 15px;">work</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/web/" style="font-size: 15px;">web</a>
     </div>
   </div>
 
@@ -753,7 +767,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
     </div>
   </div>
 
@@ -764,6 +778,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/04/17/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/">鼠标事件</a>
+          </li>
         
           <li>
             <a href="/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/">for...in和for...of区别</a>
@@ -779,10 +797,6 @@
         
           <li>
             <a href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/">CSS篇-隐藏属性</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/08/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">宏任务和微任务</a>
           </li>
         
       </ul>
