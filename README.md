@@ -8,7 +8,7 @@ https://penghelen.github.io/
 
 `npm install -g hexo-cli`
 
-`nmp install hexo`
+`npm install hexo`
 
 + init & run 
 
@@ -18,11 +18,24 @@ https://penghelen.github.io/
 
 `hexo clean`
 
+`hexo generate`
+
 `hexo deploy`
+
+# init menu
+
+`hexo new page "menu's name"`
 
 # write article
 
 + new article
 
-`hexo new [layout] <title>`
+`hexo new <title>`
+
+# settings
+
+### 1.custom file of html
+run `hexo clean`
+
+after modify `_config.yml` file
 

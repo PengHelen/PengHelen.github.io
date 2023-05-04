@@ -34,7 +34,9 @@ menu:
   归档: /archives
   工作: /work
   生活: /lifetime
-rss: /atom.xml
+  关于: /About
+  工具: /tools
+# rss: /atom.xml
 
 # Content
 excerpt_link: Read More
@@ -50,6 +52,7 @@ widgets:
 - recent_posts
 - lifetime
 - work
+- tools
 
 # Miscellaneous
 google_analytics:
@@ -92,6 +95,7 @@ Landscape provides 5 built-in widgets:
 - recent_posts
 - lifetime
 - work
+- tools
 
 All of them are enabled by default. You can edit them in `widget` setting.
 

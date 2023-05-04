@@ -4,8 +4,9 @@ menu:
   归档: /archives
   工作: /work
   生活: /lifetime
+  工具: /tools
   关于: /about
-rss: /atom.xml
+# rss: /atom.xml
 
 # Content
 excerpt_link: Read More
@@ -14,10 +15,10 @@ fancybox: true
 # Sidebar
 sidebar: left
 widgets:
-- category
+# - category
 - tag
-- tagcloud
-- archive
+# - tagcloud
+# - archive
 - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)

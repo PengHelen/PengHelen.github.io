@@ -1,6 +1,4 @@
 ---
-layout:
-  - layout
 title: Promise
 date: 2023-01-31 10:02:41
 tags: JS
