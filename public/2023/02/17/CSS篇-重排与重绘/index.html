@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS篇-重排与重绘 | PengHelen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="重排当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素 发生重排的情况 页面初始渲染，开销最大的一次重排 添加&#x2F;删除可见的DOM元素 改变元素位置 改变元素尺寸（margin，padding，border，width，height等） 改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等） 改变浏览器窗口尺寸（resize） CSS伪类（:hover">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS篇-重排与重绘">
+<meta property="og:url" content="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/index.html">
+<meta property="og:site_name" content="PengHelen">
+<meta property="og:description" content="重排当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素 发生重排的情况 页面初始渲染，开销最大的一次重排 添加&#x2F;删除可见的DOM元素 改变元素位置 改变元素尺寸（margin，padding，border，width，height等） 改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等） 改变浏览器窗口尺寸（resize） CSS伪类（:hover">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-17T03:34:09.000Z">
+<meta property="article:modified_time" content="2023-02-17T03:44:32.899Z">
+<meta property="article:author" content="Helen Peng">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PengHelen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/work">工作</a>
+        
+          <a class="main-nav-link" href="/lifetime">生活</a>
+        
+          <a class="main-nav-link" href="/tools">工具</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://penghelen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS篇-重排与重绘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" class="article-date">
+  <time datetime="2023-02-17T03:34:09.000Z" itemprop="datePublished">2023-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS篇-重排与重绘
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h1><p>当DOM变化影响了元素的几何因素（元素的位置和尺寸大小），表现为重新生成布局，重新排列元素</p>
+<h3 id="发生重排的情况"><a href="#发生重排的情况" class="headerlink" title="发生重排的情况"></a>发生重排的情况</h3><ul>
+<li>页面初始渲染，开销最大的一次重排</li>
+<li>添加/删除可见的DOM元素</li>
+<li>改变元素位置</li>
+<li>改变元素尺寸（margin，padding，border，width，height等）</li>
+<li>改变元素的内容影响元素的尺寸（字体大小，文字数量，图片大小等）</li>
+<li>改变浏览器窗口尺寸（resize）</li>
+<li>CSS伪类（:hover）</li>
+<li><code>display:none</code></li>
+<li>DOM添加动画</li>
+</ul>
+<h1 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h1><p>由于节点的样式发生改变，表现为某些元素的外观被改变，但不改变布局</p>
+<p><strong>发生重排必然触发重绘</strong></p>
+<h3 id="发生重绘的情况"><a href="#发生重绘的情况" class="headerlink" title="发生重绘的情况"></a>发生重绘的情况</h3><ul>
+<li>color改变</li>
+<li><code>visibility:hidden;</code></li>
+<li>border-style</li>
+<li>圆角、阴影</li>
+<li>ouline</li>
+</ul>
+<h1 id="避免重排重绘"><a href="#避免重排重绘" class="headerlink" title="避免重排重绘"></a>避免重排重绘</h1><ul>
+<li>集中改变样式</li>
+<li>使用<code>documentFragment</code>，<code>document.createDocumentFragment</code>创建一个游离于DOM树之外的节点，<br>在节点上操作，最后插入DOM树，只触发一次重排重回（虚拟DOM？）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/02/17/CSS%E7%AF%87-%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" data-id="clha94atk0006tg3m5qb2g0aq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/02/24/reduce%E7%94%A8%E6%B3%95%E9%9B%86%E9%94%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          reduce用法集锦
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/02/17/CSS%E7%AF%87-%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS篇-隐藏属性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/04/%E7%BC%93%E5%AD%98/">缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/27/%E5%9B%BE%E7%89%87/">图片</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/17/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/">鼠标事件</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/24/for-in%E5%92%8Cfor-of%E5%8C%BA%E5%88%AB/">for...in和for...of区别</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/24/reduce%E7%94%A8%E6%B3%95%E9%9B%86%E9%94%A6/">reduce用法集锦</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 - 2023 Helen Peng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/work" class="mobile-nav-link">工作</a>
+  
+    <a href="/lifetime" class="mobile-nav-link">生活</a>
+  
+    <a href="/tools" class="mobile-nav-link">工具</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
