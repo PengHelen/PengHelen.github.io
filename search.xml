@@ -4,6 +4,310 @@
   
     
     <entry>
+      <title>HTTP状态码</title>
+      <link href="/2023/06/19/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+      <url>/2023/06/19/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h3 id="1-信息响应-100-199"><a href="#1-信息响应-100-199" class="headerlink" title="1.信息响应(100-199)"></a>1.信息响应(100-199)</h3><p>100 Continue<br>101 Switching Protocols<br>102 Processing<br>103 Early Hints</p><h3 id="2-成功响应-200-299"><a href="#2-成功响应-200-299" class="headerlink" title="2.成功响应(200-299)"></a>2.成功响应(200-299)</h3><p>200 OK<br>201 Created<br>202 Accepted<br>203 Non-Authoritative Information<br>204 No Content<br>205 Reset Content<br>206 partial Content<br>207 Multi-Status<br>208 Already Reported<br>226 IM Used</p><h3 id="3-重定向消息-300-399"><a href="#3-重定向消息-300-399" class="headerlink" title="3.重定向消息(300-399)"></a>3.重定向消息(300-399)</h3><p>300 Multiple Choice<br>301 Moved Permanently<br>302 Found<br>303 See Other<br>304 Not Modified<br>307 Temporary Redirect<br>308 Permanent Redirect</p><h3 id="4-客户端错误响应-400-499"><a href="#4-客户端错误响应-400-499" class="headerlink" title="4.客户端错误响应(400-499)"></a>4.客户端错误响应(400-499)</h3><p>400 Bad Request<br>401 Unauthorized<br>403 Forbidden<br>404 Not Found<br>405 Method Not Allowed<br>406 Not Acceptable<br>407 Proxy Ahthentication Required<br>408 Request Timeout<br>409 Confilct<br>410 Gone<br>411 Length Required<br>412 Precondition Failed<br>413 Payload Too Large<br>414 URI Too Long<br>415 Unsupported Media Type<br>416 Range Not Satisfiable<br>417 Expectation Failed<br>418 I’m a teapot<br>421 Misdirected Request<br>422 Unprocessable Entity<br>423 Locked<br>424 Failed Dependency<br>426 Upgrade Required<br>428 Precondition Required<br>429 Too Many Requests<br>431 Request Header Fields Too large<br>451 Unavailable For legal Reasons</p><h3 id="5-服务端错误响应-500-599"><a href="#5-服务端错误响应-500-599" class="headerlink" title="5.服务端错误响应(500-599)"></a>5.服务端错误响应(500-599)</h3><p>500 Internal Server Error<br>501 Not Implemented<br>502 Bad Gateway<br>503 Service Unavailable<br>504 Gateway Timeout<br>505 HTTP Version Not Supported<br>506 Variant Also Negotiates<br>507 Insufficient Storage<br>508 Loop Detected<br>510 Not Extended<br>511 Network Authentication Required</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>防抖和节流</title>
+      <link href="/2023/06/16/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/"/>
+      <url>/2023/06/16/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> JS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack基础</title>
+      <link href="/2023/06/09/webpack%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/06/09/webpack%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webGL基础</title>
+      <link href="/2023/06/06/webGL%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/06/06/webGL%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webRTC基础</title>
+      <link href="/2023/06/05/webRTC%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/06/05/webRTC%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS篇-Flex详解</title>
+      <link href="/2023/06/02/CSS%E7%AF%87-Flex%E8%AF%A6%E8%A7%A3/"/>
+      <url>/2023/06/02/CSS%E7%AF%87-Flex%E8%AF%A6%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webworker实用模板</title>
+      <link href="/2023/06/01/webworker%E5%AE%9E%E7%94%A8%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2023/06/01/webworker%E5%AE%9E%E7%94%A8%E6%A8%A1%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>window.print</title>
+      <link href="/2023/05/30/window-print/"/>
+      <url>/2023/05/30/window-print/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>websocket实用模板</title>
+      <link href="/2023/05/29/websocket%E5%AE%9E%E7%94%A8%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2023/05/29/websocket%E5%AE%9E%E7%94%A8%E6%A8%A1%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> JS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>svg入门基础</title>
+      <link href="/2023/05/24/svg%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/05/24/svg%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、SVG"><a href="#一、SVG" class="headerlink" title="一、SVG"></a>一、SVG</h1><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Scalable Vector Graphics<br>可缩放矢量图形<br>XML语言，严格区分大小写</p><ul><li><p>优点<br>实现了DOM接口</p></li><li><p>缺点<br>加载慢</p></li></ul><h3 id="2-svg文件基本属性"><a href="#2-svg文件基本属性" class="headerlink" title="2.svg文件基本属性"></a>2.svg文件基本属性</h3><ul><li>后来居上，越后面的元素越可见（类似层级叠加）</li><li>HTML是XHTML且声明 <code>application/xhtml+xml</code> ，svg可嵌入到XML源码</li><li>HTML5通过 <code>object/iframe</code> 引用svg文件</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;object data=&quot;image.svg&quot; type=&quot;image/svg+xml&quot; /&gt;</span><br><span class="line">&lt;iframe src=&quot;image.svg&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure><ul><li>可通过JS创建并注入到HTML中</li><li>gzip压缩后，svg扩展名为 <code>.svgz</code>（仍有服务器压缩、浏览器兼容问题）</li></ul><h1 id="二、基本形状和属性"><a href="#二、基本形状和属性" class="headerlink" title="二、基本形状和属性"></a>二、基本形状和属性</h1><h3 id="1-矩形"><a href="#1-矩形" class="headerlink" title="1.矩形"></a>1.矩形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;rect x=&quot;60&quot; y=&quot;10&quot; rx=&quot;10&quot; ry=&quot;10&quot; width=&quot;30&quot; height=&quot;30&quot;/&gt;</span><br></pre></td></tr></table></figure><p>x,y为矩形的坐标值<br>rx,ry控制矩形的圆角，没有设置默认为0<br>width,height为矩形的宽、高</p><h3 id="2-圆形"><a href="#2-圆形" class="headerlink" title="2.圆形"></a>2.圆形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;circle cx=&quot;25&quot; cy=&quot;75&quot; r=&quot;20&quot;/&gt;</span><br></pre></td></tr></table></figure><p>r为圆的半径<br>cx,cy为圆心坐标</p><h3 id="3-椭圆"><a href="#3-椭圆" class="headerlink" title="3.椭圆"></a>3.椭圆</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ellipse cx=&quot;75&quot; cy=&quot;75&quot; rx=&quot;20&quot; ry=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure><p>rx,ry为椭圆的x,y半径<br>cx,cy为椭圆中心的坐标值</p><h3 id="4-线条"><a href="#4-线条" class="headerlink" title="4.线条"></a>4.线条</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;line x1=&quot;10&quot; x2=&quot;50&quot; y1=&quot;110&quot; y2=&quot;150&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure><p>x1,y1为起点坐标<br>x2,y2为终点坐标</p><h3 id="5-折线"><a href="#5-折线" class="headerlink" title="5.折线"></a>5.折线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;polyline points=&quot;60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145&quot;/&gt;</span><br></pre></td></tr></table></figure><p>points点集数列，每个数字用空白、逗号、终止命令符或者换行符分隔开</p><h3 id="6-多边形"><a href="#6-多边形" class="headerlink" title="6.多边形"></a>6.多边形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;polygon points=&quot;50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180&quot;/&gt;</span><br></pre></td></tr></table></figure><p>pionts同以上，路径绘制完后闭合图形，polygon的路径在最后一个点处自动回到第一个点</p><h3 id="7-路径"><a href="#7-路径" class="headerlink" title="7.路径"></a>7.路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M20,230 Q40,205 50,230 T90,230&quot; fill=&quot;none&quot; stroke=&quot;blue&quot; stroke-width=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths">mdn参考</a></p><h1 id="三、svg的CSS样式"><a href="#三、svg的CSS样式" class="headerlink" title="三、svg的CSS样式"></a>三、svg的CSS样式</h1><h3 id="1-def"><a href="#1-def" class="headerlink" title="1.def"></a>1.def</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;200&quot; height=&quot;200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">    &lt;style&gt;&lt;![CDATA[</span><br><span class="line">       #MyRect &#123;</span><br><span class="line">         stroke: black;</span><br><span class="line">         fill: red;</span><br><span class="line">       &#125;</span><br><span class="line">    ]]&gt;&lt;/style&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect x=&quot;10&quot; height=&quot;180&quot; y=&quot;10&quot; width=&quot;180&quot; id=&quot;MyRect&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure><h3 id="2-外部样式表"><a href="#2-外部样式表" class="headerlink" title="2.外部样式表"></a>2.外部样式表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;style.css&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg width=&quot;200&quot; height=&quot;150&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">  &lt;rect height=&quot;10&quot; width=&quot;10&quot; id=&quot;MyRect&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- style.css --&gt;</span><br><span class="line">#MyRect &#123;</span><br><span class="line">  fill: red;</span><br><span class="line">  stroke: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-渐变（线性，径向）"><a href="#3-渐变（线性，径向）" class="headerlink" title="3.渐变（线性，径向）"></a>3.渐变（线性，径向）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 线性 --&gt;</span><br><span class="line">&lt;svg width=&quot;120&quot; height=&quot;240&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">      &lt;linearGradient id=&quot;Gradient1&quot;&gt;</span><br><span class="line">        &lt;stop class=&quot;stop1&quot; offset=&quot;0%&quot;/&gt;</span><br><span class="line">        &lt;stop class=&quot;stop2&quot; offset=&quot;50%&quot;/&gt;</span><br><span class="line">        &lt;stop class=&quot;stop3&quot; offset=&quot;100%&quot;/&gt;</span><br><span class="line">      &lt;/linearGradient&gt;</span><br><span class="line">      &lt;style type=&quot;text/css&quot;&gt;&lt;![CDATA[</span><br><span class="line">        #rect1 &#123; fill: url(#Gradient1); &#125;</span><br><span class="line">        .stop1 &#123; stop-color: red; &#125;</span><br><span class="line">        .stop2 &#123; stop-color: black; stop-opacity: 0; &#125;</span><br><span class="line">        .stop3 &#123; stop-color: blue; &#125;</span><br><span class="line">      ]]&gt;&lt;/style&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect id=&quot;rect1&quot; x=&quot;10&quot; y=&quot;10&quot; rx=&quot;15&quot; ry=&quot;15&quot; width=&quot;100&quot; height=&quot;100&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;svg width=&quot;120&quot; height=&quot;240&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">      &lt;radialGradient id=&quot;RadialGradient1&quot;&gt;</span><br><span class="line">        &lt;stop offset=&quot;0%&quot; stop-color=&quot;red&quot;/&gt;</span><br><span class="line">        &lt;stop offset=&quot;100%&quot; stop-color=&quot;blue&quot;/&gt;</span><br><span class="line">      &lt;/radialGradient&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect x=&quot;10&quot; y=&quot;10&quot; rx=&quot;15&quot; ry=&quot;15&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(#RadialGradient1)&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure><h3 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h3><ul><li>patterns 图案</li><li>text 文本</li><li>g 元素集合</li><li>基础变形<br>平移 <code>transform=&quot;translate(30,40)&quot;</code><br>旋转 <code>transform=&quot;rotate(45)&quot;</code><br>斜切 skewX(),skewY()<br>缩放 scale()<br>矩阵变换 matrix(a, b, c, d, e, f)</li><li>svg可嵌套</li><li>剪切 clipPath</li><li>遮罩 mask</li><li>透明度 <code>opacity=&quot;.5&quot;</code> </li><li>光栅图像 image</li><li>滤镜 filter</li></ul><h1 id="四、工具"><a href="#四、工具" class="headerlink" title="四、工具"></a>四、工具</h1><p><a href="http://snapsvg.io/docs/">snap.svg</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element">元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute">属性参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model#svg_%E6%8E%A5%E5%8F%A3">文档对象模型</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS篇-box-shadow</title>
+      <link href="/2023/05/17/CSS%E7%AF%87-box-shadow/"/>
+      <url>/2023/05/17/CSS%E7%AF%87-box-shadow/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://getcssscan.com/css-box-shadow-examples">参考：css scan</a><br><a href="https://css-tricks.com/almanac/properties/b/box-shadow/">参考：csstricks</a><br><a href="https://blog.logrocket.com/three-ways-style-css-box-shadow-effects/">参考：effects</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS篇-background</title>
+      <link href="/2023/05/16/CSS%E7%AF%87-background/"/>
+      <url>/2023/05/16/CSS%E7%AF%87-background/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-所有值"><a href="#1-所有值" class="headerlink" title="1.所有值"></a>1.所有值</h1><p>以下属性的一个或多个值，可以按任意顺序放置</p><ul><li>backbround-attachment</li><li>background-clip</li><li>background-origin</li><li>background-color</li><li>background-image</li><li>background-position</li><li>background-repeat</li><li>background-size</li></ul><h1 id="2-属性值"><a href="#2-属性值" class="headerlink" title="2.属性值"></a>2.属性值</h1><h3 id="background-attachment-固定-滚动"><a href="#background-attachment-固定-滚动" class="headerlink" title="background-attachment(固定/滚动)"></a>background-attachment(固定/滚动)</h3><ul><li>scroll</li><li>fixed</li><li>local</li><li>local,scroll</li><li>scroll,local</li></ul><h3 id="background-clip-background-origin-背景图片宽高"><a href="#background-clip-background-origin-背景图片宽高" class="headerlink" title="background-clip/background-origin(背景图片宽高)"></a>background-clip/background-origin(背景图片宽高)</h3><ul><li>border-box</li><li>padding-box</li><li>content-box</li><li>text // 仅background-clip有</li></ul><p>组合设置背景图片元素仅在透明字体上显示</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background-clip:text;</span><br><span class="line">-webkit-background-clip:text;</span><br><span class="line">color:transparent;</span><br></pre></td></tr></table></figure><p>当 <code>background-attachment:fixed</code>, <code>background-origin</code>无效</p><h3 id="background-color"><a href="#background-color" class="headerlink" title="background-color"></a>background-color</h3><ul><li>red;/#bbff00;/rgb(255,255,128);/hsla(50,33%,25%,0.75);</li><li>currentColor // 关键字，代表color属性的计算值</li><li>transparent </li></ul><h3 id="background-image"><a href="#background-image" class="headerlink" title="background-image"></a>background-image</h3><p>一个元素设置一个或多个背景图像</p><ul><li>none</li><li>url(‘xxx.png’),url(‘xxx.jpeg’);</li><li>linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),url(‘xxx.png’);</li></ul><h3 id="background-position-背景图片位置"><a href="#background-position-背景图片位置" class="headerlink" title="background-position(背景图片位置)"></a>background-position(背景图片位置)</h3><ul><li>top/right/bottom/left</li><li>center</li><li>25% 75%/1cm 2cm/10ch 8em</li><li>0 0,center; // 多张图片</li><li>bottom 10px right 20px</li></ul><h3 id="background-repeat"><a href="#background-repeat" class="headerlink" title="background-repeat"></a>background-repeat</h3><ul><li>repeat-x;/repeat-y;/repeat;</li><li>space<br>// 图像会尽可能得重复，不会裁剪，第一个和最后一个会被固定在元素的边上，同时空白会均匀地分布在图像之间</li><li>round</li><li>no-repeat</li><li>space repeat // 水平 垂直</li></ul><h3 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h3><ul><li>contain // 背景图全展示出来</li><li>cover // 背景图布满元素</li><li>x%</li><li>20px 10px // width height</li><li>auto // 默认值</li><li>auto,auto; // 多个背景</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS篇-增强用户体验</title>
+      <link href="/2023/05/15/CSS%E7%AF%87-%E5%A2%9E%E5%BC%BA%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+      <url>/2023/05/15/CSS%E7%AF%87-%E5%A2%9E%E5%BC%BA%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTTP</title>
+      <link href="/2023/05/11/HTTP/"/>
+      <url>/2023/05/11/HTTP/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>HTTP 超文本传输协议<br>HyperText Transfer protocol</p><h3 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h3><ul><li>简约的</li><li>可扩展的</li><li>无状态，但并非无会话（HTTP Cookie）</li><li>和网络连接</li></ul><h3 id="能控制的特性"><a href="#能控制的特性" class="headerlink" title="能控制的特性"></a>能控制的特性</h3><ul><li>缓存</li><li>开放同源限制</li><li>认证（WWW-Authenticate或HTTP cookie）</li><li>代理服务器和隧道（SOCKs，ftp）</li><li>会话</li></ul><h1 id="二、报文"><a href="#二、报文" class="headerlink" title="二、报文"></a>二、报文</h1><h3 id="请求-Request"><a href="#请求-Request" class="headerlink" title="请求 Request"></a>请求 Request</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host:developer.mozilla.org</span><br><span class="line">Accept-Language:fr</span><br></pre></td></tr></table></figure><p><strong>起始行</strong></p><ul><li><code>GET</code> 请求方法</li><li><code>/</code> 路径，请求目标（URL、协议、端口和域名的绝对路径）</li><li><code>HTTP/1.1</code> 协议版本</li></ul><p><strong>标头</strong><br><code>Host ... :fr</code> 标头(Headers)</p><ul><li>通用标头，适用于整个消息</li><li>请求标头</li><li>表示标头</li></ul><p><strong>主体（Body）</strong><br>将数据发送到服务器以便更新数据，POST请求（包含HTML表单数据）</p><ul><li>单一资源</li><li>多资源</li></ul><h3 id="响应-Response"><a href="#响应-Response" class="headerlink" title="响应 Response"></a>响应 Response</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date:Sat,09 Oct 2010 15:30:01 GMT</span><br><span class="line">Last-Modified:Tue, 01 Dec 2009 20:15:22 GMT</span><br><span class="line">ETag:&quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges:bytes</span><br><span class="line">Content-Length:29769</span><br><span class="line">Content-Type:text/html</span><br></pre></td></tr></table></figure><p><strong>状态行</strong></p><ul><li><code>HTTP/1.1</code> 协议版本</li><li><code>200</code> 状态码</li><li><code>OK</code> 信息状态/状态文本</li></ul><p><strong>标头</strong></p><p><strong>主体</strong></p><h3 id="状态响应码"><a href="#状态响应码" class="headerlink" title="状态响应码"></a>状态响应码</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文件导出</title>
+      <link href="/2023/05/10/%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA/"/>
+      <url>/2023/05/10/%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> JS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS篇-居中</title>
+      <link href="/2023/05/08/CSS%E7%AF%87-%E5%B1%85%E4%B8%AD/"/>
+      <url>/2023/05/08/CSS%E7%AF%87-%E5%B1%85%E4%B8%AD/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>缓存</title>
       <link href="/2023/05/04/%E7%BC%93%E5%AD%98/"/>
       <url>/2023/05/04/%E7%BC%93%E5%AD%98/</url>
@@ -27,7 +331,7 @@
       <link href="/2023/04/27/%E5%9B%BE%E7%89%87/"/>
       <url>/2023/04/27/%E5%9B%BE%E7%89%87/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="一、类型"><a href="#一、类型" class="headerlink" title="一、类型"></a>一、类型</h1><h3 id="1-web常用的图像格式"><a href="#1-web常用的图像格式" class="headerlink" title="1.web常用的图像格式"></a>1.web常用的图像格式</h3><ul><li>APNG (Animated Portable NetWork Graphics:动态便携式网络图像)</li><li>AVIF (AV1 Image File Format:AVA1图像文件格式)</li><li>GIF (Graphic Interchange Format:图像互换格式)</li><li>JPEG (Joint Photographic Expert Group image:联合影像专家小组图像)</li><li>PNG (Portable Network Graphic:便携式网络图像)</li><li>ICO (Microsoft Icon:微软图标,最高分辨率:256×256 pixels)</li><li>SVG (Scalable Vetor Graphics:可缩放矢量图形)</li><li>WebP (Web Picture format:万维网图像格式)</li><li>BMP (Bitmap file:位图文件)</li><li>TIFF (Tagged Image File Format:标签图像文件格式)</li></ul><hr><h3 id="2-格式识别"><a href="#2-格式识别" class="headerlink" title="2.格式识别"></a>2.格式识别</h3><ul><li>image/apng</li><li>image/avif</li><li>image/gif</li><li>image/jpeg (.jpg,.jpeg,.jfif,.pjpeg,.pjp)</li><li>image/png</li><li>image/x-icon image/vnd.microsoft.icon (.ico,.cur) </li><li>image/svg+xml</li><li>image/webp</li><li>image/bmp</li><li>image/tiff (tif,tiff)</li></ul><p>– 其他格式 –</p><ul><li>.pgm portable graymap file format：便携式灰度图像格式</li><li>.cur 静态的 Microsoft Windows 光标文件格式(浏览器暂无效)</li></ul><h3 id="3-格式校验"><a href="#3-格式校验" class="headerlink" title="3.格式校验"></a>3.格式校验</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 字符串截取+正则/includes校验 --&gt;</span><br><span class="line">let type = imgSrc.slice(imgSrc.lastIndexOf(&#x27;.&#x27;), imgSrc.length)</span><br><span class="line">let isImg =[&#x27;.png&#x27;, &#x27;jpg&#x27;, &#x27;jpeg&#x27;, &#x27;gif&#x27;, &#x27;bmp&#x27;].includes(type)</span><br><span class="line">let isImg2 = /.(gif|jpg|jpeg|png|gif)$/.test(type)</span><br><span class="line">&lt;!-- input[type=&quot;file&quot;] file.type --&gt;</span><br><span class="line">&lt;!-- FileReader --&gt;</span><br></pre></td></tr></table></figure><p><a href="https://segmentfault.com/q/1010000042403273">FileReader识别图片类型</a></p><h1 id="二、加载"><a href="#二、加载" class="headerlink" title="二、加载"></a>二、加载</h1><ul><li>图片压缩：<br>(在线)压缩工具：<a href="https://tinypng.com/">tinyPNG</a><br>webpack压缩：<a href="https://www.npmjs.com/package/image-webpack-loader">image-wepack-loader</a></li><li>懒加载 <code>&lt;img loading=&quot;lazy&quot; /&gt;</code></li><li>预加载</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;img style=&quot;display:none&quot; src=&quot;xxx&quot; /&gt;</span><br><span class="line">let image=new Image()</span><br><span class="line">image.src=&quot;xxx&quot;</span><br><span class="line">&lt;!-- fetch/axios/ajax 请求加载 --&gt;</span><br><span class="line">&lt;!-- proload.js或同类插件 --&gt;</span><br></pre></td></tr></table></figure><ul><li>CDN访问<br>(1)多个小图片：可考虑合成雪碧图，合成图片只需获取一次，再CSS定位展示<br>(2)图标小图片：考虑使用字体图标(以下三4)  </li><li>响应式图片（适用兼容mobile,PC,iPad多端产品）</li><li>渐进式，图片拆分成多个小图片</li></ul><h1 id="三、展示-使用-作用-功能"><a href="#三、展示-使用-作用-功能" class="headerlink" title="三、展示+使用(作用/功能)"></a>三、展示+使用(作用/功能)</h1><h3 id="1-tab-ico"><a href="#1-tab-ico" class="headerlink" title="1.tab ico"></a>1.tab ico</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 经典favicon --&gt;</span><br><span class="line">&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 使用苹果系列产品 --&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;114x114&quot; href=&quot;apple-icon-114.png&quot; type=&quot;image/png&quot;&gt;</span><br></pre></td></tr></table></figure><h3 id="2-背景图片"><a href="#2-背景图片" class="headerlink" title="2.背景图片"></a>2.背景图片</h3><p>注：背景图片url引入，本地静态图片，远程网页静态图片，动态请求图片（变量？）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 方法一：层叠法 absolute,z-index --&gt;</span><br><span class="line">.bg &#123;</span><br><span class="line">      position: relative;</span><br><span class="line">      width: 100%;</span><br><span class="line">      height: 300px;</span><br><span class="line">      z-index: 0;</span><br><span class="line">      font-size: 24px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">.bg::before &#123;</span><br><span class="line">      content: &#x27;&#x27;;</span><br><span class="line">      background: url(&#x27;./点餐.png&#x27;) space;</span><br><span class="line">      position: absolute;</span><br><span class="line">      top: 0px;</span><br><span class="line">      right: 0px;</span><br><span class="line">      bottom: 0px;</span><br><span class="line">      left: 0px;</span><br><span class="line">      opacity: 0.15;</span><br><span class="line">      z-index: -1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 方法二：CSS函数法 cross-fade(image,image,opacity)，也可作为调节图片亮度CSS方法 --&gt;</span><br><span class="line">.bg &#123;</span><br><span class="line">      width: 100%;</span><br><span class="line">      height: 300px;</span><br><span class="line">      font-size: 24px;</span><br><span class="line">      background-image: url(&#x27;xxx.png&#x27;);</span><br><span class="line">      // CSS变量写法，此base64图片：1x1 px 透明图片</span><br><span class="line">      --transparent: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);</span><br><span class="line">      background-image: cross-fade(var(--transparent), url(&#x27;./点餐.png&#x27;), 15%); </span><br><span class="line">      background-image: -webkit-cross-fade(var(--transparent), url(&#x27;xxx.png&#x27;), 15%);</span><br><span class="line">      background-repeat: space;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;bg&quot;&gt;</span><br><span class="line">    浏览器不会向辅助技术提供有关背景图像的任何特殊信息。这对于屏幕阅读器来说非常重要，因为屏幕阅读器不会告知用户它的存在，因而不能向用户传达任何信息。如果图像包含对理解页面总体目的至关重要的信息，则最好在文档中作出语义性地描述（describe</span><br><span class="line">    it semantically）。</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><p><a href="https://www.zhangxinxu.com/wordpress/2020/07/css-cross-fade-background-image-opacity/">参考：张鑫旭博客</a></p><h3 id="3-按钮"><a href="#3-按钮" class="headerlink" title="3.按钮"></a>3.按钮</h3><ul><li>按钮+背景图片，参考以上2背景图片</li><li>图片按钮（仅图片无附加文字）：图片CSS加<code>cursor:pointer;</code></li><li>字体图标(以下4详)</li><li>鼠标指示器<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.image &#123;</span><br><span class="line">      width: 100%;</span><br><span class="line">      height: 300px;</span><br><span class="line">      background-color: bisque;</span><br><span class="line">      cursor: url(&#x27;./test.ico&#x27;) 5 5, pointer;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;image&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>注：<code>cursor</code> 的url用 <code>.ico</code> 格式，<code>.png,.cur</code>等均不支持；url使用图片的绝对路径，<code>5 5</code>鼠标图像的x,y坐标；<code>pointer</code> 图像无法加载时默认指针类型，也可是 <code>default</code> 等</li></ul><h3 id="4-字体图标"><a href="#4-字体图标" class="headerlink" title="4.字体图标"></a>4.字体图标</h3><ul><li><a href="https://www.iconfont.cn/">iconfont</a><br><a href="https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.28&helptype=code">使用介绍</a><br><a href="https://juejin.cn/post/7165458111283593247">使用介绍2</a>  </li><li><a href="https://fontawesome.com.cn/docs/v5/web">fontawesome中文网</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- vue中使用 --&gt;</span><br><span class="line">// 安装依赖</span><br><span class="line">yarn add font-awesome/npm install font-awesome --save</span><br><span class="line">// 在main.js中引入</span><br><span class="line">import &#x27;font-awesome/css/font-awesome.min.css;</span><br></pre></td></tr></table></figure><p><a href="https://blog.csdn.net/Poppy_LYT/article/details/99979480">微信使用介绍</a></p><h3 id="5-头像"><a href="#5-头像" class="headerlink" title="5.头像"></a>5.头像</h3><ul><li>内容适应<br><code>object-fit:fill/contain/cover/none/scale-down</code> </li><li>圆形/方形/方形圆角头像 </li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width:32px;</span><br><span class="line">height:32px;</span><br><span class="line">border-radius:50%/16px;/0;/8px;</span><br></pre></td></tr></table></figure><ul><li>默认图片（类钉钉默认图片）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.default-avatar &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #409eff;</span><br><span class="line">    width: 32px;</span><br><span class="line">    height: 32px;</span><br><span class="line">    line-height: 29px;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    color: #fff;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=&quot;avatar&quot; class=&quot;default-avatar&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let names = [&#x27;叶耄耋&#x27;, &#x27;艾尔维亚&#x27;, &#x27;Alice Green Smith&#x27;, &#x27;温安素&#x27;, &#x27;Tina Taylor&#x27;, &#x27;Jerry Clarke Jackson&#x27;]</span><br><span class="line">    let name = names[Math.floor(Math.random() * (6 - 0))]//0-5</span><br><span class="line">    let text = document.getElementById(&#x27;avatar&#x27;);</span><br><span class="line">    let isZh = (new RegExp(&quot;[\\u4E00-\\u9FFF]+&quot;, &quot;g&quot;)).test(name)</span><br><span class="line">    if (isZh) &#123;</span><br><span class="line">      text.innerHTML = name.slice(name.length - 2, name.length)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      let arr = name.split(&#x27; &#x27;)</span><br><span class="line">      // text.innerHTML = arr[arr.length - 2].slice(0, 1) + arr[arr.length - 1].slice(0, 1) // 后两位</span><br><span class="line">      text.innerHTML = arr[0].slice(0, 1) + arr[1].slice(0, 1) // 前两位</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li></ul><h3 id="6-图片阴影"><a href="#6-图片阴影" class="headerlink" title="6.图片阴影"></a>6.图片阴影</h3><p>box-shadow</p><h3 id="7-大图查看"><a href="#7-大图查看" class="headerlink" title="7.大图查看"></a>7.大图查看</h3><ul><li>新开窗口查看<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;image&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https:xxx&quot; /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;button onclick=&quot;download()&quot;&gt;下载&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function download() &#123;</span><br><span class="line">      &lt;!-- 原意是下载图片到本地，但此方法不生效，见以下四2 --&gt;</span><br><span class="line">      let link = document.createElement(&#x27;a&#x27;)</span><br><span class="line">      link.href = &#x27;https:xxx&#x27;</span><br><span class="line">      link.setAttribute(&#x27;download&#x27;, &#x27;下载图片&#x27;)</span><br><span class="line">      link.setAttribute(&#x27;target&#x27;, &#x27;_blank&#x27;)</span><br><span class="line">      link.click()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li><li>当前页面弹框查看（modal或mask）</li></ul><h3 id="8-不同平台写法"><a href="#8-不同平台写法" class="headerlink" title="8.不同平台写法"></a>8.不同平台写法</h3><ul><li>Vue.js</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;#&quot; /&gt;</span><br></pre></td></tr></table></figure><p><a href="https://www.antdv.com/components/image-cn">组件antdv</a><br><a href="https://element.eleme.cn/#/zh-CN/component/image">组件Element</a><br><a href="https://element-plus.gitee.io/zh-CN/component/image.html">组件Element Plus</a></p><ul><li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/image.html">微信小程序</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;section__ctn&quot;&gt;</span><br><span class="line">  &lt;image style=&quot;width: 200px; height: 200px; background-color: #eeeeee;&quot; mode=&quot;scaleToFill&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure><ul><li><a href="https://zh.uniapp.dcloud.io/collocation/pages.html">uniapp</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;image-content&quot;&gt;</span><br><span class="line">    &lt;image style=&quot;width: 200px; height: 200px; background-color: #eeeeee;&quot; :mode=&quot;item.mode&quot; :src=&quot;src&quot; @error=&quot;imageError&quot;&gt;</span><br><span class="line">    &lt;/image&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure><h1 id="四、上传、下载"><a href="#四、上传、下载" class="headerlink" title="四、上传、下载"></a>四、上传、下载</h1><h3 id="1-上传"><a href="#1-上传" class="headerlink" title="1.上传"></a>1.上传</h3><ul><li>进度条</li><li>可预览 <a href="https://www.zhangxinxu.com/wordpress/2015/11/html-input-type-file/">张鑫旭博客</a></li><li>分片上传（大图/大文件）<br><a href="https://juejin.cn/post/7044503613418242055">worker+blob</a></li></ul><h3 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h3><ul><li>多张图片下载打包下载<br><a href="https://juejin.cn/post/6966874238087069710">zip打包下载</a><br><a href="https://www.zhangxinxu.com/wordpress/2019/08/js-zip-download/">张鑫旭jszip打包下载</a></li><li>单张图片fetch下载<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;image&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;button onclick=&quot;download()&quot;&gt;下载&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function download() &#123;</span><br><span class="line">      fetch(`https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg`)</span><br><span class="line">        .then(response =&gt; response.blob())</span><br><span class="line">        .then(blob =&gt; &#123;</span><br><span class="line">          const url = window.URL.createObjectURL(blob);</span><br><span class="line">          const link = document.createElement(&#x27;a&#x27;);</span><br><span class="line">          link.href = url;</span><br><span class="line">          link.download = &#x27;下载图片&#x27;;</span><br><span class="line">          document.body.appendChild(link);</span><br><span class="line">          link.click();</span><br><span class="line">          document.body.removeChild(link);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(error =&gt; console.error(error));</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li></ul><h1 id="五、图片资源优化：存储、访问"><a href="#五、图片资源优化：存储、访问" class="headerlink" title="五、图片资源优化：存储、访问"></a>五、图片资源优化：存储、访问</h1><ul><li>静态资源服务器</li><li>阿里云iconfont免费字体图标</li><li>base64前端服务本地（减少请求）</li></ul><h1 id="六、图片生成"><a href="#六、图片生成" class="headerlink" title="六、图片生成"></a>六、图片生成</h1><h3 id="1-纯CSS"><a href="#1-纯CSS" class="headerlink" title="1.纯CSS"></a>1.纯CSS</h3><p>纯CSS图标</p><ul><li>正方形、长方形，圆形，</li><li>三角形、梯形<br>等腰/等边：改变border-width<br>三角形朝向：改变border-top/right/bottom/left;</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">width: 0;</span><br><span class="line">height: 0;</span><br><span class="line">border-top: 50px solid transparent;</span><br><span class="line">border-left: 100px solid red;</span><br><span class="line">border-bottom: 50px solid transparent;</span><br></pre></td></tr></table></figure><ul><li>月亮<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">width: 80px;</span><br><span class="line">height: 80px;</span><br><span class="line">border-radius: 50%;</span><br><span class="line">box-shadow: 15px 15px 0 0 red;</span><br></pre></td></tr></table></figure></li><li>十<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#cross &#123;</span><br><span class="line">  background: red;</span><br><span class="line">  height: 100px;</span><br><span class="line">  position: relative;</span><br><span class="line">  width: 20px;</span><br><span class="line">&#125;</span><br><span class="line">#cross:after &#123;</span><br><span class="line">  background: red;</span><br><span class="line">  content: &quot;&quot;;</span><br><span class="line">  height: 20px;</span><br><span class="line">  left: -40px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 40px;</span><br><span class="line">  width: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>搜索符号<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#magnifying-glass&#123;</span><br><span class="line"> font-size: 10em; /* This controls the size. */</span><br><span class="line"> display: inline-block;</span><br><span class="line"> width: 0.4em;</span><br><span class="line"> height: 0.4em;</span><br><span class="line"> border: 0.1em solid red;</span><br><span class="line"> position: relative;</span><br><span class="line"> border-radius: 0.35em;</span><br><span class="line">&#125;</span><br><span class="line">#magnifying-glass::before&#123;</span><br><span class="line"> content: &quot;&quot;;</span><br><span class="line"> display: inline-block;</span><br><span class="line"> position: absolute;</span><br><span class="line"> right: -0.25em;</span><br><span class="line"> bottom: -0.1em;</span><br><span class="line"> border-width: 0;</span><br><span class="line"> background: red;</span><br><span class="line"> width: 0.35em;</span><br><span class="line"> height: 0.08em;</span><br><span class="line"> -webkit-transform: rotate(45deg);</span><br><span class="line">    -moz-transform: rotate(45deg);</span><br><span class="line">     -ms-transform: rotate(45deg);</span><br><span class="line">      -o-transform: rotate(45deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p><a href="https://www.zhangxinxu.com/wordpress/2019/01/pure-css-shapes/">参考：张鑫旭博客</a><br><a href="https://css-tricks.com/the-shapes-of-css/">参考：原始出处css-tricks</a><br><a href="https://segmentfault.com/a/1190000016560879">参考：segmentfault解析部分原理</a><br><a href="https://www.cnblogs.com/cs-whut/p/13544171.html">参考：博客园</a></p><h3 id="2-svg生成图片"><a href="#2-svg生成图片" class="headerlink" title="2.svg生成图片"></a>2.svg生成图片</h3><h3 id="3-canvas生成图片"><a href="#3-canvas生成图片" class="headerlink" title="3.canvas生成图片"></a>3.canvas生成图片</h3><h3 id="4-base64生成图片"><a href="#4-base64生成图片" class="headerlink" title="4.base64生成图片"></a>4.base64生成图片</h3><h3 id="5-gif动图"><a href="#5-gif动图" class="headerlink" title="5.gif动图"></a>5.gif动图</h3><h3 id="6-网页保存为图片"><a href="#6-网页保存为图片" class="headerlink" title="6.网页保存为图片"></a>6.网页保存为图片</h3><h3 id="7-截图工具"><a href="#7-截图工具" class="headerlink" title="7.截图工具"></a>7.截图工具</h3><h3 id="8-小程序生成二维码-二维码图片生成"><a href="#8-小程序生成二维码-二维码图片生成" class="headerlink" title="8.小程序生成二维码/二维码图片生成"></a>8.小程序生成二维码/二维码图片生成</h3><h1 id="七、图片格式转换"><a href="#七、图片格式转换" class="headerlink" title="七、图片格式转换"></a>七、图片格式转换</h1><h1 id="八、图表工具"><a href="#八、图表工具" class="headerlink" title="八、图表工具"></a>八、图表工具</h1><h3 id="1-图表"><a href="#1-图表" class="headerlink" title="1.图表"></a>1.图表</h3><ul><li><a href="https://echarts.apache.org/handbook/zh/get-started">echarts</a></li><li><a href="https://www.ucharts.cn/v2/#/guide/index">uCharts</a></li></ul><h3 id="2-地图"><a href="#2-地图" class="headerlink" title="2.地图"></a>2.地图</h3><ul><li><a href="https://lbsyun.baidu.com/index.php?title=webapi">百度地图</a></li><li><a href="https://lbs.amap.com/api/webservice/guide/api/direction">高德地图</a></li><li><a href="https://lbs.qq.com/service/webService/webServiceGuide/webServiceQuota">腾讯地图-位置服务</a><br><a href="https://lbs.qq.com/webApi/javascriptV2/jsDemo">腾讯地图-JS API</a></li></ul><h3 id="3-框架-库"><a href="#3-框架-库" class="headerlink" title="3.框架/库"></a>3.框架/库</h3><ul><li><p><a href="https://github.com/d3/d3/wiki">d3.js</a></p><h1 id="十、其他工具"><a href="#十、其他工具" class="headerlink" title="十、其他工具"></a>十、其他工具</h1><h3 id="1-图片扫描"><a href="#1-图片扫描" class="headerlink" title="1.图片扫描"></a>1.图片扫描</h3></li></ul>]]></content>
       
       
       
@@ -293,7 +597,7 @@
       <link href="/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/"/>
       <url>/2023/01/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E7%AD%BE-Tab%E7%9A%84%E6%A0%87%E9%A2%98%E5%92%8C%E5%9B%BE%E6%A0%87/</url>
       
-        <content type="html"><![CDATA[<hr><h2 id="一、图标"><a href="#一、图标" class="headerlink" title="一、图标"></a>一、图标</h2><p>favicon.ico只需要放到网站根目录，并不需要添加到程序中，浏览器会直接通过域名调取这个文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>rel表示关系relationship，icon是一个网站图标的链接，type属性包含了链接资源的MIME类型</p><p>图片格式，type可接受类型：</p><ul><li>image/png(PNG)</li><li>image/gif(GIF)</li><li>image/jpg(JPEG)</li><li>image/x-icon(ICO)</li><li>image/svg+xml(SVG)</li></ul><p>一个favicon图标必须满足以下要求：</p><ul><li>默认名字是：favicon.ico</li><li>尺寸大小范围有：16x16，32x32，48x48，64x64，128x128（单位是px）</li><li>颜色通道值：8/24/32 bites</li></ul><p>更新窗口图标后，浏览器仍不显示，需要清除浏览器缓存刷新网页（ctrl+f5）</p><p>参考文档：</p><p><a href="https://github.com/audreyfeldroy/favicon-cheat-sheet">https://github.com/audreyfeldroy/favicon-cheat-sheet</a> </p><h2 id="二、标题"><a href="#二、标题" class="headerlink" title="二、标题"></a>二、标题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;文档标题&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><h3 id="动态修改标题"><a href="#动态修改标题" class="headerlink" title="动态修改标题"></a>动态修改标题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.title = &quot;新标题&quot;;</span><br><span class="line">document.querySelector(&#x27;title&#x27;).textContent = &#x27;新标题&#x27;;</span><br></pre></td></tr></table></figure><hr>]]></content>
+        <content type="html"><![CDATA[<hr><h2 id="一、图标"><a href="#一、图标" class="headerlink" title="一、图标"></a>一、图标</h2><p>favicon.ico只需要放到网站根目录，并不需要添加到程序中，浏览器会直接通过域名调取这个文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>rel表示关系relationship，icon是一个网站图标的链接，type属性包含了链接资源的MIME类型</p><p>图片格式，type可接受类型：</p><ul><li>image/png(PNG)</li><li>image/gif(GIF)</li><li>image/jpg(JPEG)</li><li>image/x-icon(ICO)</li><li>image/svg+xml(SVG)</li></ul><p>一个favicon图标必须满足以下要求：</p><ul><li>默认名字是：favicon.ico</li><li>尺寸大小范围有：16x16，32x32，48x48，64x64，128x128（单位是px）</li><li>颜色通道值：8/24/32 bites</li></ul><p>更新窗口图标后，浏览器仍不显示，需要清除浏览器缓存刷新网页（ctrl+f5）</p><p>参考文档：</p><p><a href="https://github.com/audreyfeldroy/favicon-cheat-sheet">https://github.com/audreyfeldroy/favicon-cheat-sheet</a> </p><h2 id="二、标题"><a href="#二、标题" class="headerlink" title="二、标题"></a>二、标题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;文档标题&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><h3 id="动态修改标题"><a href="#动态修改标题" class="headerlink" title="动态修改标题"></a>动态修改标题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.title = &quot;新标题&quot;;</span><br><span class="line">document.querySelector(&#x27;title&#x27;).textContent = &#x27;新标题&#x27;;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -308,9 +612,9 @@
     
     
     <entry>
-      <title>变量和事件名</title>
-      <link href="/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/"/>
-      <url>/2022/10/27/%E5%8F%98%E9%87%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%90%8D/</url>
+      <title>搜集命名单词</title>
+      <link href="/2022/10/27/%E6%90%9C%E9%9B%86%E5%91%BD%E5%90%8D%E5%8D%95%E8%AF%8D/"/>
+      <url>/2022/10/27/%E6%90%9C%E9%9B%86%E5%91%BD%E5%90%8D%E5%8D%95%E8%AF%8D/</url>
       
         <content type="html"><![CDATA[<h1 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h1><table><thead><tr><th align="left">描述</th><th align="left">前缀</th><th align="left">命名</th></tr></thead><tbody><tr><td align="left">Array 数组</td><td align="left">a</td><td align="left">aList,aGroup</td></tr><tr><td align="left">Boolean 布尔</td><td align="left">b</td><td align="left">bChecked,bHasLogin</td></tr><tr><td align="left">Function 函数</td><td align="left">f</td><td align="left">fGetHtml,fInit</td></tr><tr><td align="left">Number 数字</td><td align="left">n</td><td align="left">nPage,nTotal</td></tr><tr><td align="left">Object 对象</td><td align="left">o</td><td align="left">oButton,oDate</td></tr><tr><td align="left">Regular Expression 正则</td><td align="left">r</td><td align="left">rDomain,rEmail</td></tr><tr><td align="left">String 字符</td><td align="left">s</td><td align="left">sName,sHtml</td></tr></tbody></table><h1 id="事件名动词"><a href="#事件名动词" class="headerlink" title="事件名动词"></a>事件名动词</h1><table><thead><tr><th align="left">动词</th><th align="left">含义</th><th align="left">动词</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left">get</td><td align="left">获取</td><td align="left">set</td><td align="left">设置</td></tr><tr><td align="left">add</td><td align="left">增加</td><td align="left">remove</td><td align="left">删除</td></tr><tr><td align="left">create</td><td align="left">创建</td><td align="left">destory</td><td align="left">移除</td></tr><tr><td align="left">start</td><td align="left">启动</td><td align="left">stop</td><td align="left">停止</td></tr><tr><td align="left">open</td><td align="left">打开</td><td align="left">close</td><td align="left">关闭</td></tr><tr><td align="left">read</td><td align="left">读取</td><td align="left">write</td><td align="left">写入</td></tr><tr><td align="left">load</td><td align="left">载入</td><td align="left">save</td><td align="left">保存</td></tr><tr><td align="left">create</td><td align="left">创建</td><td align="left">destroy</td><td align="left">销毁</td></tr><tr><td align="left">begin</td><td align="left">开始</td><td align="left">end</td><td align="left">结束</td></tr><tr><td align="left">backup</td><td align="left">备份</td><td align="left">restore</td><td align="left">恢复</td></tr><tr><td align="left">import</td><td align="left">导入</td><td align="left">export</td><td align="left">导出</td></tr><tr><td align="left">split</td><td align="left">分割</td><td align="left">merge</td><td align="left">合并</td></tr><tr><td align="left">inject</td><td align="left">注入</td><td align="left">extract</td><td align="left">提取</td></tr><tr><td align="left">attach</td><td align="left">附着</td><td align="left">detach</td><td align="left">脱离</td></tr><tr><td align="left">bind</td><td align="left">绑定</td><td align="left">separate</td><td align="left">分离</td></tr><tr><td align="left">view</td><td align="left">查看</td><td align="left">browse</td><td align="left">浏览</td></tr><tr><td align="left">edit</td><td align="left">编辑</td><td align="left">modify</td><td align="left">修改</td></tr><tr><td align="left">select</td><td align="left">选取</td><td align="left">mark</td><td align="left">标记</td></tr><tr><td align="left">copy</td><td align="left">复制</td><td align="left">paste</td><td align="left">粘贴</td></tr><tr><td align="left">undo</td><td align="left">撤销</td><td align="left">redo</td><td align="left">重做</td></tr><tr><td align="left">insert</td><td align="left">插入</td><td align="left">delete</td><td align="left">移除</td></tr><tr><td align="left">add</td><td align="left">加入</td><td align="left">append</td><td align="left">添加</td></tr><tr><td align="left">clean</td><td align="left">清理</td><td align="left">clear</td><td align="left">清除</td></tr><tr><td align="left">index</td><td align="left">索引</td><td align="left">sort</td><td align="left">排序</td></tr><tr><td align="left">find</td><td align="left">查找</td><td align="left">search</td><td align="left">搜索</td></tr><tr><td align="left">increase</td><td align="left">增加</td><td align="left">decrease</td><td align="left">减少</td></tr><tr><td align="left">play</td><td align="left">播放</td><td align="left">pause</td><td align="left">暂停</td></tr><tr><td align="left">launch</td><td align="left">启动</td><td align="left">run</td><td align="left">运行</td></tr><tr><td align="left">compile</td><td align="left">编译</td><td align="left">execute</td><td align="left">执行</td></tr><tr><td align="left">debug</td><td align="left">调试</td><td align="left">trace</td><td align="left">跟踪</td></tr><tr><td align="left">observe</td><td align="left">观察</td><td align="left">listen</td><td align="left">监听</td></tr><tr><td align="left">build</td><td align="left">构建</td><td align="left">publish</td><td align="left">发布</td></tr><tr><td align="left">input</td><td align="left">输入</td><td align="left">output</td><td align="left">输出</td></tr><tr><td align="left">encode</td><td align="left">编码</td><td align="left">decode</td><td align="left">解码</td></tr><tr><td align="left">encrypt</td><td align="left">加密</td><td align="left">decrypt</td><td align="left">解密</td></tr><tr><td align="left">compress</td><td align="left">压缩</td><td align="left">decompress</td><td align="left">解压缩</td></tr><tr><td align="left">pack</td><td align="left">打包</td><td align="left">unpack</td><td align="left">解包</td></tr><tr><td align="left">parse</td><td align="left">解析</td><td align="left">emit</td><td align="left">生成</td></tr><tr><td align="left">connect</td><td align="left">连接</td><td align="left">disconnect</td><td align="left">断开</td></tr><tr><td align="left">send</td><td align="left">发送</td><td align="left">receive</td><td align="left">接收</td></tr><tr><td align="left">download</td><td align="left">下载</td><td align="left">upload</td><td align="left">上传</td></tr><tr><td align="left">refresh</td><td align="left">刷新</td><td align="left">synchronize</td><td align="left">同步</td></tr><tr><td align="left">update</td><td align="left">更新</td><td align="left">revert</td><td align="left">复原</td></tr><tr><td align="left">lock</td><td align="left">锁定</td><td align="left">unlock</td><td align="left">解锁</td></tr><tr><td align="left">check out</td><td align="left">签出</td><td align="left">check in</td><td align="left">签入</td></tr><tr><td align="left">submit</td><td align="left">提交</td><td align="left">commit</td><td align="left">交付</td></tr><tr><td align="left">push</td><td align="left">推</td><td align="left">pull</td><td align="left">拉</td></tr><tr><td align="left">expand</td><td align="left">展开</td><td align="left">collapse</td><td align="left">折叠</td></tr><tr><td align="left">begin</td><td align="left">起始</td><td align="left">end</td><td align="left">结束</td></tr><tr><td align="left">start</td><td align="left">开始</td><td align="left">finish</td><td align="left">完成</td></tr><tr><td align="left">enter</td><td align="left">进入</td><td align="left">exit</td><td align="left">退出</td></tr><tr><td align="left">abort</td><td align="left">放弃</td><td align="left">quit</td><td align="left">离开</td></tr><tr><td align="left">obsolete</td><td align="left">废弃</td><td align="left">depreciate</td><td align="left">废旧</td></tr><tr><td align="left">collect</td><td align="left">收集</td><td align="left">aggregate</td><td align="left">聚集</td></tr></tbody></table>]]></content>
       
