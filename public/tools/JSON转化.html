@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON转化 | PengHelen</title>
+  <meta property="og:title" content="JSON转化">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <textarea id="jsonStr" placeholder="请输入json字符串" onblur="jsonTojs()" cols="50" rows="20"></textarea>
+  <textarea id="jsStr" placeholder="请输入js对象" onblur="jsTojson()" cols="50" rows="20"></textarea>
+
+  <script>
+    let jsonInput = document.getElementById('jsonStr')
+    let jsInput = document.getElementById('jsStr')
+    function jsonTojs() {
+      let testValue = jsonInput.value
+      if (testValue.indexOf('\\') === -1) {//js对象
+        testValue = JSON.stringify(testValue)
+      }
+      jsInput.value = JSON.parse(testValue)
+    }
+    function jsTojson() {
+      let jsValue = { "bool_wait": 0, "call_lift": "", "lift_id": "", "lift_info": "", "name": "0", "neighbor_node": "1,", "qr_list": "", "road_info": "1,n;", "rviz_flag_name": "", "slowpoint_list": "", "virtue_1": "", "virtue_2": "", "virtue_3": "d", "virtue_4": "", "x": "-0.1280", "y": "0.0170" }
+      // jsInput.value
+      console.info('jsValue', jsValue + '')
+      let arr = (jsValue + '').split(',')
+      console.info('arr', arr)
+      jsonInput.value = JSON.stringify(jsValue)
+    }
+  </script>
+</body>
+
+</html>
