@@ -54,5 +54,3 @@ https://github.com/audreyfeldroy/favicon-cheat-sheet
 document.title = "新标题";
 document.querySelector('title').textContent = '新标题';
 ```
-
----

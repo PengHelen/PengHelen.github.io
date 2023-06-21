@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>svg入门基础 | PengHelen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、SVG1.简介Scalable Vector Graphics可缩放矢量图形XML语言，严格区分大小写  优点实现了DOM接口  缺点加载慢   2.svg文件基本属性 后来居上，越后面的元素越可见（类似层级叠加） HTML是XHTML且声明 application&#x2F;xhtml+xml ，svg可嵌入到XML源码 HTML5通过 object&#x2F;iframe 引用svg文件  12&lt;obj">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg入门基础">
+<meta property="og:url" content="https://penghelen.github.io/2023/05/24/svg%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="PengHelen">
+<meta property="og:description" content="一、SVG1.简介Scalable Vector Graphics可缩放矢量图形XML语言，严格区分大小写  优点实现了DOM接口  缺点加载慢   2.svg文件基本属性 后来居上，越后面的元素越可见（类似层级叠加） HTML是XHTML且声明 application&#x2F;xhtml+xml ，svg可嵌入到XML源码 HTML5通过 object&#x2F;iframe 引用svg文件  12&lt;obj">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-24T11:23:51.000Z">
+<meta property="article:modified_time" content="2023-05-31T08:26:29.355Z">
+<meta property="article:author" content="Helen Peng">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PengHelen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/work">工作</a>
+        
+          <a class="main-nav-link" href="/lifetime">生活</a>
+        
+          <a class="main-nav-link" href="/tools">工具</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://penghelen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-svg入门基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/05/24/svg%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2023-05-24T11:23:51.000Z" itemprop="datePublished">2023-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      svg入门基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、SVG"><a href="#一、SVG" class="headerlink" title="一、SVG"></a>一、SVG</h1><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Scalable Vector Graphics<br>可缩放矢量图形<br>XML语言，严格区分大小写</p>
+<ul>
+<li><p>优点<br>实现了DOM接口</p>
+</li>
+<li><p>缺点<br>加载慢</p>
+</li>
+</ul>
+<h3 id="2-svg文件基本属性"><a href="#2-svg文件基本属性" class="headerlink" title="2.svg文件基本属性"></a>2.svg文件基本属性</h3><ul>
+<li>后来居上，越后面的元素越可见（类似层级叠加）</li>
+<li>HTML是XHTML且声明 <code>application/xhtml+xml</code> ，svg可嵌入到XML源码</li>
+<li>HTML5通过 <code>object/iframe</code> 引用svg文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;object data=&quot;image.svg&quot; type=&quot;image/svg+xml&quot; /&gt;</span><br><span class="line">&lt;iframe src=&quot;image.svg&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可通过JS创建并注入到HTML中</li>
+<li>gzip压缩后，svg扩展名为 <code>.svgz</code>（仍有服务器压缩、浏览器兼容问题）</li>
+</ul>
+<h1 id="二、基本形状和属性"><a href="#二、基本形状和属性" class="headerlink" title="二、基本形状和属性"></a>二、基本形状和属性</h1><h3 id="1-矩形"><a href="#1-矩形" class="headerlink" title="1.矩形"></a>1.矩形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;rect x=&quot;60&quot; y=&quot;10&quot; rx=&quot;10&quot; ry=&quot;10&quot; width=&quot;30&quot; height=&quot;30&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>x,y为矩形的坐标值<br>rx,ry控制矩形的圆角，没有设置默认为0<br>width,height为矩形的宽、高</p>
+<h3 id="2-圆形"><a href="#2-圆形" class="headerlink" title="2.圆形"></a>2.圆形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;circle cx=&quot;25&quot; cy=&quot;75&quot; r=&quot;20&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>r为圆的半径<br>cx,cy为圆心坐标</p>
+<h3 id="3-椭圆"><a href="#3-椭圆" class="headerlink" title="3.椭圆"></a>3.椭圆</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ellipse cx=&quot;75&quot; cy=&quot;75&quot; rx=&quot;20&quot; ry=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>rx,ry为椭圆的x,y半径<br>cx,cy为椭圆中心的坐标值</p>
+<h3 id="4-线条"><a href="#4-线条" class="headerlink" title="4.线条"></a>4.线条</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;line x1=&quot;10&quot; x2=&quot;50&quot; y1=&quot;110&quot; y2=&quot;150&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>x1,y1为起点坐标<br>x2,y2为终点坐标</p>
+<h3 id="5-折线"><a href="#5-折线" class="headerlink" title="5.折线"></a>5.折线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;polyline points=&quot;60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>points点集数列，每个数字用空白、逗号、终止命令符或者换行符分隔开</p>
+<h3 id="6-多边形"><a href="#6-多边形" class="headerlink" title="6.多边形"></a>6.多边形</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;polygon points=&quot;50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>pionts同以上，路径绘制完后闭合图形，polygon的路径在最后一个点处自动回到第一个点</p>
+<h3 id="7-路径"><a href="#7-路径" class="headerlink" title="7.路径"></a>7.路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M20,230 Q40,205 50,230 T90,230&quot; fill=&quot;none&quot; stroke=&quot;blue&quot; stroke-width=&quot;5&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths">mdn参考</a></p>
+<h1 id="三、svg的CSS样式"><a href="#三、svg的CSS样式" class="headerlink" title="三、svg的CSS样式"></a>三、svg的CSS样式</h1><h3 id="1-def"><a href="#1-def" class="headerlink" title="1.def"></a>1.def</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;200&quot; height=&quot;200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">    &lt;style&gt;&lt;![CDATA[</span><br><span class="line">       #MyRect &#123;</span><br><span class="line">         stroke: black;</span><br><span class="line">         fill: red;</span><br><span class="line">       &#125;</span><br><span class="line">    ]]&gt;&lt;/style&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect x=&quot;10&quot; height=&quot;180&quot; y=&quot;10&quot; width=&quot;180&quot; id=&quot;MyRect&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-外部样式表"><a href="#2-外部样式表" class="headerlink" title="2.外部样式表"></a>2.外部样式表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;style.css&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg width=&quot;200&quot; height=&quot;150&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">  &lt;rect height=&quot;10&quot; width=&quot;10&quot; id=&quot;MyRect&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- style.css --&gt;</span><br><span class="line">#MyRect &#123;</span><br><span class="line">  fill: red;</span><br><span class="line">  stroke: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-渐变（线性，径向）"><a href="#3-渐变（线性，径向）" class="headerlink" title="3.渐变（线性，径向）"></a>3.渐变（线性，径向）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 线性 --&gt;</span><br><span class="line">&lt;svg width=&quot;120&quot; height=&quot;240&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">      &lt;linearGradient id=&quot;Gradient1&quot;&gt;</span><br><span class="line">        &lt;stop class=&quot;stop1&quot; offset=&quot;0%&quot;/&gt;</span><br><span class="line">        &lt;stop class=&quot;stop2&quot; offset=&quot;50%&quot;/&gt;</span><br><span class="line">        &lt;stop class=&quot;stop3&quot; offset=&quot;100%&quot;/&gt;</span><br><span class="line">      &lt;/linearGradient&gt;</span><br><span class="line">      &lt;style type=&quot;text/css&quot;&gt;&lt;![CDATA[</span><br><span class="line">        #rect1 &#123; fill: url(#Gradient1); &#125;</span><br><span class="line">        .stop1 &#123; stop-color: red; &#125;</span><br><span class="line">        .stop2 &#123; stop-color: black; stop-opacity: 0; &#125;</span><br><span class="line">        .stop3 &#123; stop-color: blue; &#125;</span><br><span class="line">      ]]&gt;&lt;/style&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect id=&quot;rect1&quot; x=&quot;10&quot; y=&quot;10&quot; rx=&quot;15&quot; ry=&quot;15&quot; width=&quot;100&quot; height=&quot;100&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;svg width=&quot;120&quot; height=&quot;240&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">  &lt;defs&gt;</span><br><span class="line">      &lt;radialGradient id=&quot;RadialGradient1&quot;&gt;</span><br><span class="line">        &lt;stop offset=&quot;0%&quot; stop-color=&quot;red&quot;/&gt;</span><br><span class="line">        &lt;stop offset=&quot;100%&quot; stop-color=&quot;blue&quot;/&gt;</span><br><span class="line">      &lt;/radialGradient&gt;</span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line">  &lt;rect x=&quot;10&quot; y=&quot;10&quot; rx=&quot;15&quot; ry=&quot;15&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(#RadialGradient1)&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h3><ul>
+<li>patterns 图案</li>
+<li>text 文本</li>
+<li>g 元素集合</li>
+<li>基础变形<br>平移 <code>transform=&quot;translate(30,40)&quot;</code><br>旋转 <code>transform=&quot;rotate(45)&quot;</code><br>斜切 skewX(),skewY()<br>缩放 scale()<br>矩阵变换 matrix(a, b, c, d, e, f)</li>
+<li>svg可嵌套</li>
+<li>剪切 clipPath</li>
+<li>遮罩 mask</li>
+<li>透明度 <code>opacity=&quot;.5&quot;</code> </li>
+<li>光栅图像 image</li>
+<li>滤镜 filter</li>
+</ul>
+<h1 id="四、工具"><a href="#四、工具" class="headerlink" title="四、工具"></a>四、工具</h1><p><a target="_blank" rel="noopener" href="http://snapsvg.io/docs/">snap.svg</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element">元素参考</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute">属性参考</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model#svg_%E6%8E%A5%E5%8F%A3">文档对象模型</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://penghelen.github.io/2023/05/24/svg%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/" data-id="clj5hitgi001cok3mcn6be6at" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/29/websocket%E5%AE%9E%E7%94%A8%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          websocket实用模板
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/17/CSS%E7%AF%87-box-shadow/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS篇-box-shadow</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/06/19/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP状态码</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/16/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/09/webpack%E5%9F%BA%E7%A1%80/">webpack基础</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/06/webGL%E5%9F%BA%E7%A1%80/">webGL基础</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/05/webRTC%E5%9F%BA%E7%A1%80/">webRTC基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 - 2023 Helen Peng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/work" class="mobile-nav-link">工作</a>
+  
+    <a href="/lifetime" class="mobile-nav-link">生活</a>
+  
+    <a href="/tools" class="mobile-nav-link">工具</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
